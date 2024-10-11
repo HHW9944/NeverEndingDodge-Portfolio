@@ -352,26 +352,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1502107593771420754, guid: 95942504155c7d144b28fde71dc3a041, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1502107593771420754, guid: 95942504155c7d144b28fde71dc3a041, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539359195874816188, guid: 95942504155c7d144b28fde71dc3a041, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4539359195874816188, guid: 95942504155c7d144b28fde71dc3a041, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 4660910960922201882, guid: 95942504155c7d144b28fde71dc3a041, type: 3}
       propertyPath: m_Name
       value: EnemyA
       objectReference: {fileID: 0}
+    - target: {fileID: 5455153232416454342, guid: 95942504155c7d144b28fde71dc3a041, type: 3}
+      propertyPath: missilePrefab
+      value: 
+      objectReference: {fileID: 3218593332736913578, guid: 28f6583cc867b0e458ab416f4a49e180, type: 3}
+    - target: {fileID: 9177963932836820162, guid: 95942504155c7d144b28fde71dc3a041, type: 3}
+      propertyPath: missilePrefab
+      value: 
+      objectReference: {fileID: 3218593332736913578, guid: 28f6583cc867b0e458ab416f4a49e180, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
