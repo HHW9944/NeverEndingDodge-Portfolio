@@ -4,8 +4,12 @@ using UnityEngine.Events;
 
 public class Life : MonoBehaviour
 {
+    [Tooltip("초기 값 설정")]
     public float InitValue;
     public UnityEvent onDeath;
+
+    [Tooltip("디버그 모드 On/Off")]
+    public bool IsDebug = false;
 
     private float _value;
     public float Value
@@ -33,5 +37,8 @@ public class Life : MonoBehaviour
     public void DecreaseLife()
     {
         Value--;
+
+        if (IsDebug)
+            Debug.Log("Life : " + Value);
     }
 }
