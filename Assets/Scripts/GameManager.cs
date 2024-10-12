@@ -1,103 +1,188 @@
-using System.Collections;
-using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;  // 싱글톤 패턴으로 모든 씬에서 GamaManager에 쉽게 접근할 수 있도록 함.
-    public Dropdown graphicsDropdown; //그래픽 설정을 위한 Dropdown 변수
-    public Slider soundSlider; // 사운드 볼륨을 위한 Slider 변수
-    public GameObject settingsPanel; // 설정 창 Panel 변수
-    private void Awake()
-    {
-        //싱글톤 패턴
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject); //씬이 바뀌어도 GameManager가 파괴되지 않도록..
+    public static bool isPaused;
+    public static bool isGameOver;
 
+    public Transform player;
+    public Transform middlePoint;
+    public Transform cylinder;
+    public Transform sphere;
+
+    public float moveSpeed = 5f;
+    public static float distanceFromMiddle = 0f;
+
+    public static float timer = 0f;
+
+    private Rigidbody rb;
+
+    void Start()
+    {
+        isPaused = false;
+        isGameOver = false;
+        timer = 0f;
+        rb = GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    void Update()
+    {
+        HandlePause();
+        HandleGameOver();
+
+        if (isPaused || isGameOver) return;
+
+        timer += Time.deltaTime;
+
+        Vector3 playerPosition = player.position;
+        float playerX = playerPosition.x;
+        float playerY = playerPosition.y;
+        float playerZ = playerPosition.z;
+
+        Vector3 targetPosition = middlePoint.position;
+        float middleX = targetPosition.x;
+        float middleY = targetPosition.y;
+        float middleZ = targetPosition.z;
+
+        distanceFromMiddle = Vector3.Distance(player.position, middlePoint.position);
+        MovePlayer();
+        PositionCylinder();
+    }
+
+    void MovePlayer()
+    {
+        float moveHorizontal = 0f;
+        float moveVertical = 0f;
+        float moveUpDown = 0f;
+
+        // A�� D Ű �Է� ó��
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveHorizontal = -1f;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            moveHorizontal = 1f;
+        }
+
+        // W�� S Ű �Է� ó��
+        if (Input.GetKey(KeyCode.W))
+        {
+            moveVertical = 1f;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            moveVertical = -1f;
+        }
+
+        // Q�� E Ű �Է� ó��
+        if (Input.GetKey(KeyCode.Q))
+        {
+            moveUpDown = -1f;
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+            moveUpDown = 1f;
+        }
+
+        // �̵� ���� ����
+        Vector3 movement = new Vector3(moveHorizontal, moveUpDown, moveVertical);
+        rb.MovePosition(transform.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    void PositionCylinder()
+    {
+        if (distanceFromMiddle < 10f || distanceFromMiddle > 100f)
+        {
+            cylinder.gameObject.SetActive(false);
         }
         else
         {
-            Destroy(gameObject);
+            cylinder.gameObject.SetActive(true);
         }
+
+
+        if (sphere == null || cylinder == null) return;
+
+        Vector3 directionToMiddlePoint = (middlePoint.position - sphere.position).normalized;
+
+        SphereCollider sphereCollider = sphere.GetComponent<SphereCollider>();
+        float sphereRadius = sphereCollider != null ? sphereCollider.radius * sphere.lossyScale.x : 1f;
+
+        Vector3 cylinderPosition = sphere.position + directionToMiddlePoint * sphereRadius;
+
+        cylinder.position = cylinderPosition;
+
+        Quaternion lookAtMiddleRotation = Quaternion.LookRotation(directionToMiddlePoint);
+
+        cylinder.rotation = lookAtMiddleRotation * Quaternion.Euler(90, 0, 0);
     }
-    private void Start()
+
+    void HandlePause()
     {
-        //Dropdown에서 선택된 값이 변경될 때 호출되는 리스너
-        if (graphicsDropdown != null)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            graphicsDropdown.onValueChanged.AddListener(delegate { SetGraphicsQuality(graphicsDropdown.value); });
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
         }
+    }
 
-        //Slider 값이 변경될 때 호출되는 리스너 추가
-        if (soundSlider != null)
+    void HandleGameOver()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
         {
-            soundSlider.onValueChanged.AddListener(delegate { SetSoundVolume(soundSlider.value); });
-            soundSlider.value = AudioListener.volume; // 시작할 때 현재 볼륨으로 초기화
-        }
-        
-    }
-    // 설정 버튼을 눌렀을 때 설정 패널을 표시하는 함수
-    public void ToggleSettingsPanel()
-    {
-        if (settingsPanel != null)
-        {
-            bool isActive = settingsPanel.activeSelf;
-            settingsPanel.SetActive(!isActive); // 현재 상태의 반대로 설정 (켜기/끄기)
+            if (isGameOver)
+            {
+                RestartGame();
+            }
+            else
+            {
+                GameOver();
+            }
         }
     }
 
-    //그래픽 품질 설정 함수
-    public void SetGraphicsQuality(int index)
+    public void PauseGame()
     {
-        switch (index)
-        {
-            case 0:
-                QualitySettings.SetQualityLevel(0); //Low
-                Debug.Log("그래픽 품질 낮음으로 설정");
-                break;
-            case 1:
-                QualitySettings.SetQualityLevel(2); //Middle
-                Debug.Log("그래픽 품질 보통으로 설정");
-                break;
-            case 2:
-                QualitySettings.SetQualityLevel(5); //High
-                Debug.Log("그래픽 품질 높음으로 설정");
-                break;
-        }
+        isPaused = true;
+        Time.timeScale = 0f; // ���� ����
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        UIManager.instance.ShowPauseMenu(); // ���� �޴� ǥ��
     }
-
-    //사운드 볼륨 설정 함수
-    public void SetSoundVolume(float volume)
+    public void ResumeGame()
     {
-        AudioListener.volume = volume; //전체 사운드 볼륨 설정
-        Debug.Log("사운드 볼륨: " + volume);
+        isPaused = false;
+        Time.timeScale = 1f; // ���� �簳
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        UIManager.instance.HidePauseMenu(); // ���� �޴� ����
     }
-
-    //씬 전환 함수
-    public void LoadScene(string sceneName)
+    public void GameOver()
     {
-        SceneManager.LoadScene(sceneName);
+        isGameOver = true;
+        Time.timeScale = 0f; // ���� ����
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        UIManager.instance.ShowGameOverUI(); // ���� ���� UI ǥ��
     }
-    public void QuitGame()
+    public void RestartGame()
     {
-        Debug.Log("게임 종료");
-        Application.Quit();
+        isGameOver = false;
+        timer = 0f;
+        Time.timeScale = 1f; // ���� �簳
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        UIManager.instance.HideGameOverUI(); // ���� ���� UI ����
+        player.position = Vector3.zero; // �÷��̾� ��ġ �ʱ�ȭ (����)
     }
-
-    // public void LoadSceneWithDelay(string sceneName, float delay)
-    // {
-    //     StartCoroutine(LoadSceneAfterDelay(sceneName, delay));
-    // }
-
-    // private IEnumerator LoadSceneAfterDelay(string sceneName, float delay)
-    // {
-    //     yield return new WaitForSeconds(delay);
-    //     SceneManager.LoadScene(sceneName);
-    // }
-    //=======================>이거는 씬이 즉시 전환되지않고 약간의 딜레이를 주려고 넣은 함수인데 일단 빼겠습니다.
 }
