@@ -78,31 +78,8 @@ public class PlayerMove : MonoBehaviour
 
         // 최대 속도 제한
         ClampMaxSpeed();
-
-        // 이동 방향에 따라 플레이어 기울이기
-        // ApplyTilt();
     }
-
-
-
-    void ApplyTilt()
-    {
-        float speed = Velocity.magnitude;
-        // 이동 중인 경우에만 기울임 적용
-        if (Velocity.magnitude > 0.1f)
-        {
-            // 기울일 방향을 결정 (현재 이동 방향에 따른 X축 회전)
-            float tiltAngle = Mathf.Clamp(speed * TiltAmount, -TiltAmount, TiltAmount);
-
-            // Z축 기울이기 (좌우 이동 방향에 따라 기울이기)
-            float targetTilt = _moveInput.x * TiltAmount;
-
-            // 부드럽게 회전 (기울이기 적용)
-            Quaternion targetRotation = Quaternion.Euler(tiltAngle, 0, -targetTilt);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * RotationSpeed);
-        }
-    }
-
+    
     private void ClampMaxSpeed()
     {
         // 현재 속도가 최대 속도를 초과할 경우, 속도를 제한

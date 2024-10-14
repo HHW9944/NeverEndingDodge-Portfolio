@@ -4,6 +4,7 @@ using UnityEngine;
 public class Speed : MonoBehaviour
 {
     public float InitValue;
+    
     private float _value;
     public float Value
     {
