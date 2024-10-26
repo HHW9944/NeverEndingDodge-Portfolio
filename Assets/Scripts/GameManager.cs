@@ -1,135 +1,95 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public static bool isPaused;
     public static bool isGameOver;
 
     public Transform player;
     public Transform middlePoint;
-    public Transform cylinder;
-    public Transform sphere;
+    public Transform playerCamera; // 플레이어 카메라 추가
 
     public float moveSpeed = 5f;
     public static float distanceFromMiddle = 0f;
 
     public static float timer = 0f;
 
-    private Rigidbody rb;
+    public Vector3 startPoint;
+    public Quaternion startRotation; // 초기 회전값 추가
+
+    private bool isCountingDown = false;
+    private float countdownTimer = 0f;
+    private int countdownValue = 3;
+
+    private void Awake()
+    {
+        instance = this;
+
+        startPoint = new Vector3(0, 0, 0);
+        startRotation = Quaternion.identity; // 초기 회전값 설정
+    }
 
     void Start()
     {
         isPaused = false;
         isGameOver = false;
         timer = 0f;
-        rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
+        // 카운트다운 중일 때
+        if (isCountingDown)
+        {
+            HandleCountdown();
+            return;
+        }
+
         HandlePause();
         HandleGameOver();
+        HandleSkills();
 
         if (isPaused || isGameOver) return;
 
         timer += Time.deltaTime;
-
-        Vector3 playerPosition = player.position;
-        float playerX = playerPosition.x;
-        float playerY = playerPosition.y;
-        float playerZ = playerPosition.z;
-
-        Vector3 targetPosition = middlePoint.position;
-        float middleX = targetPosition.x;
-        float middleY = targetPosition.y;
-        float middleZ = targetPosition.z;
-
         distanceFromMiddle = Vector3.Distance(player.position, middlePoint.position);
-        MovePlayer();
-        PositionCylinder();
     }
 
-    void MovePlayer()
+    void HandleSkills()
     {
-        float moveHorizontal = 0f;
-        float moveVertical = 0f;
-        float moveUpDown = 0f;
-
-        // A와 D 키 입력 처리
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            moveHorizontal = -1f;
+            Skill01On();
         }
-        else if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.X))
         {
-            moveHorizontal = 1f;
+            Skill01Off();
         }
-
-        // W와 S 키 입력 처리
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveVertical = 1f;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            moveVertical = -1f;
-        }
-
-        // Q와 E 키 입력 처리
-        if (Input.GetKey(KeyCode.Q))
-        {
-            moveUpDown = -1f;
-        }
-        else if (Input.GetKey(KeyCode.E))
-        {
-            moveUpDown = 1f;
-        }
-
-        // 이동 벡터 생성
-        Vector3 movement = new Vector3(moveHorizontal, moveUpDown, moveVertical);
-        rb.MovePosition(transform.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
-    void PositionCylinder()
+    void Skill01On()
     {
-        if (distanceFromMiddle < 10f || distanceFromMiddle > 100f)
-        {
-            cylinder.gameObject.SetActive(false);
-        }
-        else
-        {
-            cylinder.gameObject.SetActive(true);
-        }
+        UIManager.instance.StartSkill01Effect();
+    }
 
-
-        if (sphere == null || cylinder == null) return;
-
-        Vector3 directionToMiddlePoint = (middlePoint.position - sphere.position).normalized;
-
-        SphereCollider sphereCollider = sphere.GetComponent<SphereCollider>();
-        float sphereRadius = sphereCollider != null ? sphereCollider.radius * sphere.lossyScale.x : 1f;
-
-        Vector3 cylinderPosition = sphere.position + directionToMiddlePoint * sphereRadius;
-
-        cylinder.position = cylinderPosition;
-
-        Quaternion lookAtMiddleRotation = Quaternion.LookRotation(directionToMiddlePoint);
-
-        cylinder.rotation = lookAtMiddleRotation * Quaternion.Euler(90, 0, 0);
+    void Skill01Off()
+    {
+        UIManager.instance.StopSkill01Effect();
     }
 
     void HandlePause()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            if (isPaused)
-            {
-                ResumeGame();
-            }
-            else
+            if (isGameOver) return;
+
+            if (!isPaused)
             {
                 PauseGame();
             }
@@ -140,11 +100,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (isGameOver)
-            {
-                RestartGame();
-            }
-            else
+            if (!isGameOver)
             {
                 GameOver();
             }
@@ -154,19 +110,33 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         isPaused = true;
-        Time.timeScale = 0f; // 게임 정지
+        Debug.Log("PauseGame 호출됨 - pauseMenuUICanvas 상태: " + UIManager.instance.pauseMenuUICanvas.activeSelf);
+        UIManager.instance.ShowPauseMenu();
+        Debug.Log("PauseMenu 표시됨 - pauseMenuUICanvas 상태: " + UIManager.instance.pauseMenuUICanvas.activeSelf);
+        Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        UIManager.instance.ShowPauseMenu(); // 정지 메뉴 표시
+
+        // WarningEffect가 활성화되어 있으면 일시 중지
+        if (UIManager.instance.warningEffect.gameObject.activeSelf)
+        {
+            UIManager.instance.StopBlinkWarningEffect();
+        }
     }
+
     public void ResumeGame()
     {
         isPaused = false;
-        Time.timeScale = 1f; // 게임 재개
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        UIManager.instance.HidePauseMenu(); // 정지 메뉴 숨김
+        UIManager.instance.HidePauseMenu();
+        StartCountdown();
+
+        // 경고 효과가 다시 필요한지 확인하고 재개
+        if (UIManager.instance.warningEffect.gameObject.activeSelf)
+        {
+            UIManager.instance.StartBlinkWarningEffect();
+        }
     }
+
     public void GameOver()
     {
         isGameOver = true;
@@ -175,14 +145,69 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         UIManager.instance.ShowGameOverUI(); // 게임 오버 UI 표시
     }
+
+    public void TryAgain()
+    {
+        isGameOver = false;
+        InitializePlayer(); // 플레이어 초기화
+        UIManager.instance.HideGameOverUI(); // 게임 오버 UI 숨김
+        StartCountdown(); // 카운트다운 시작
+    }
+
     public void RestartGame()
     {
         isGameOver = false;
-        timer = 0f;
-        Time.timeScale = 1f; // 게임 재개
+        isPaused = false;
+
+        InitializePlayer(); // 플레이어 초기화
+        StartCountdown(); // 카운트다운 시작
+    }
+
+    public void StartGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f; // 게임 시간 재개
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        UIManager.instance.HideGameOverUI(); // 게임 오버 UI 숨김
-        player.position = Vector3.zero; // 플레이어 위치 초기화 (예시)
+        UIManager.instance.ShowGamePlayUI(); // 게임 UI 표시
+    }
+
+    // 플레이어 초기화 함수
+    void InitializePlayer()
+    {
+        player.position = startPoint; // 위치 초기화
+        player.rotation = startRotation; // 플레이어 회전 초기화
+        playerCamera.localRotation = Quaternion.identity; // 카메라 회전 초기화 (첫 시점으로 돌아가도록)
+        timer = 0f; // 타이머 초기화
+    }
+
+    // 카운트다운 시작
+    private void StartCountdown()
+    {
+        isCountingDown = true;
+        countdownTimer = 0f;
+        countdownValue = 3;
+        Time.timeScale = 0f; // 타임스케일을 0으로 설정하여 정지 상태를 유지
+        UIManager.instance.ShowCountdown(countdownValue); // 카운트다운 UI 업데이트
+    }
+
+    // 카운트다운 처리
+    private void HandleCountdown()
+    {
+        countdownTimer += Time.unscaledDeltaTime; // Time.timeScale이 0이어도 흐르는 시간
+        if (countdownTimer >= 1f)
+        {
+            countdownTimer = 0f;
+            countdownValue--;
+            if (countdownValue > 0)
+            {
+                UIManager.instance.ShowCountdown(countdownValue); // 카운트다운 UI 업데이트
+            }
+            else
+            {
+                isCountingDown = false;
+                StartGame(); // 카운트다운 끝나면 게임 시작
+            }
+        }
     }
 }
