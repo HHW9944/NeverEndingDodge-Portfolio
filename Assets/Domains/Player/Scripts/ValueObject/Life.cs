@@ -5,18 +5,15 @@ using UnityEngine.Events;
 public class Life : MonoBehaviour
 {
     [Tooltip("초기 값 설정")]
-    public float InitValue;
+    public int InitValue;
     public UnityEvent onDeath;
-<<<<<<< Updated upstream
-=======
     public UIManager uiManager;
->>>>>>> Stashed changes
 
     [Tooltip("디버그 모드 On/Off")]
     public bool IsDebug = false;
 
-    private float _value;
-    public float Value
+    private int _value;
+    public int Value
     {
         get
         {
@@ -25,14 +22,6 @@ public class Life : MonoBehaviour
         private set
         {
             _value = Math.Max(value, 0);
-<<<<<<< Updated upstream
-            
-            if (Value == 0)
-            {
-                onDeath.Invoke();
-            }
-=======
->>>>>>> Stashed changes
         }
     }
 
@@ -52,16 +41,10 @@ public class Life : MonoBehaviour
 
     public void DecreaseLife()
     {
-<<<<<<< Updated upstream
-        Value--;
-
-        if (IsDebug)
-            Debug.Log("Life : " + Value);
-=======
         if (IsDebug && Value > 1)
         {
             Value--;
-            uiManager.life[Value].color = new Color(1, 1, 1, 0.1f);
+            ingameUiManager.life[Value].color = new Color(1, 1, 1, 0.1f);
             Debug.Log("Life : " + Value);
         }
         else
@@ -84,6 +67,5 @@ public class Life : MonoBehaviour
         {
             uiManager.life[i].color = new Color(1, 1, 1, 1f); // 생명 UI를 초기 상태로 복원
         }
->>>>>>> Stashed changes
     }
 }

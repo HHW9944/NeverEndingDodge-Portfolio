@@ -201,8 +201,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1099341578}
   m_SourcePrefab: {fileID: 100100000, guid: 8fd5814b57e1235479322da7329bf136, type: 3}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &52262600
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,7 +600,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
->>>>>>> Stashed changes
 --- !u!1 &293713083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,7 +1125,20 @@ MonoBehaviour:
   InitValue: 3
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 233064533}
+        m_TargetAssemblyTypeName: IngameUiManager, Assembly-CSharp
+        m_MethodName: OnDie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ingameUiManager: {fileID: 233064533}
   IsDebug: 1
 --- !u!114 &311562189
 MonoBehaviour:
@@ -1659,8 +1669,6 @@ MonoBehaviour:
   playerMove: {fileID: 311562183}
   maxDistortion: -0.4
   returnSpeed: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1 &637812618
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,7 +3329,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
->>>>>>> Stashed changes
 --- !u!1 &1099341577 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fd5814b57e1235479322da7329bf136,
@@ -3454,7 +3461,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -3470,7 +3477,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 813717967}
+  - {fileID: 872858021}
+  - {fileID: 903891313}
+  - {fileID: 1939397808}
+  - {fileID: 884802240}
+  - {fileID: 1494235445}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5007,8 +5020,6 @@ MonoBehaviour:
   CameraRadius: 0.2
   DampingIntoCollision: 0
   DampingFromCollision: 2
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1350157440
 GameObject:
   m_ObjectHideFlags: 0
@@ -5281,7 +5292,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374088961}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &1463631229
 GameObject:
   m_ObjectHideFlags: 0
@@ -6502,8 +6512,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1486779865
 GameObject:
   m_ObjectHideFlags: 0
@@ -8297,7 +8305,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824351164}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &1829653507
 GameObject:
   m_ObjectHideFlags: 0
@@ -8308,7 +8315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1829653510}
   - component: {fileID: 1829653509}
-  - component: {fileID: 1829653508}
+  - component: {fileID: 1829653511}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -8316,26 +8323,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1829653508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829653507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1829653509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8366,8 +8353,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-=======
 --- !u!114 &1829653511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8605,7 +8590,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955707528}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &1961688652
 GameObject:
   m_ObjectHideFlags: 0
@@ -11909,11 +11893,8 @@ SceneRoots:
   - {fileID: 311562180}
   - {fileID: 40138072}
   - {fileID: 1829653510}
-<<<<<<< Updated upstream
-=======
   - {fileID: 438968004}
   - {fileID: 1801520962}
   - {fileID: 347330640}
   - {fileID: 874640263}
   - {fileID: 1593445851}
->>>>>>> Stashed changes

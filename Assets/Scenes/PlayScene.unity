@@ -1620,10 +1620,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< Updated upstream
-=======
   uiManager: {fileID: 233064535}
->>>>>>> Stashed changes
   IsDebug: 1
 --- !u!114 &311562189
 MonoBehaviour:

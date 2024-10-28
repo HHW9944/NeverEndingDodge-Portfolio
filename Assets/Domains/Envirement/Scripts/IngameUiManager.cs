@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class IngameUiManager : MonoBehaviour
 {
-    private int timer = 2000;
+    private int timer = 20;
     public Text timerText;
     public Image[] life;
 
