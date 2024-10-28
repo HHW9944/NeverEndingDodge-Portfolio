@@ -1,7 +1,7 @@
-using System.Collections;
-using TMPro;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,9 +9,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject pauseMenuUICanvas;
     public GameObject gamePlayUICanvas;
-    public GameObject gameOverUICanvas;
+    public GameObject gameOverUICanvas; // 기존 Game Over UI 사용
 
     public TextMeshProUGUI countdownText; // 카운트다운 텍스트 추가
+    public TextMeshProUGUI timerText; // 타이머 텍스트
+    public Image[] life; // 생명 UI 배열 추가
 
     public Button resumeButton;
     public Button restartButton;
@@ -27,19 +29,20 @@ public class UIManager : MonoBehaviour
     public Image warningEffect;
     public Color warningEffectColor;
 
-    public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI playTimeResult;
     public Image skillIcon01;
 
     private bool WarningEffectBlinking = false;
 
+    public RectTransform enemyIndicatorPrefab; // 적 방향을 표시할 UI 프리팹
+    private Dictionary<Transform, RectTransform> enemyIndicators = new Dictionary<Transform, RectTransform>();
+
     private void Awake()
     {
         instance = this;
         Debug.Log("UI 초기화");
-        /* pauseMenuUICanvas.SetActive(false);*/  // PauseMenu UI가 처음에 비활성화되어 있어야 함
-        Debug.Log("pauseMenuUICanvas 상태 (초기): " + pauseMenuUICanvas.activeSelf);
+
         gamePlayUICanvas.SetActive(true);
         gameOverUICanvas.SetActive(false);
 
@@ -51,6 +54,59 @@ public class UIManager : MonoBehaviour
         tryAgainNoButton.onClick.AddListener(OnTryAgainNoButtonClick);
 
         countdownText.gameObject.SetActive(false); // 처음에는 카운트다운 비활성화
+    }
+
+    void Update()
+    {
+        if (GameManager.isGameOver)
+        {
+            pauseMenuUICanvas.SetActive(false);
+            gamePlayUICanvas.SetActive(false);
+            return;
+        }
+
+        if (GameManager.isPaused)
+        {
+            if (WarningEffectBlinking)
+            {
+                WarningEffectBlinking = false;
+                StopBlinkWarningEffect();
+            }
+
+            pauseMenuUICanvas.SetActive(true);
+            gamePlayUICanvas.SetActive(false);
+            gameOverUICanvas.SetActive(false);
+        }
+        else
+        {
+            pauseMenuUICanvas.SetActive(false);
+            gamePlayUICanvas.SetActive(true);
+            gameOverUICanvas.SetActive(false);
+        }
+
+        // 타이머 UI 업데이트
+        timerText.text = GameManager.timer.ToString("F1");
+
+        // 거리 텍스트 업데이트
+        distanceMiddle = (int)GameManager.distanceFromMiddle;
+        distanceMiddleText.text = distanceMiddle.ToString() + " M";
+
+        if (distanceMiddle > 90)
+        {
+            if (!WarningEffectBlinking)
+            {
+                StartBlinkWarningEffect();
+            }
+            warningEffect.gameObject.SetActive(true);
+        }
+        else
+        {
+            if (WarningEffectBlinking)
+            {
+                StopBlinkWarningEffect();
+            }
+            warningEffect.gameObject.SetActive(false);
+        }
     }
 
     private void OnResumeButtonClick()
@@ -80,56 +136,10 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    void Update()
+    // 타이머 UI 업데이트
+    public void UpdateTimerUI(int minute, int second)
     {
-        if (GameManager.isGameOver)
-        {
-            pauseMenuUICanvas.SetActive(false);
-            gamePlayUICanvas.SetActive(false);
-            gameOverUICanvas.SetActive(true);
-            return;
-        }
-
-        if (GameManager.isPaused)
-        {
-            if (WarningEffectBlinking)
-            {
-                WarningEffectBlinking = false;
-                StopBlinkWarningEffect();
-            }
-
-            pauseMenuUICanvas.SetActive(true);
-            gamePlayUICanvas.SetActive(false);
-            gameOverUICanvas.SetActive(false);
-        }
-        else
-        {
-            pauseMenuUICanvas.SetActive(false);
-            gamePlayUICanvas.SetActive(true);
-            gameOverUICanvas.SetActive(false);
-        }
-
-        timerText.text = GameManager.timer.ToString("F1");
-
-        distanceMiddle = (int)GameManager.distanceFromMiddle;
-        distanceMiddleText.text = distanceMiddle.ToString() + " M";
-
-        if (distanceMiddle > 90)
-        {
-            if (!WarningEffectBlinking)
-            {
-                StartBlinkWarningEffect();
-            }
-            warningEffect.gameObject.SetActive(true);
-        }
-        else
-        {
-            if (WarningEffectBlinking)
-            {
-                StopBlinkWarningEffect();
-            }
-            warningEffect.gameObject.SetActive(false);
-        }
+        timerText.text = string.Format("{0:00} : {1:00}", minute, second);
     }
 
     // 카운트다운 UI 업데이트
@@ -177,6 +187,12 @@ public class UIManager : MonoBehaviour
         gameOverUICanvas.SetActive(false);
         gamePlayUICanvas.SetActive(true);
         pauseMenuUICanvas.SetActive(false);
+    }
+    public void HideAllUI()
+    {
+        pauseMenuUICanvas.SetActive(false);
+        gamePlayUICanvas.SetActive(false);
+        gameOverUICanvas.SetActive(false);
     }
 
     public void StartBlinkWarningEffect()
@@ -235,5 +251,77 @@ public class UIManager : MonoBehaviour
     public void Skill01Off()
     {
         skillIcon01.color = new Color(skillIcon01.color.r, skillIcon01.color.g, skillIcon01.color.b, 5f / 255f);
+    }
+
+    public void UpdateEnemyIndicator(Transform enemyTransform)
+    {
+        if (!enemyIndicators.ContainsKey(enemyTransform))
+        {
+            // 적의 UI 인디케이터가 없으면 생성
+            RectTransform indicator = Instantiate(enemyIndicatorPrefab, gamePlayUICanvas.transform);
+            enemyIndicators[enemyTransform] = indicator;
+        }
+
+        RectTransform indicatorUI = enemyIndicators[enemyTransform];
+
+        // 적과의 거리 계산
+        float distance = Vector3.Distance(Camera.main.transform.position, enemyTransform.position);
+
+        // 거리가 30 이상이면 인디케이터 숨김
+        if (distance >= 30)
+        {
+            indicatorUI.gameObject.SetActive(false);
+            return;
+        }
+
+        // 적의 위치를 카메라 좌표계로 변환
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(enemyTransform.position);
+
+        // z 값이 음수인 경우, 적이 카메라 뒤에 있는 것임.
+        if (screenPoint.z < 0)
+        {
+            // 카메라 뒤에 있을 때 반대 방향으로 인디케이터를 표시하도록 수정
+            screenPoint.x = 1f - screenPoint.x;
+            screenPoint.y = 1f - screenPoint.y;
+            screenPoint.z = 0;
+        }
+
+        // 화면 범위 클램프
+        screenPoint.x = Mathf.Clamp(screenPoint.x, 0f, 1f);
+        screenPoint.y = Mathf.Clamp(screenPoint.y, 0f, 1f);
+
+        // 화면의 중심으로부터 방향을 계산하여 화면 가장자리로 표시
+        Vector2 screenCenter = new Vector2(0.5f, 0.5f);
+        Vector2 direction = new Vector2(screenPoint.x - screenCenter.x, screenPoint.y - screenCenter.y);
+        direction.Normalize();
+
+        // 화면 가장자리로 위치 계산
+        float edgeBuffer = 50f; // 가장자리로부터의 여유 거리
+        float x = direction.x * (Screen.width / 2 - edgeBuffer);
+        float y = direction.y * (Screen.height / 2 - edgeBuffer);
+
+        indicatorUI.anchoredPosition = new Vector2(x, y);
+
+        // 적과의 거리 기반으로 크기 조정 (가까울수록 더 잘 보이도록 크기 증가)
+        // 최대 거리가 30이므로 이 범위 내에서 크기를 조정
+        float size = Mathf.Lerp(100, 20, distance / 30); // 거리에 따라 선형적으로 크기 감소
+        indicatorUI.sizeDelta = new Vector2(size, size);
+
+        // 인디케이터가 표시되도록 설정
+        indicatorUI.gameObject.SetActive(true);
+
+        // 인디케이터 깜빡이는 효과 추가
+        float alpha = Mathf.PingPong(Time.time * 2, 1); // 0에서 1 사이의 값을 반복적으로 반환 (깜빡임)
+        indicatorUI.GetComponent<Image>().color = new Color(1f, 1f, 1f, alpha);
+    }
+
+    public void RemoveEnemyIndicator(Transform enemyTransform)
+    {
+        if (enemyIndicators.ContainsKey(enemyTransform))
+        {
+            // 적이 화면에 보이면 인디케이터 삭제
+            Destroy(enemyIndicators[enemyTransform].gameObject);
+            enemyIndicators.Remove(enemyTransform);
+        }
     }
 }
