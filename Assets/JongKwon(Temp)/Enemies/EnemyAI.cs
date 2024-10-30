@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Enemy ÇÏ³ª¸¶´Ù °¡Áö´Â ÄÄÆ÷³ÍÆ®
+// Enemy ï¿½Ï³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 public class EnemyAI : MonoBehaviour
 {
     public GameObject player;
@@ -20,16 +20,16 @@ public class EnemyAI : MonoBehaviour
     {
         if (player != null)
         {
-            // ÇÃ·¹ÀÌ¾î¿ÍÀÇ °Å¸® °è»ê
+            // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-            // ÇÃ·¹ÀÌ¾î¸¦ ¹Ù¶óº½ (Slerp »ç¿ëÇØ¼­ ºÎµå·´°Ô È¸Àü)
+            // ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½Ù¶ï¿½ (Slerp ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Îµå·´ï¿½ï¿½ È¸ï¿½ï¿½)
             if (isAlwaysRecognizePlayer || distanceToPlayer <= recognitionDistance)
             {
                 Vector3 direction = player.transform.position - transform.position;
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-                // !!! Player ¿ÀºêÁ§Æ®ÀÇ ¹Ý´ë ¹æÇâÀ¸·Î ¹Ù¶óº»´Ù¸é ¿©±â¸¦ »èÁ¦ÇØÁÖ¼¼¿ä !!!
+                // !!! Player ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ý´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº»´Ù¸ï¿½ ï¿½ï¿½ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½ !!!
                 targetRotation *= Quaternion.Euler(0, 180, 0);
 
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
