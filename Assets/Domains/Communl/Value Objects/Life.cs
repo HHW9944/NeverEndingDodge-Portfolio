@@ -32,14 +32,6 @@ public class Life : MonoBehaviour
         }
     }
 
-    public int MaxValue
-    {
-        get
-        {
-            return InitValue;
-        }
-    }
-
     void Start()
     {
         _value = InitValue;

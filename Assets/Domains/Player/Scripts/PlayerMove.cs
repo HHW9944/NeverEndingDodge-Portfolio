@@ -65,6 +65,11 @@ public class PlayerMove : MonoBehaviour
         _moveInput = value.Get<Vector2>();
     }
 
+    public Vector3 GetMovementDirection()
+    {
+        return _moveInput;
+    }
+
     private void FixedUpdate()
     {
         // 2D 입력을 3D로 변환 (z축으로 전진, x축으로 좌우 이동)
