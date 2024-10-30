@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Domains/Player/Animations/Shield.anim.meta
 guid: 461cfd586abc52d40a17e7d0839a75f5
 NativeFormatImporter:
+========
+guid: 512f97f24b3105b4e9463117a11b4fe9
+PrefabImporter:
+>>>>>>>> 89cc86bd790545aee328e43b43cfdd6b65928132:Assets/Song/Obstacle3.prefab.meta
   externalObjects: {}
   mainObjectFileID: 7400000
   userData: 
