@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -41,5 +40,13 @@ public class IngameUiManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Debug.Log("게임이 다시 시작됩니다.");
+    }
+
+    public void OnDamage(int currentLife, int damage)
+    {
+        for (int life = currentLife; life < currentLife + damage; life++)
+        {
+            this.life[life].color = new Color(1, 1, 1, 0.1f);
+        }
     }
 }

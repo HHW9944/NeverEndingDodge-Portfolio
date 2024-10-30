@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = false;
         InitializePlayer(); // 플레이어 초기화
-        playerLife.ResetLife(); // Life 초기화
+        // playerLife.ResetLife(); // Life 초기화
         timer = 2000f;
         UIManager.instance.HideGameOverUI(); // 게임 오버 UI 숨김
         StartCountdown(); // 카운트다운 시작
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
         isPaused = false;
 
         InitializePlayer(); // 플레이어 초기화
-        playerLife.ResetLife(); // Life 초기화
+        // playerLife.ResetLife(); // Life 초기화
 
         // 타이머 초기화 및 재시작
         timer = 2000f;
