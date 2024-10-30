@@ -701,7 +701,7 @@ Rigidbody:
   m_GameObject: {fileID: 311562179}
   serializedVersion: 4
   m_Mass: 10
-  m_Drag: 5
+  m_Drag: 2
   m_AngularDrag: 10
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -731,7 +731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0410093054c4c4e4c9d4eaa97e7d0059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Acceleration: 50
   TiltAmount: 15
   RotationSpeed: 5
 --- !u!114 &311562184
@@ -876,7 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85d66eb971a8aa4faecfb6e1f288dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitValue: 6
+  InitValue: 20
 --- !u!135 &311562191
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3598,8 +3597,6 @@ MonoBehaviour:
   Force: 20
   Duration: 0.2
   Cooldown: 1
-  ForceMode: 2
-  _rigidbody: {fileID: 311562181}
   _playerMove: {fileID: 311562183}
 --- !u!1 &1463631229
 GameObject:

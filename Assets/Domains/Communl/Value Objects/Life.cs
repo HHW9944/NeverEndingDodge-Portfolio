@@ -14,6 +14,7 @@ public class Life : MonoBehaviour
     [Tooltip("디버그 모드 On/Off")]
     public bool IsDebug = false;
 
+    private bool _isDead = false;
     private int _value;
     public int Value
     {
@@ -24,6 +25,12 @@ public class Life : MonoBehaviour
         private set
         {
             _value = Math.Max(value, 0);
+
+            if (_value <= 0 && !_isDead)
+            {
+                _isDead = true;
+                onDeath?.Invoke();
+            }
 
             if (IsDebug)
             {

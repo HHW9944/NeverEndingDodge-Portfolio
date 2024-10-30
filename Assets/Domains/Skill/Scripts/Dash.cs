@@ -15,12 +15,7 @@ public class Dash : Skill
     [Tooltip("대시 재사용 대기 시간")]
     public float Cooldown = 1f;
 
-    [Tooltip("대시 힘의 적용 방식")]
-    public ForceMode ForceMode = ForceMode.Impulse;
-
     [Header("References")]
-    [SerializeField] private Rigidbody _rigidbody;
-
     [SerializeField] private PlayerMove _playerMove;
 
     private bool _isDashing = false;
@@ -71,9 +66,7 @@ public class Dash : Skill
         _isDashing = true;
         _dashTimer = 0f;
         _cooldownTimer = Cooldown;
-
-        // 기존 속도에 영향을 받지 않고 힘을 가함
-        _rigidbody.AddForce(movementDirection.normalized * Force, ForceMode);
+        _playerMove.AddForce(movementDirection.normalized * Force, ForceMode.Impulse);
     }
 
     private void EndDash()

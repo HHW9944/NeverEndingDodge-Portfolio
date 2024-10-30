@@ -7,8 +7,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Player")]
-    [Tooltip("가속도")]
-    public float Acceleration = 10.0f;
+    // [Tooltip("가속도")]
+    // public float Acceleration = 10.0f;
     
     [Tooltip("기울일 정도 (각도)")]
     public float TiltAmount = 15f;
@@ -20,11 +20,11 @@ public class PlayerMove : MonoBehaviour
     {
         get
         {
-            return _speedComp.Value;
+            return _speed.Value;
         }
         set
         {
-            _speedComp.Value = value;
+            _speed.Value = value;
         }
     }
 
@@ -51,13 +51,13 @@ public class PlayerMove : MonoBehaviour
 
     /* privite fields */
     private Rigidbody _rigid;
-    private Speed _speedComp;
+    private Speed _speed;
     private Vector2 _moveInput;
     
     void Start()
     {
         _rigid = GetComponent<Rigidbody>();
-        _speedComp = GetComponent<Speed>();
+        _speed = GetComponent<Speed>();
     }
 
     public void OnMove(InputValue value)
@@ -78,20 +78,12 @@ public class PlayerMove : MonoBehaviour
         // moveDirection을 로컬 좌표계 기준으로 변환 (플레이어가 바라보는 방향으로 이동)
         Vector3 forceDirection = transform.TransformDirection(moveDirection);
 
-        // AddForce로 힘을 가해 이동 적용
-        _rigid.AddForce(forceDirection * Acceleration, ForceMode.Acceleration);
-
-        // 최대 속도 제한
-        ClampMaxSpeed();
+        // 이동 적용
+        _rigid.MovePosition(_rigid.position + forceDirection * Speed * Time.fixedDeltaTime);
     }
-    
-    private void ClampMaxSpeed()
+
+    public void AddForce(Vector3 force, ForceMode mode)
     {
-        // 현재 속도가 최대 속도를 초과할 경우, 속도를 제한
-        if (_rigid.velocity.magnitude > Speed)
-        {
-            // 속도의 방향을 유지하면서 최대 속도로 제한
-            _rigid.velocity = _rigid.velocity.normalized * Speed;
-        }
+        _rigid.AddForce(force, mode);
     }
 }
