@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class IngameUiManager : MonoBehaviour
 {
-    private int timer = 20;
+    private int timer = 2000;
     public Text timerText;
     public Image[] life;
 
@@ -27,13 +27,13 @@ public class IngameUiManager : MonoBehaviour
         }
 
         Debug.Log("타임아웃. 생존하셨습니다.");
-        UI[1].SetActive(true);
+        /*UI[1].SetActive(true);*/
 
     }
 
     public void OnDie()
     {
-        UI[0].SetActive(true);
+        /*UI[0].SetActive(true);*/
     }
 
     public void OnRetryButtonClicked()
@@ -42,11 +42,11 @@ public class IngameUiManager : MonoBehaviour
         Debug.Log("게임이 다시 시작됩니다.");
     }
 
-    public void OnDamage(int currentLife, int damage)
+    /*public void OnDamage(int currentLife, int damage)
     {
         for (int life = currentLife; life < currentLife + damage; life++)
         {
             this.life[life].color = new Color(1, 1, 1, 0.1f);
         }
-    }
+    }*/
 }

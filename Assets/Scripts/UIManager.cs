@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,6 +25,7 @@ public class UIManager : MonoBehaviour
     public Button tryAgainYesButton;
     public Button tryAgainNoButton;
 
+    public Image distance;
     public int distanceMiddle;
     public TextMeshProUGUI distanceMiddleText;
 
@@ -37,6 +40,14 @@ public class UIManager : MonoBehaviour
 
     public RectTransform enemyIndicatorPrefab; // 적 방향을 표시할 UI 프리팹
     private Dictionary<Transform, RectTransform> enemyIndicators = new Dictionary<Transform, RectTransform>();
+
+    private Volume volume;
+    private Vignette vignette;
+
+    private float targetIntensity = 2f;
+    private float intensityChangeSpeed = 1f;
+
+    private bool shutdown = false;
 
     private void Awake()
     {
@@ -54,10 +65,18 @@ public class UIManager : MonoBehaviour
         tryAgainNoButton.onClick.AddListener(OnTryAgainNoButtonClick);
 
         countdownText.gameObject.SetActive(false); // 처음에는 카운트다운 비활성화
+
+        volume = FindObjectOfType<Volume>();
+        if (volume != null)
+        {
+            volume.profile.TryGet<Vignette>(out vignette);
+        }
     }
 
     void Update()
     {
+        Debug.Log(vignette.intensity.value);
+
         if (GameManager.isGameOver)
         {
             pauseMenuUICanvas.SetActive(false);
@@ -89,23 +108,59 @@ public class UIManager : MonoBehaviour
 
         // 거리 텍스트 업데이트
         distanceMiddle = (int)GameManager.distanceFromMiddle;
-        distanceMiddleText.text = distanceMiddle.ToString() + " M";
-
-        if (distanceMiddle >= 100)
+        if (distanceMiddle >= 20)
         {
+            distanceMiddleText.text = "? M"; // 100 이상일 때는 "? M"
+            distanceMiddleText.color = Color.white; // 기본 색상 (예: 흰색)
+        }
+        else if (distanceMiddle >= 5)
+        {
+            distance.color = Color.red;
+            distanceMiddleText.text = distanceMiddle.ToString() + " M"; // 거리 표시
+            distanceMiddleText.color = Color.red; // 빨간색으로 표시
+        }
+        else
+        {
+            distance.color = Color.white;
+            distanceMiddleText.text = distanceMiddle.ToString() + " M"; // 거리 표시
+            distanceMiddleText.color = Color.white; // 기본 색상 (예: 흰색)
+        }
+
+        if (distanceMiddle >= 20)
+        {
+            shutdown = true;
+
             if (WarningEffectBlinking)
             {
                 StopBlinkWarningEffect();
             }
             warningEffect.gameObject.SetActive(false);
-        }
-        else if(distanceMiddle >= 90)
-        {
-            if (!WarningEffectBlinking)
+            /*ResetVignetteEffect();*/
+            vignette.color.Override(Color.black);
+            float currentIntensity = vignette.intensity.value;
+            // 강도를 목표 강도로 천천히 증가
+            if (currentIntensity < targetIntensity)
             {
-                StartBlinkWarningEffect();
+                vignette.intensity.Override(Mathf.MoveTowards(currentIntensity, targetIntensity, intensityChangeSpeed * Time.deltaTime));
             }
-            warningEffect.gameObject.SetActive(true);
+        }
+        else if (distanceMiddle >= 5)
+        {
+            float currentIntensity = vignette.intensity.value;
+
+            if (currentIntensity > 0 && shutdown)
+            {
+                vignette.intensity.Override(Mathf.MoveTowards(currentIntensity, 0, 2 * intensityChangeSpeed * Time.deltaTime));
+            }
+            else
+            {
+                shutdown = false;
+                if (!WarningEffectBlinking)
+                {
+                    StartBlinkWarningEffect();
+                }
+                warningEffect.gameObject.SetActive(true);
+            }
         }
         else
         {
@@ -114,6 +169,7 @@ public class UIManager : MonoBehaviour
                 StopBlinkWarningEffect();
             }
             warningEffect.gameObject.SetActive(false);
+            ResetVignetteEffect();
         }
     }
 
@@ -217,13 +273,17 @@ public class UIManager : MonoBehaviour
 
     private void BlinkWarningEffect()
     {
-        if (warningEffect.color.a == 1f)
+        if (warningEffect.color.a != 0f)
         {
             warningEffect.color = new Color(warningEffect.color.r, warningEffect.color.g, warningEffect.color.b, 0f);
+            vignette.color.Override(Color.red);
+            vignette.intensity.Override(0.7f);
         }
         else
         {
-            warningEffect.color = new Color(warningEffect.color.r, warningEffect.color.g, warningEffect.color.b, 1f);
+            warningEffect.color = new Color(warningEffect.color.r, warningEffect.color.g, warningEffect.color.b, 50 / 255f);
+            vignette.color.Override(Color.red);
+            vignette.intensity.Override(0.8f);
         }
     }
 
@@ -330,6 +390,35 @@ public class UIManager : MonoBehaviour
             // 적이 화면에 보이면 인디케이터 삭제
             Destroy(enemyIndicators[enemyTransform].gameObject);
             enemyIndicators.Remove(enemyTransform);
+        }
+    }
+    public void OnDamage(int currentLife, int damage)
+    {
+        for (int life = currentLife; life < currentLife + damage; life++)
+        {
+            this.life[life].color = new Color(1, 1, 1, 0.1f);
+        }
+    }
+
+    public void OnDie()
+    {
+        /*UI[0].SetActive(true);*/
+    }
+
+    private void StartVignetteEffect()
+    {
+        if (vignette != null)
+        {
+            vignette.color.Override(new Color(1f, 110 / 255f, 0f, 1f));
+            vignette.intensity.Override(0.8f); // Vignette 강도 설정 (필요에 따라 조절)
+        }
+    }
+
+    private void ResetVignetteEffect()
+    {
+        if (vignette != null)
+        {
+            vignette.intensity.Override(0.0f); // Vignette 강도 리셋
         }
     }
 }
