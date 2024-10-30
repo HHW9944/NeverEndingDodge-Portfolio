@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        UIManager.instance.ShowCountdown(3);
+        StartCountdown();
+
         // 타이머 카운트다운 시작
         StartTimerCountdown();
     }
@@ -75,6 +78,23 @@ public class GameManager : MonoBehaviour
 
         UIManager.instance.UpdateTimerUI((int)timer / 60, (int)timer % 60); // 타이머 UI 업데이트
         distanceFromMiddle = Vector3.Distance(player.position, middlePoint.position);
+
+        Debug.Log(distanceFromMiddle + "m\n");
+
+        /*if (distanceFromMiddle >= 100)
+        {
+            Debug.Log("100m 초과\n");
+            UIManager.instance.StopBlinkWarningEffect();
+        }
+        else if (distanceFromMiddle >= 90)
+        {
+            Debug.Log("경고 이펙트 on");
+            UIManager.instance.StartBlinkWarningEffect();
+        }
+        else
+        {
+            UIManager.instance.StopBlinkWarningEffect();
+        }*/
 
         UpdateEnemyIndicators();
     }
@@ -129,10 +149,10 @@ public class GameManager : MonoBehaviour
         StartCountdown();
 
         // 경고 효과가 다시 필요한지 확인하고 재개
-        if (UIManager.instance.warningEffect.gameObject.activeSelf)
+        /*if (UIManager.instance.warningEffect.gameObject.activeSelf)
         {
             UIManager.instance.StartBlinkWarningEffect();
-        }
+        }*/
     }
 
     // 수정된 GameOver 메서드
@@ -175,7 +195,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        isGameOver = false;
+        /*isGameOver = false;
         isPaused = false;
 
         InitializePlayer(); // 플레이어 초기화
@@ -185,7 +205,9 @@ public class GameManager : MonoBehaviour
         timer = 2000f;
         StartTimerCountdown();
 
-        StartCountdown(); // 카운트다운 시작
+        StartCountdown(); // 카운트다운 시작*/
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void StartGame()

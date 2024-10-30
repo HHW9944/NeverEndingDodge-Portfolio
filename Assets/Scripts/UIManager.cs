@@ -91,7 +91,15 @@ public class UIManager : MonoBehaviour
         distanceMiddle = (int)GameManager.distanceFromMiddle;
         distanceMiddleText.text = distanceMiddle.ToString() + " M";
 
-        if (distanceMiddle > 90)
+        if (distanceMiddle >= 100)
+        {
+            if (WarningEffectBlinking)
+            {
+                StopBlinkWarningEffect();
+            }
+            warningEffect.gameObject.SetActive(false);
+        }
+        else if(distanceMiddle >= 90)
         {
             if (!WarningEffectBlinking)
             {
