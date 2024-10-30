@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/PlayScene/Warning Vignette Profile.asset.meta
 guid: a08d1383447e2ea41ad927150d3b5af3
 NativeFormatImporter:
+========
+guid: 5169cb031956b9b42aacb61f38be0f8e
+PrefabImporter:
+>>>>>>>> 049d916d4445ee7d9320084ed370b240759c11db:Assets/Song/Obstacle2.prefab.meta
   externalObjects: {}
   mainObjectFileID: 11400000
   userData: 

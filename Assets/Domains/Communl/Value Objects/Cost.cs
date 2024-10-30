@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class Cost : MonoBehaviour
 {
-    [Tooltip("재생되는 Cost 양")]
-    public float CostRegen = 0.1f;
+    [Tooltip("초당 재생되는 Cost 양 (CPS)")]
+    public float CostRegen = 1f;
 
     [Tooltip("Cost의 최대치")]
     public float MaxCost = 100f;
+
+    [Tooltip("디버그 모드 On/Off")]
+    public bool IsDebug = false;
 
     private float _value;
     public float Value
@@ -32,6 +35,11 @@ public class Cost : MonoBehaviour
         RegenerateCost();
     }
 
+    public void UseCost(float cost)
+    {
+        Value -= cost;
+    }
+
     private void RegenerateCost()
     {
         if (Value >= MaxCost)
@@ -40,5 +48,10 @@ public class Cost : MonoBehaviour
         }
 
         Value += CostRegen * Time.deltaTime;
+
+        if (IsDebug)
+        {
+            Debug.Log("Cost : " + Value);
+        }
     }
 }

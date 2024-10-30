@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/PlayScene.meta
 guid: 3b3c8bb80fa29ef419585d9136b52696
 folderAsset: yes
 DefaultImporter:
+========
+guid: 5e17053e5deb5c042b90dd24f3e9a003
+PrefabImporter:
+>>>>>>>> 049d916d4445ee7d9320084ed370b240759c11db:Assets/Song/Obstacle1.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
