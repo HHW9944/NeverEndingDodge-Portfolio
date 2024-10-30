@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public float moveSpeed = 5f;
     public static float distanceFromMiddle = 0f;
 
-    public static float timer = 2000f; // 기존 timer 변수 유지
+    public static float timer = 180f; // 기존 timer 변수 유지
     public bool isTimeOut = false;
 
     public Vector3 playerStartPoint;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     {
         isPaused = false;
         isGameOver = false;
-        timer = 2000f; // 타이머 초기화
+        timer = 180f; // 타이머 초기화
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         InitializePlayer(); // 플레이어 초기화
         // playerLife.ResetLife(); // Life 초기화
-        timer = 2000f;
+        timer = 180f;
         UIManager.instance.HideGameOverUI(); // 게임 오버 UI 숨김
         StartCountdown(); // 카운트다운 시작
 

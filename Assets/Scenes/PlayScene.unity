@@ -3877,6 +3877,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278855572}
   m_CullTransparentMesh: 1
+--- !u!1 &1281992456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1281992458}
+  - component: {fileID: 1281992457}
+  m_Layer: 0
+  m_Name: Obstacle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1281992457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281992456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa25feea6c7f7b042af693a52d807bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefabs:
+  - {fileID: 6793181320075060176, guid: 5e17053e5deb5c042b90dd24f3e9a003, type: 3}
+  - {fileID: 4189098456466344337, guid: 5169cb031956b9b42aacb61f38be0f8e, type: 3}
+  - {fileID: 8014428038190071522, guid: 512f97f24b3105b4e9463117a11b4fe9, type: 3}
+  meteorCount: 50
+  spawnAreaSize: {x: 100, y: 100, z: 100}
+--- !u!4 &1281992458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281992456}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1298312279
 GameObject:
   m_ObjectHideFlags: 3
@@ -10025,3 +10075,4 @@ SceneRoots:
   - {fileID: 990760698}
   - {fileID: 616821390}
   - {fileID: 1977451348}
+  - {fileID: 1281992458}
