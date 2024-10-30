@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, IDamageable
     public Skill SpaceSkill;
 
     private Life _life;
-    private float _damageCooldown = 0.1f;
+    private float _damageCooldown = 0.5f;
     private bool _canTakeDamage = true;
 
     private void Awake()
