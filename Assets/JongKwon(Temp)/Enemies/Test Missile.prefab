@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: -1820947951340065048}
   - component: {fileID: -6320160871950324961}
   - component: {fileID: -6245688042373483348}
-  m_Layer: 8
-  m_Name: BulletA
+  m_Layer: 7
+  m_Name: Test Missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
