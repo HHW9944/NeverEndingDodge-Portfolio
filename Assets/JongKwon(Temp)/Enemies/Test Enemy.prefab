@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8553bb0b6d31074e9f9d71fc2a95b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missilePrefab: {fileID: 2567769840217855245, guid: 0574ed3ea566d15479ed648605e43445,
+  missilePrefab: {fileID: 3218593332736913578, guid: 28f6583cc867b0e458ab416f4a49e180,
     type: 3}
+  initialDelay: 2
+  fireRate: 1.5
 --- !u!1 &4510996704830770884
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,8 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8553bb0b6d31074e9f9d71fc2a95b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missilePrefab: {fileID: 2567769840217855245, guid: 0574ed3ea566d15479ed648605e43445,
+  missilePrefab: {fileID: 3218593332736913578, guid: 28f6583cc867b0e458ab416f4a49e180,
     type: 3}
+  initialDelay: 2
+  fireRate: 1.5
 --- !u!1 &4649740484062538466
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,9 +190,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 622996359979644324}
-  - component: {fileID: -768070098332598191}
+  - component: {fileID: 8054354277752500363}
+  - component: {fileID: 5617749650550709057}
   m_Layer: 7
-  m_Name: EnemyA
+  m_Name: Test Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +220,29 @@ Transform:
   - {fileID: 1502107593771420754}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-768070098332598191
+--- !u!64 &8054354277752500363
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660910960922201882}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &5617749650550709057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,13 +251,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4660910960922201882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2b43bdca23ad0949a1bbc467052124e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d4b4ef850067cd48b3ced345b52e8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   isAlwaysRecognizePlayer: 0
   recognitionDistance: 75
-  rotationSpeed: 3
+  rotationSpeed: 2
 --- !u!1 &5187523489706488138
 GameObject:
   m_ObjectHideFlags: 0
