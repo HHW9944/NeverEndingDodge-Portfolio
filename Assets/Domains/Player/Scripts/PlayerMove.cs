@@ -65,7 +65,7 @@ public class PlayerMove : MonoBehaviour
         _moveInput = value.Get<Vector2>();
     }
 
-    public Vector3 GetMovementDirection()
+    public Vector2 GetMovementDirection()
     {
         return _moveInput;
     }
