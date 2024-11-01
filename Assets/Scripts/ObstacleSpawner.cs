@@ -26,7 +26,8 @@ public class ObstacleSpawner : MonoBehaviour
 
             // 랜덤한 운석 프리팹 선택
             int randomIndex = Random.Range(0, obstaclePrefabs.Length);
-            Instantiate(obstaclePrefabs[randomIndex], randomPosition, Quaternion.identity);
+            GameObject obj = Instantiate(obstaclePrefabs[randomIndex], randomPosition, Quaternion.identity);
+            obj.transform.SetParent(gameObject.transform);
         }
     }
 }
