@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,19 +20,22 @@ public class Dash : Skill
 
     [Tooltip("Trail의 활성화 간격")]
     public float MeshRefreshRate = 0.1f;
+    [SerializeField] private Material _trailMaterial;
+    [SerializeField] private string _propertyName = "_Alpha";
+    [SerializeField] private float _endValue = 0.1f;
+    [SerializeField] private float _refreshRate = 0.05f;
 
     [Header("References")]
-    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private GameObject _player;
     [SerializeField] private PlayerMove _playerMove;
     [SerializeField] private Cost _playerCost;
-    private SkinnedMeshRenderer[] _skinnedMeshRanderers;
 
     [Header("Event")]
     public UnityEvent OnUse;
     public UnityEvent OnEnd;
 
     private float _cooldownTimer = 0f;
-    private bool _isDashing = false;
+    private SkinnedMeshRenderer[] _skinnedMeshRenderers;
 
     private void Update()
     {
@@ -40,19 +44,11 @@ public class Dash : Skill
         {
             _cooldownTimer -= Time.deltaTime;
         }
-        else
-        {
-            if (_isDashing)
-            {
-                _isDashing = false;
-                OnEnd?.Invoke();
-            }
-        }
     }
 
     public override void UseSkill()
     {
-        // 쿨다운 중이거나 이미 대시 중이면 스킬 사용 불가
+        // 쿨다운 중이거나 코스트가 부족하면 스킬 사용 불가
         if (_cooldownTimer > 0f || _playerCost.Value < Cost)
         {
             return;
@@ -62,41 +58,73 @@ public class Dash : Skill
         StartDash();
     }
 
+    public override float GetCost()
+    {
+        return Cost;
+    }
+
     private void StartDash()
     {
         Vector3 movementDirection = _playerMove.GetMovementDirection();
 
         if (movementDirection == Vector3.zero)
         {
-            movementDirection = _playerTransform.forward;
+            movementDirection = _player.transform.forward;
         }
         else
         {
-            movementDirection.z = movementDirection.y;
-            movementDirection.y = 0f;
-            movementDirection = _playerTransform.rotation * movementDirection.normalized;
+            movementDirection = _player.transform.rotation * movementDirection.normalized;
         }
 
         // 대시 시작
         _cooldownTimer = Cooldown;
-        _isDashing = true;
-        _playerMove.AddForce(movementDirection.normalized * Force, ForceMode.Impulse);
+        _playerMove.AddForce(movementDirection * Force, ForceMode.Impulse);
         OnUse?.Invoke();
         StartCoroutine(ActivateTrail(TrailDuration));
     }
 
     private System.Collections.IEnumerator ActivateTrail(float timeActive)
     {
+        if (_skinnedMeshRenderers == null)
+        {
+            _skinnedMeshRenderers = _player.GetComponentsInChildren<SkinnedMeshRenderer>();
+        }
+
         while (timeActive > 0)
         {
-            timeActive -= MeshRefreshRate;
+            foreach (var meshRenderer in _skinnedMeshRenderers)
+            {
+                GameObject trailObject = new GameObject("TrailObject");
+                trailObject.transform.position = meshRenderer.transform.position;
+                trailObject.transform.rotation = meshRenderer.transform.rotation;
 
+                MeshRenderer renderer = trailObject.AddComponent<MeshRenderer>();
+                MeshFilter filter = trailObject.AddComponent<MeshFilter>();
+
+                Mesh mesh = new Mesh();
+                meshRenderer.BakeMesh(mesh);
+
+                filter.mesh = mesh;
+                renderer.material = _trailMaterial;
+
+                StartCoroutine(AnimatedMaterialFloat(renderer.material, 0f, _endValue, _refreshRate));
+
+                Destroy(trailObject, TrailDuration);
+            }
+
+            timeActive -= MeshRefreshRate;
             yield return new WaitForSeconds(MeshRefreshRate);
         }
     }
 
-    public override float GetCost()
+    private IEnumerator AnimatedMaterialFloat(Material material, float endValue, float rate, float refreshRate)
     {
-        return Cost;
+        float valueToAnimated = material.GetFloat(_propertyName);
+        while (valueToAnimated > endValue)
+        {
+            valueToAnimated -= rate;
+            material.SetFloat(_propertyName, valueToAnimated);
+            yield return new WaitForSeconds(refreshRate);
+        }
     }
 }

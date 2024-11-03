@@ -3228,7 +3228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0.05, y: 0.05, z: 0.05}
+  Damping: {x: 0.05, y: 0.35, z: 0.1}
   ShoulderOffset: {x: 0.8, y: 0, z: 0}
   VerticalArmLength: 0
   CameraSide: 1
@@ -3511,9 +3511,13 @@ MonoBehaviour:
   Cost: 1
   Force: 700
   Cooldown: 1
-  TrailDuration: 0.5
-  MeshRefreshRate: 0.1
-  _playerTransform: {fileID: 311562180}
+  TrailDuration: 0.35
+  MeshRefreshRate: 0.015
+  _trailMaterial: {fileID: 2100000, guid: 0b7a4e3600b56b74ba955b6872962e69, type: 2}
+  _propertyName: _Alpha
+  _endValue: 0.1
+  _refreshRate: 0.05
+  _player: {fileID: 311562179}
   _playerMove: {fileID: 311562183}
   _playerCost: {fileID: 311562187}
   OnUse:
