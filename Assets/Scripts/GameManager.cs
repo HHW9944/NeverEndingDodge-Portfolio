@@ -12,58 +12,58 @@ public class GameManager : MonoBehaviour
 
     public Transform player;
     public Transform middlePoint;
-    public Transform playerCamera; // ÇÃ·¹ÀÌ¾î Ä«¸Þ¶ó Ãß°¡
+    public Transform playerCamera; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½ß°ï¿½
 
     public GameObject[] enemies;
 
     public float moveSpeed = 5f;
     public static float distanceFromMiddle = 0f;
 
-    public static float timer = 180f; // ±âÁ¸ timer º¯¼ö À¯Áö
+    public static float timer = 180f; // ï¿½ï¿½ï¿½ï¿½ timer ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public bool isTimeOut = false;
 
     public Vector3 playerStartPoint;
     public Vector3 cameraStartPoint;
-    public Quaternion startRotation; // ÃÊ±â È¸Àü°ª Ãß°¡
+    public Quaternion startRotation; // ï¿½Ê±ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 
-    // Life °´Ã¼ ÂüÁ¶
+    // Life ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
     public Life playerLife;
 
     private bool isCountingDown = false;
     private float countdownTimer = 0f;
     private int countdownValue = 3;
 
-    private Coroutine timerCoroutine; // Å¸ÀÌ¸Ó ÄÚ·çÆ¾À» À§ÇÑ º¯¼ö Ãß°¡
+    private Coroutine timerCoroutine; // Å¸ï¿½Ì¸ï¿½ ï¿½Ú·ï¿½Æ¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 
     private void Awake()
     {
         instance = this;
         playerStartPoint = new Vector3(0, 0, 0);
         cameraStartPoint = playerCamera.position;
-        startRotation = Quaternion.identity; // ÃÊ±â È¸Àü°ª ¼³Á¤
+        startRotation = Quaternion.identity; // ï¿½Ê±ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     void Start()
     {
         isPaused = false;
         isGameOver = false;
-        timer = 180f; // Å¸ÀÌ¸Ó ÃÊ±âÈ­
+        timer = 180f; // Å¸ï¿½Ì¸ï¿½ ï¿½Ê±ï¿½È­
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         UIManager.instance.ShowCountdown(3);
         StartCountdown();
 
-        // Å¸ÀÌ¸Ó Ä«¿îÆ®´Ù¿î ½ÃÀÛ
+        // Å¸ï¿½Ì¸ï¿½ Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½
         StartTimerCountdown();
     }
 
     void Update()
     {
-        // °ÔÀÓ ¿À¹ö »óÅÂ¿¡¼­´Â °ÔÀÓ ÁøÇàÀ» Á¤Áö (¾Ö´Ï¸ÞÀÌ¼Ç Á¦¿Ü)
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½)
         if (isGameOver) return;
 
-        // Ä«¿îÆ®´Ù¿î ÁßÀÏ ¶§
+        // Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         if (isCountingDown)
         {
             HandleCountdown();
@@ -76,19 +76,19 @@ public class GameManager : MonoBehaviour
 
         if (isPaused) return;
 
-        UIManager.instance.UpdateTimerUI((int)timer / 60, (int)timer % 60); // Å¸ÀÌ¸Ó UI ¾÷µ¥ÀÌÆ®
+        UIManager.instance.UpdateTimerUI((int)timer / 60, (int)timer % 60); // Å¸ï¿½Ì¸ï¿½ UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         distanceFromMiddle = Vector3.Distance(player.position, middlePoint.position);
 
-        Debug.Log(distanceFromMiddle + "m\n");
+        // Debug.Log(distanceFromMiddle + "m\n");
 
         /*if (distanceFromMiddle >= 100)
         {
-            Debug.Log("100m ÃÊ°ú\n");
+            Debug.Log("100m ï¿½Ê°ï¿½\n");
             UIManager.instance.StopBlinkWarningEffect();
         }
         else if (distanceFromMiddle >= 90)
         {
-            Debug.Log("°æ°í ÀÌÆåÆ® on");
+            Debug.Log("ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® on");
             UIManager.instance.StartBlinkWarningEffect();
         }
         else
@@ -99,14 +99,14 @@ public class GameManager : MonoBehaviour
         UpdateEnemyIndicators();
     }
 
-    // Å¸ÀÌ¸Ó Ä«¿îÆ®´Ù¿î ½ÃÀÛ ÇÔ¼ö
+    // Å¸ï¿½Ì¸ï¿½ Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½
     void StartTimerCountdown()
     {
         if (timerCoroutine != null)
         {
-            StopCoroutine(timerCoroutine); // ±âÁ¸ Å¸ÀÌ¸Ó ÄÚ·çÆ¾ ÁßÁö
+            StopCoroutine(timerCoroutine); // ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
         }
-        timerCoroutine = StartCoroutine(TimerCountDown()); // »õ·Î¿î Å¸ÀÌ¸Ó Ä«¿îÆ®´Ù¿î ½ÃÀÛ
+        timerCoroutine = StartCoroutine(TimerCountDown()); // ï¿½ï¿½ï¿½Î¿ï¿½ Å¸ï¿½Ì¸ï¿½ Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     IEnumerator TimerCountDown()
@@ -116,14 +116,14 @@ public class GameManager : MonoBehaviour
             timer--;
             int minute = (int)timer / 60;
             int second = (int)timer % 60;
-            UIManager.instance.UpdateTimerUI(minute, second); // UI ¾÷µ¥ÀÌÆ®
+            UIManager.instance.UpdateTimerUI(minute, second); // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
             yield return new WaitForSeconds(1f);
         }
 
         if (!isGameOver)
         {
             isGameOver = true;
-            Debug.Log("Å¸ÀÓ¾Æ¿ô. »ýÁ¸ÇÏ¼Ì½À´Ï´Ù.");
+            Debug.Log("Å¸ï¿½Ó¾Æ¿ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½.");
         }
     }
 
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        // WarningEffect°¡ È°¼ºÈ­µÇ¾î ÀÖÀ¸¸é ÀÏ½Ã ÁßÁö
+        // WarningEffectï¿½ï¿½ È°ï¿½ï¿½È­ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (UIManager.instance.warningEffect.gameObject.activeSelf)
         {
             UIManager.instance.StopBlinkWarningEffect();
@@ -148,32 +148,32 @@ public class GameManager : MonoBehaviour
         UIManager.instance.HidePauseMenu();
         StartCountdown();
 
-        // °æ°í È¿°ú°¡ ´Ù½Ã ÇÊ¿äÇÑÁö È®ÀÎÇÏ°í Àç°³
+        // ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ç°³
         /*if (UIManager.instance.warningEffect.gameObject.activeSelf)
         {
             UIManager.instance.StartBlinkWarningEffect();
         }*/
     }
 
-    // ¼öÁ¤µÈ GameOver ¸Þ¼­µå
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ GameOver ï¿½Þ¼ï¿½ï¿½ï¿½
     public void GameOver()
     {
         isGameOver = true;
 
-        // ¸ðµç UI ¼û±â±â
+        // ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½ï¿½
         UIManager.instance.HideAllUI();
 
-        // 1ÃÊ µ¿¾È ´ë±â ÈÄ GameOver Ã³¸®
+        // 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ GameOver Ã³ï¿½ï¿½
         StartCoroutine(GameOverTransition());
     }
 
-    // GameOver È­¸é ÀüÈ¯ ÄÚ·çÆ¾
+    // GameOver È­ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½Ú·ï¿½Æ¾
     private IEnumerator GameOverTransition()
     {
         Time.timeScale = 0.2f;
         yield return new WaitForSeconds(1f);
 
-        // GameOverUI Ç¥½Ã
+        // GameOverUI Ç¥ï¿½ï¿½
         Time.timeScale = 0f;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -183,13 +183,13 @@ public class GameManager : MonoBehaviour
     public void TryAgain()
     {
         isGameOver = false;
-        InitializePlayer(); // ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
-        // playerLife.ResetLife(); // Life ÃÊ±âÈ­
+        InitializePlayer(); // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ê±ï¿½È­
+        // playerLife.ResetLife(); // Life ï¿½Ê±ï¿½È­
         timer = 180f;
-        UIManager.instance.HideGameOverUI(); // °ÔÀÓ ¿À¹ö UI ¼û±è
-        StartCountdown(); // Ä«¿îÆ®´Ù¿î ½ÃÀÛ
+        UIManager.instance.HideGameOverUI(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½
+        StartCountdown(); // Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        // Å¸ÀÌ¸Ó Ä«¿îÆ®´Ù¿î Àç½ÃÀÛ
+        // Å¸ï¿½Ì¸ï¿½ Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         StartTimerCountdown();
     }
 
@@ -198,14 +198,14 @@ public class GameManager : MonoBehaviour
         /*isGameOver = false;
         isPaused = false;
 
-        InitializePlayer(); // ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­
-        // playerLife.ResetLife(); // Life ÃÊ±âÈ­
+        InitializePlayer(); // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ê±ï¿½È­
+        // playerLife.ResetLife(); // Life ï¿½Ê±ï¿½È­
 
-        // Å¸ÀÌ¸Ó ÃÊ±âÈ­ ¹× Àç½ÃÀÛ
+        // Å¸ï¿½Ì¸ï¿½ ï¿½Ê±ï¿½È­ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         timer = 2000f;
         StartTimerCountdown();
 
-        StartCountdown(); // Ä«¿îÆ®´Ù¿î ½ÃÀÛ*/
+        StartCountdown(); // Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -213,47 +213,47 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isPaused = false;
-        Time.timeScale = 1f; // °ÔÀÓ ½Ã°£ Àç°³
+        Time.timeScale = 1f; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ç°³
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        UIManager.instance.ShowGamePlayUI(); // °ÔÀÓ UI Ç¥½Ã
+        UIManager.instance.ShowGamePlayUI(); // ï¿½ï¿½ï¿½ï¿½ UI Ç¥ï¿½ï¿½
     }
 
-    // ÇÃ·¹ÀÌ¾î ÃÊ±âÈ­ ÇÔ¼ö
+    // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ê±ï¿½È­ ï¿½Ô¼ï¿½
     void InitializePlayer()
     {
-        player.position = playerStartPoint; // À§Ä¡ ÃÊ±âÈ­
-        player.rotation = startRotation; // ÇÃ·¹ÀÌ¾î È¸Àü ÃÊ±âÈ­
+        player.position = playerStartPoint; // ï¿½ï¿½Ä¡ ï¿½Ê±ï¿½È­
+        player.rotation = startRotation; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ È¸ï¿½ï¿½ ï¿½Ê±ï¿½È­
         playerCamera.position = cameraStartPoint;
-        playerCamera.localRotation = Quaternion.identity; // Ä«¸Þ¶ó È¸Àü ÃÊ±âÈ­ (Ã¹ ½ÃÁ¡À¸·Î µ¹¾Æ°¡µµ·Ï)
+        playerCamera.localRotation = Quaternion.identity; // Ä«ï¿½Þ¶ï¿½ È¸ï¿½ï¿½ ï¿½Ê±ï¿½È­ (Ã¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ï¿½)
     }
 
-    // Ä«¿îÆ®´Ù¿î ½ÃÀÛ
+    // Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½
     private void StartCountdown()
     {
         isCountingDown = true;
         countdownTimer = 0f;
         countdownValue = 3;
-        Time.timeScale = 0f; // Å¸ÀÓ½ºÄÉÀÏÀ» 0À¸·Î ¼³Á¤ÇÏ¿© Á¤Áö »óÅÂ¸¦ À¯Áö
-        UIManager.instance.ShowCountdown(countdownValue); // Ä«¿îÆ®´Ù¿î UI ¾÷µ¥ÀÌÆ®
+        Time.timeScale = 0f; // Å¸ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+        UIManager.instance.ShowCountdown(countdownValue); // Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     }
 
-    // Ä«¿îÆ®´Ù¿î Ã³¸®
+    // Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ Ã³ï¿½ï¿½
     private void HandleCountdown()
     {
-        countdownTimer += Time.unscaledDeltaTime; // Time.timeScaleÀÌ 0ÀÌ¾îµµ Èå¸£´Â ½Ã°£
+        countdownTimer += Time.unscaledDeltaTime; // Time.timeScaleï¿½ï¿½ 0ï¿½Ì¾îµµ ï¿½å¸£ï¿½ï¿½ ï¿½Ã°ï¿½
         if (countdownTimer >= 1f)
         {
             countdownTimer = 0f;
             countdownValue--;
             if (countdownValue > 0)
             {
-                UIManager.instance.ShowCountdown(countdownValue); // Ä«¿îÆ®´Ù¿î UI ¾÷µ¥ÀÌÆ®
+                UIManager.instance.ShowCountdown(countdownValue); // Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
             }
             else
             {
                 isCountingDown = false;
-                StartGame(); // Ä«¿îÆ®´Ù¿î ³¡³ª¸é °ÔÀÓ ½ÃÀÛ
+                StartGame(); // Ä«ï¿½ï¿½Æ®ï¿½Ù¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             }
         }
     }
@@ -321,12 +321,12 @@ public class GameManager : MonoBehaviour
 
                 if (!isVisible)
                 {
-                    // ÀûÀÌ È­¸é¿¡ º¸ÀÌÁö ¾ÊÀ¸¸é UI ¾÷µ¥ÀÌÆ®
+                    // ï¿½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
                     UIManager.instance.UpdateEnemyIndicator(enemy.transform);
                 }
                 else
                 {
-                    // ÀûÀÌ È­¸é¿¡ º¸ÀÏ °æ¿ì UI¿¡¼­ Á¦°Å
+                    // ï¿½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ UIï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     UIManager.instance.RemoveEnemyIndicator(enemy.transform);
                 }
             }
