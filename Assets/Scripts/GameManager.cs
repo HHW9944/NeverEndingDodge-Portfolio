@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
 
         if (isPaused) return;
 
-        UIManager.instance.UpdateTimerUI((int)timer / 60, (int)timer % 60); // Ÿ�̸� UI ������Ʈ
+        // UIManager.instance.UpdateTimerUI((int)timer / 60, (int)timer % 60);
         distanceFromMiddle = Vector3.Distance(player.position, middlePoint.position);
 
         // Debug.Log(distanceFromMiddle + "m\n");
@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
             timer--;
             int minute = (int)timer / 60;
             int second = (int)timer % 60;
-            UIManager.instance.UpdateTimerUI(minute, second); // UI ������Ʈ
+            // UIManager.instance.UpdateTimerUI(minute, second); // UI ������Ʈ
             yield return new WaitForSeconds(1f);
         }
 

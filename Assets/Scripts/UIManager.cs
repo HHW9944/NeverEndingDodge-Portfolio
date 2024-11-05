@@ -41,8 +41,12 @@ public class UIManager : MonoBehaviour
     public RectTransform enemyIndicatorPrefab; // ?? ?????? ????? UI ??????
     private Dictionary<Transform, RectTransform> enemyIndicators = new Dictionary<Transform, RectTransform>();
 
+    // Vigette Effect
     private Volume volume;
     private Vignette vignette;
+    private float initialIntensity;
+    private Color initialColor;
+    private float initialSmoothness;
 
     private float targetIntensity = 2f;
     private float intensityChangeSpeed = 1f;
@@ -64,13 +68,25 @@ public class UIManager : MonoBehaviour
         tryAgainYesButton.onClick.AddListener(OnTryAgainYesButtonClick);
         tryAgainNoButton.onClick.AddListener(OnTryAgainNoButtonClick);
 
-        countdownText.gameObject.SetActive(false); // ??????? ??????? ??????
+        countdownText.gameObject.SetActive(false);
 
         volume = FindObjectOfType<Volume>();
         if (volume != null)
         {
             volume.profile.TryGet<Vignette>(out vignette);
+
+            if (vignette != null)
+            {
+                initialIntensity = vignette.intensity.value;
+                initialColor = vignette.color.value;
+                initialSmoothness = vignette.smoothness.value;
+            }
         }
+    }
+
+    void FixedUpdate()
+    {
+
     }
 
     void Update()
@@ -103,10 +119,8 @@ public class UIManager : MonoBehaviour
             gameOverUICanvas.SetActive(false);
         }
 
-        // ???? UI ???????
         timerText.text = GameManager.timer.ToString("F1");
 
-        // ??? ???? ???????
         distanceMiddle = (int)GameManager.distanceFromMiddle;
         if (distanceMiddle >= 20)
         {
@@ -188,35 +202,30 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    // TryAgainYes ??? ??? ?? ???? ?????
     private void OnTryAgainYesButtonClick()
     {
         GameManager.instance.TryAgain();
     }
 
-    // TryAgainNo ??? ??? ?? ???? ????
     private void OnTryAgainNoButtonClick()
     {
         Application.Quit();
     }
 
-    // ???? UI ???????
     public void UpdateTimerUI(int minute, int second)
     {
         timerText.text = string.Format("{0:00} : {1:00}", minute, second);
     }
 
-    // ??????? UI ???????
     public void ShowCountdown(int count)
     {
-        countdownText.gameObject.SetActive(true); // ??????? ???? ???
-        countdownText.text = count.ToString(); // ??????? ???? ???
+        countdownText.gameObject.SetActive(true);
+        countdownText.text = count.ToString();
     }
 
-    // ???? ?ЁР??? UI?? ??? ???????
     public void ShowGamePlayUI()
     {
-        countdownText.gameObject.SetActive(false); // ??????? ???? ?????
+        countdownText.gameObject.SetActive(false);
         pauseMenuUICanvas.SetActive(false);
         gamePlayUICanvas.SetActive(true);
         gameOverUICanvas.SetActive(false);
@@ -410,7 +419,7 @@ public class UIManager : MonoBehaviour
         if (vignette != null)
         {
             vignette.color.Override(new Color(1f, 110 / 255f, 0f, 1f));
-            vignette.intensity.Override(0.8f); // Vignette ???? ???? (??ус ???? ????)
+            vignette.intensity.Override(0.8f);
         }
     }
 
@@ -418,7 +427,8 @@ public class UIManager : MonoBehaviour
     {
         if (vignette != null)
         {
-            vignette.intensity.Override(0.0f); // Vignette ???? ????
+            vignette.color.Override(initialColor);
+            vignette.intensity.Override(initialIntensity);
         }
     }
 }
