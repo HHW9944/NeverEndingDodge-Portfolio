@@ -23,9 +23,17 @@ public class Enemy : MonoBehaviour, IAttackable
     public void OnCollisionEnter(Collision other)
     {
         var target = other.gameObject.GetComponent<IDamageable>();
+
         if (target != null)
         {
-            Attack(target);
+            if (target is ICollisionDamageable contactDamageable)
+            {
+                contactDamageable.TakeDamage(this, GetDamage(), other);
+            }
+            else
+            {
+                target.TakeDamage(this, GetDamage());
+            }
         }
     }
 }
