@@ -156,7 +156,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8740519089908197981}
-  m_Mesh: {fileID: -462981019419857548, guid: 0c99e8a1d71f6014cbe9dc900410946b, type: 3}
+  m_Mesh: {fileID: -462981019419857548, guid: f1b457bcee6d15f47b9d3ebadd514bfa, type: 3}
 --- !u!23 &8439879192982001149
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -220,9 +220,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -462981019419857548, guid: 0c99e8a1d71f6014cbe9dc900410946b, type: 3}
+  m_Mesh: {fileID: -462981019419857548, guid: f1b457bcee6d15f47b9d3ebadd514bfa, type: 3}
 --- !u!114 &2545415079300043537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +235,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae1425cee356de4aa705093647e4aad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeStrength: 0.03
-  shakeDuration: 0.25
-  rippleCooldown: 0.4
-  sparks: {fileID: 6653278105967298516}
+  _sparks: {fileID: 6653278105967298516}
+  RippleCooldown: 0.4

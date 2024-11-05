@@ -27,14 +27,14 @@
                     "name": "LeftClick",
                     "type": "PassThrough",
                     "id": "446ab478-d741-4b4b-b4f5-56c992a8d633",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
                     "name": "RightClick",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "792d551c-2411-48d1-af0d-43d4f2447d46",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -43,7 +43,7 @@
                 },
                 {
                     "name": "Shift",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "bd519be3-9ef8-4db2-b38a-e5b76cac7056",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -52,7 +52,7 @@
                 },
                 {
                     "name": "Space",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "3436aea0-8eca-416d-a463-5e2520baf5d5",
                     "expectedControlType": "Button",
                     "processors": "",
