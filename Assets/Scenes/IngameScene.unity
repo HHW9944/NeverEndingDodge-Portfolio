@@ -6319,6 +6319,7 @@ GameObject:
   - component: {fileID: 799248562}
   - component: {fileID: 799248564}
   - component: {fileID: 799248563}
+  - component: {fileID: 799248565}
   m_Layer: 5
   m_Name: Skill Icon 02
   m_TagString: Untagged
@@ -6383,6 +6384,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799248561}
   m_CullTransparentMesh: 1
+--- !u!114 &799248565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799248561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d15f6056c57274b9751b0c717b6256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMove: {fileID: 1310071216}
+  uiMoveMultiplier: 2.1
+  speedWeight: 2.1
+  smoothTime: 0.47
 --- !u!1 &801402472
 GameObject:
   m_ObjectHideFlags: 0
@@ -6997,7 +7014,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841855, y: -0.39999992}
+  offset: {x: 0.000000023841851, y: -0.39999986}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -7311,7 +7328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &925467710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12698,19 +12715,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1295190431}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 703.70374}
-  m_LocalScale: {x: 1234.5679, y: 1234.5679, z: 1234.5679}
+  m_LocalRotation: {x: 0.016859202, y: -0.09061957, z: 0.001534307, w: 0.9957417}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1636807625}
   - {fileID: 799248562}
   - {fileID: 925467710}
   m_Father: {fileID: 1105079668}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.94, y: -10.4, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1185185.1, y: 663685.2}
+  m_AnchoredPosition: {x: -608.53, y: 341.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1295190433
@@ -15053,7 +15070,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841855, y: -0.39999992}
+  offset: {x: 0.000000023841851, y: -0.39999986}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -15559,6 +15576,7 @@ GameObject:
   - component: {fileID: 1636807625}
   - component: {fileID: 1636807627}
   - component: {fileID: 1636807626}
+  - component: {fileID: 1636807628}
   m_Layer: 5
   m_Name: Skill Icon 01
   m_TagString: Untagged
@@ -15623,6 +15641,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636807624}
   m_CullTransparentMesh: 1
+--- !u!114 &1636807628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636807624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d15f6056c57274b9751b0c717b6256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMove: {fileID: 1310071216}
+  uiMoveMultiplier: 2.3
+  speedWeight: 2.3
+  smoothTime: 0.46
 --- !u!1 &1663107956
 GameObject:
   m_ObjectHideFlags: 0
