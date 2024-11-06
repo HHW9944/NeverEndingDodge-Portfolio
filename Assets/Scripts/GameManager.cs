@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     private Coroutine timerCoroutine; // Ÿ�̸� �ڷ�ƾ�� ���� ���� �߰�
 
     [SerializeField] private Cost _playerCost;
-
+    [SerializeField] private Speed _playerSpeed;
     private void Awake()
     {
         Debug.Log(_playerCost.Value);
@@ -77,6 +77,13 @@ public class GameManager : MonoBehaviour
 
         distanceFromMiddle = Vector3.Distance(player.position, middlePoint.position);
 
+        if (distanceFromMiddle > 10)
+        {
+            _playerSpeed.Value = 1f;
+        }else
+        {
+            _playerSpeed.Value = 10f;
+        }
         // Debug.Log(distanceFromMiddle + "m\n");
 
         /*if (distanceFromMiddle >= 100)
