@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7421866412935789759}
   - component: {fileID: 1592008690489894915}
   m_Layer: 7
-  m_Name: Normal Missile
+  m_Name: Normal Missile 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1156803670215244}
-  m_Mesh: {fileID: 4300000, guid: e675672c9efbede4ba2c974ad7f24bd1, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 85cc38624ef3ca746aadd9e5364dab2d, type: 3}
 --- !u!23 &23632641021637438
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -70,7 +70,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: e941d0d6425697b499256f89933a0df2, type: 2}
-  - {fileID: -5399930768713578650, guid: 5c442f9e667c3ac4089fc4321d655698, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

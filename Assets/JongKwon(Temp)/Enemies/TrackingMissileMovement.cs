@@ -5,8 +5,10 @@ using UnityEngine;
 public class TrackingMissileMovement : MonoBehaviour
 {
     private GameObject player;
-    public float speed = 15.0f;          // 미사일 이동 속도
+    public float speed = 10.0f;          // 미사일 이동 속도
+    public float increasedSpeed = 15.0f;
     public float rotationSpeed = 200.0f; // 회전 속도
+    public float straightDistance = 15.0f;   // 추적을 중지하는 거리 (플레이어와의)
 
     void Start()
     {
@@ -32,6 +34,15 @@ public class TrackingMissileMovement : MonoBehaviour
 
             // 미사일을 플레이어 방향으로 이동
             transform.position += direction * speed * Time.deltaTime;
+
+            if (Vector3.Distance(transform.position, player.transform.position) <= straightDistance)
+            {
+                player = null;
+            }
+        }
+        else
+        {
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
     }
 }
