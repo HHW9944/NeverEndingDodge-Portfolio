@@ -7,7 +7,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject player;
     public bool isAlwaysRecognizePlayer;
     public float recognitionDistance;
-    public float rotationSpeed = 2.0f;
+    public float rotationSpeed = 5.0f;
 
     void Start()
     {

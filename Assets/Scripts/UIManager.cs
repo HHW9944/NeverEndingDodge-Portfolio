@@ -9,13 +9,13 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    public Timer GlobalTimer;
+
     public GameObject pauseMenuUICanvas;
     public GameObject gamePlayUICanvas;
     public GameObject gameOverUICanvas; // ???? Game Over UI ???
 
     public TextMeshProUGUI countdownText; // ??????? ???? ???
-    public TextMeshProUGUI timerText; // ???? ????
-    public Image[] life; // ???? UI ?ò÷ ???
 
     public Button resumeButton;
     public Button restartButton;
@@ -34,7 +34,10 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI playTimeResult;
+
     public Image skillIcon01;
+    public Image skillIcon02;
+    public Image skillIcon03;
 
     private bool WarningEffectBlinking = false;
 
@@ -46,12 +49,15 @@ public class UIManager : MonoBehaviour
     private Vignette vignette;
     private float initialIntensity;
     private Color initialColor;
-    private float initialSmoothness;
 
     private float targetIntensity = 2f;
     private float intensityChangeSpeed = 1f;
 
     private bool shutdown = false;
+
+    [SerializeField] private Cost _playerCost;
+    [SerializeField] private Dash _dash;
+    [SerializeField] private Barrier _barrier;
 
     private void Awake()
     {
@@ -79,7 +85,6 @@ public class UIManager : MonoBehaviour
             {
                 initialIntensity = vignette.intensity.value;
                 initialColor = vignette.color.value;
-                initialSmoothness = vignette.smoothness.value;
             }
         }
     }
@@ -119,29 +124,31 @@ public class UIManager : MonoBehaviour
             gameOverUICanvas.SetActive(false);
         }
 
-        timerText.text = GameManager.timer.ToString("F1");
-
-        distanceMiddle = (int)GameManager.distanceFromMiddle;
-        if (distanceMiddle >= 20)
+        if (_playerCost.Value >= _dash.Cost)
         {
-            distanceMiddleText.text = "? M"; // 100 ????? ???? "? M"
-            distanceMiddleText.color = Color.white; // ?? ???? (??: ???)
-        }
-        else if (distanceMiddle >= 5)
-        {
-            distance.color = Color.red;
-            distanceMiddleText.text = distanceMiddle.ToString() + " M"; // ??? ???
-            distanceMiddleText.color = Color.red; // ?????????? ???
+            Skill01On();
         }
         else
         {
-            distance.color = Color.white;
-            distanceMiddleText.text = distanceMiddle.ToString() + " M"; // ??? ???
-            distanceMiddleText.color = Color.white; // ?? ???? (??: ???)
+            Skill01Off();
         }
 
-        if (distanceMiddle >= 20)
+        if (_playerCost.Value >= _barrier.Cost)
         {
+            Skill02On();
+        }
+        else
+        {
+            Skill02Off();
+        }
+
+        // ??? ???? ???????
+        distanceMiddle = (int)GameManager.distanceFromMiddle;
+        if (distanceMiddle >= 100)
+        {
+            distanceMiddleText.text = "? M"; // 100 ????? ???? "? M"
+            distanceMiddleText.color = Color.white; // ?? ???? (??: ???)
+
             shutdown = true;
 
             if (WarningEffectBlinking)
@@ -158,8 +165,12 @@ public class UIManager : MonoBehaviour
                 vignette.intensity.Override(Mathf.MoveTowards(currentIntensity, targetIntensity, intensityChangeSpeed * Time.deltaTime));
             }
         }
-        else if (distanceMiddle >= 5)
+        else if (distanceMiddle >= 90)
         {
+            distance.color = Color.red;
+            distanceMiddleText.text = distanceMiddle.ToString() + " M"; // ??? ???
+            distanceMiddleText.color = Color.red; // ?????????? ???
+
             float currentIntensity = vignette.intensity.value;
 
             if (currentIntensity > 0 && shutdown)
@@ -178,6 +189,10 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            distance.color = Color.white;
+            distanceMiddleText.text = distanceMiddle.ToString() + " M"; // ??? ???
+            distanceMiddleText.color = Color.white; // ?? ???? (??: ???)
+
             if (WarningEffectBlinking)
             {
                 StopBlinkWarningEffect();
@@ -194,27 +209,22 @@ public class UIManager : MonoBehaviour
 
     private void OnRestartButtonClick()
     {
-        GameManager.instance.RestartGame();
+        /*GameManager.instance.RestartGame();*/
     }
 
     private void OnQuitButtonClick()
     {
-        Application.Quit();
+        /*Application.Quit();*/
     }
 
     private void OnTryAgainYesButtonClick()
     {
-        GameManager.instance.TryAgain();
+        /*GameManager.instance.TryAgain();*/
     }
 
     private void OnTryAgainNoButtonClick()
     {
-        Application.Quit();
-    }
-
-    public void UpdateTimerUI(int minute, int second)
-    {
-        timerText.text = string.Format("{0:00} : {1:00}", minute, second);
+        /*Application.Quit();*/
     }
 
     public void ShowCountdown(int count)
@@ -249,7 +259,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowGameOverUI()
     {
-        playTimeResult.text = "Play Time :  " + timerText.text;
+        playTimeResult.text = "Play Time :  " + (GlobalTimer.InitValue - GlobalTimer.Value).ToString("F1");
         gameOverUICanvas.SetActive(true);
         pauseMenuUICanvas.SetActive(false);
         gamePlayUICanvas.SetActive(false);
@@ -330,11 +340,21 @@ public class UIManager : MonoBehaviour
         skillIcon01.color = new Color(skillIcon01.color.r, skillIcon01.color.g, skillIcon01.color.b, 5f / 255f);
     }
 
+    public void Skill02On()
+    {
+        skillIcon02.color = new Color(skillIcon02.color.r, skillIcon02.color.g, skillIcon02.color.b, 1f);
+    }
+
+    public void Skill02Off()
+    {
+        skillIcon02.color = new Color(skillIcon02.color.r, skillIcon02.color.g, skillIcon02.color.b, 5f / 255f);
+    }
+
     public void UpdateEnemyIndicator(Transform enemyTransform)
     {
         if (!enemyIndicators.ContainsKey(enemyTransform))
         {
-            // ???? UI ?¥å???????? ?????? ????
+            // ???? UI ?ï¿½ï¿½???????? ?????? ????
             RectTransform indicator = Instantiate(enemyIndicatorPrefab, gamePlayUICanvas.transform);
             enemyIndicators[enemyTransform] = indicator;
         }
@@ -344,7 +364,7 @@ public class UIManager : MonoBehaviour
         // ?????? ??? ???
         float distance = Vector3.Distance(Camera.main.transform.position, enemyTransform.position);
 
-        // ????? 30 ?????? ?¥å??????? ????
+        // ????? 30 ?????? ?ï¿½ï¿½??????? ????
         if (distance >= 30)
         {
             indicatorUI.gameObject.SetActive(false);
@@ -357,7 +377,7 @@ public class UIManager : MonoBehaviour
         // z ???? ?????? ???, ???? ???? ??? ??? ????.
         if (screenPoint.z < 0)
         {
-            // ???? ??? ???? ?? ??? ???????? ?¥å???????? ???????? ????
+            // ???? ??? ???? ?? ??? ???????? ?ï¿½ï¿½???????? ???????? ????
             screenPoint.x = 1f - screenPoint.x;
             screenPoint.y = 1f - screenPoint.y;
             screenPoint.z = 0;
@@ -367,13 +387,13 @@ public class UIManager : MonoBehaviour
         screenPoint.x = Mathf.Clamp(screenPoint.x, 0f, 1f);
         screenPoint.y = Mathf.Clamp(screenPoint.y, 0f, 1f);
 
-        // ????? ??????¥ê??? ?????? ?????? ??? ????????? ???
+        // ????? ??????ï¿½ï¿½??? ?????? ?????? ??? ????????? ???
         Vector2 screenCenter = new Vector2(0.5f, 0.5f);
         Vector2 direction = new Vector2(screenPoint.x - screenCenter.x, screenPoint.y - screenCenter.y);
         direction.Normalize();
 
         // ??? ????????? ??? ???
-        float edgeBuffer = 50f; // ????????¥ê????? ???? ???
+        float edgeBuffer = 50f; // ????????ï¿½ï¿½????? ???? ???
         float x = direction.x * (Screen.width / 2 - edgeBuffer);
         float y = direction.y * (Screen.height / 2 - edgeBuffer);
 
@@ -384,10 +404,10 @@ public class UIManager : MonoBehaviour
         float size = Mathf.Lerp(100, 20, distance / 30); // ????? ???? ?????????? ??? ????
         indicatorUI.sizeDelta = new Vector2(size, size);
 
-        // ?¥å???????? ??????? ????
+        // ?ï¿½ï¿½???????? ??????? ????
         indicatorUI.gameObject.SetActive(true);
 
-        // ?¥å??????? ??????? ??? ???
+        // ?ï¿½ï¿½??????? ??????? ??? ???
         float alpha = Mathf.PingPong(Time.time * 2, 1); // 0???? 1 ?????? ???? ????????? ??? (??????)
         indicatorUI.GetComponent<Image>().color = new Color(1f, 1f, 1f, alpha);
     }
@@ -396,16 +416,9 @@ public class UIManager : MonoBehaviour
     {
         if (enemyIndicators.ContainsKey(enemyTransform))
         {
-            // ???? ??? ????? ?¥å??????? ????
+            // ???? ??? ????? ?ï¿½ï¿½??????? ????
             Destroy(enemyIndicators[enemyTransform].gameObject);
             enemyIndicators.Remove(enemyTransform);
-        }
-    }
-    public void OnDamage(int currentLife, int damage)
-    {
-        for (int life = currentLife; life < currentLife + damage; life++)
-        {
-            this.life[life].color = new Color(1, 1, 1, 0.1f);
         }
     }
 

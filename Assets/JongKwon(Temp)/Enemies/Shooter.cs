@@ -12,6 +12,8 @@ public class Shooter : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+
         // 지정된 시간 이후부터 일정한 간격으로 미사일 발사
         InvokeRepeating(nameof(FireMissile), initialDelay, fireRate);
     }

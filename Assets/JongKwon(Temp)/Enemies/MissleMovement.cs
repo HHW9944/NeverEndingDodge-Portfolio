@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MissleMovement : MonoBehaviour
 {
-    [SerializeField]
-    float speed;
+    public float speed;
 
     void Update()
     {
