@@ -7019,6 +7019,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1469026927}
+  - {fileID: 1308791701}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &862964171
@@ -7230,7 +7231,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841759, y: -0.3999983}
+  offset: {x: 0.000000023841721, y: -0.39999768}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -13112,12 +13113,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308791699}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -849.1735, y: -534.49316, z: 5.689942}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 860744396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1310071213
 GameObject:
@@ -15094,7 +15095,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841759, y: -0.3999983}
+  offset: {x: 0.000000023841721, y: -0.39999768}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -20042,7 +20043,6 @@ SceneRoots:
   - {fileID: 348142749}
   - {fileID: 1961688654}
   - {fileID: 1946719031}
-  - {fileID: 1308791701}
   - {fileID: 860744396}
   - {fileID: 666988331}
   - {fileID: 628843276}

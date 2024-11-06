@@ -146,6 +146,7 @@ public class UIManager : MonoBehaviour
         distanceMiddle = (int)GameManager.distanceFromMiddle;
         if (distanceMiddle >= 100)
         {
+            gamePlayUICanvas.SetActive(false);
             distanceMiddleText.text = "? M"; // 100 ????? ???? "? M"
             distanceMiddleText.color = Color.white; // ?? ???? (??: ???)
 
@@ -167,6 +168,7 @@ public class UIManager : MonoBehaviour
         }
         else if (distanceMiddle >= 90)
         {
+            gamePlayUICanvas.SetActive(true);
             distance.color = Color.red;
             distanceMiddleText.text = distanceMiddle.ToString() + " M"; // ??? ???
             distanceMiddleText.color = Color.red; // ?????????? ???
