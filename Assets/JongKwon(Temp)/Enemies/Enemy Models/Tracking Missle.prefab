@@ -17,7 +17,8 @@ GameObject:
   - component: {fileID: 1962513963511960849}
   - component: {fileID: -3743303625869226204}
   - component: {fileID: -2297505307288048406}
-  m_Layer: 0
+  - component: {fileID: 63620632542138315}
+  m_Layer: 7
   m_Name: Tracking Missle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,9 +33,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332106888301543920}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000008078812, y: 0.12820426, z: 0.000000010443564, w: 0.9917478}
-  m_LocalPosition: {x: 0.59451586, y: 2.6100583, z: -40.230114}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332106888301543920}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fb636433f71458489969f415b78ce4d, type: 3}
   m_Name: 
@@ -191,3 +192,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3296607bc4c37af4180fe658bf99374f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &63620632542138315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332106888301543920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e368ca0a93c0b804ab66d89cdd6e111c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  rotationSpeed: 200

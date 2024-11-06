@@ -10,6 +10,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 622996359979644324, guid: 95942504155c7d144b28fde71dc3a041,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 622996359979644324, guid: 95942504155c7d144b28fde71dc3a041,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 622996359979644324, guid: 95942504155c7d144b28fde71dc3a041,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 622996359979644324, guid: 95942504155c7d144b28fde71dc3a041,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -61,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 4660910960922201882, guid: 95942504155c7d144b28fde71dc3a041,
         type: 3}
       propertyPath: m_Name
-      value: EnemyA Variant
+      value: EnemyC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

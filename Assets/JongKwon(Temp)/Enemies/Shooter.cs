@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     public GameObject missilePrefab;
     public float initialDelay = 2.0f; // 첫 발사까지의 대기 시간
     public float fireRate = 1.5f;     // 미사일 발사 주기
