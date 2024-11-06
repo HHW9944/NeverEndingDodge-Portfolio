@@ -19,9 +19,6 @@ public class GameManager : MonoBehaviour
     public float moveSpeed = 5f;
     public static float distanceFromMiddle = 0f;
 
-    public const float PLAYTIME = 180f; 
-
-    public static float timer = PLAYTIME; // ���� timer ���� ����
     public bool isTimeOut = false;
 
     public Vector3 playerStartPoint;
@@ -46,14 +43,12 @@ public class GameManager : MonoBehaviour
         playerStartPoint = new Vector3(0, 0, 0);
         cameraStartPoint = playerCamera.position;
         startRotation = Quaternion.identity; // �ʱ� ȸ���� ����
-        _playerCost.Value = 0;
     }
 
     void Start()
     {
         isPaused = false;
         isGameOver = false;
-        timer = PLAYTIME; // Ÿ�̸� �ʱ�ȭ
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         UIManager.instance.ShowCountdown(3);
@@ -80,7 +75,6 @@ public class GameManager : MonoBehaviour
 
         if (isPaused) return;
 
-        UIManager.instance.UpdateTimerUI((int)timer / 60, (int)timer % 60); // Ÿ�̸� UI ������Ʈ
         distanceFromMiddle = Vector3.Distance(player.position, middlePoint.position);
 
         // Debug.Log(distanceFromMiddle + "m\n");
@@ -103,37 +97,9 @@ public class GameManager : MonoBehaviour
         UpdateEnemyIndicators();
     }
 
-    public void LoadScene (string sceneName)
+    public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-    }
-
-    // Ÿ�̸� ī��Ʈ�ٿ� ���� �Լ�
-    void StartTimerCountdown()
-    {
-        if (timerCoroutine != null)
-        {
-            StopCoroutine(timerCoroutine); // ���� Ÿ�̸� �ڷ�ƾ ����
-        }
-        timerCoroutine = StartCoroutine(TimerCountDown()); // ���ο� Ÿ�̸� ī��Ʈ�ٿ� ����
-    }
-
-    IEnumerator TimerCountDown()
-    {
-        while (timer > 0 && !isGameOver)
-        {
-            timer--;
-            int minute = (int)timer / 60;
-            int second = (int)timer % 60;
-            UIManager.instance.UpdateTimerUI(minute, second); // UI ������Ʈ
-            yield return new WaitForSeconds(1f);
-        }
-
-        if (!isGameOver)
-        {
-            isGameOver = true;
-            Debug.Log("Ÿ�Ӿƿ�. �����ϼ̽��ϴ�.");
-        }
     }
 
     public void PauseGame()
@@ -176,6 +142,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameOverTransition());
     }
 
+    public void GameClear()
+    {
+
+    }
+
     // GameOver ȭ�� ��ȯ �ڷ�ƾ
     private IEnumerator GameOverTransition()
     {
@@ -193,13 +164,8 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = false;
         InitializePlayer(); // �÷��̾� �ʱ�ȭ
-        // playerLife.ResetLife(); // Life �ʱ�ȭ
-        timer = PLAYTIME;
         UIManager.instance.HideGameOverUI(); // ���� ���� UI ����
         StartCountdown(); // ī��Ʈ�ٿ� ����
-
-        // Ÿ�̸� ī��Ʈ�ٿ� �����
-        StartTimerCountdown();
     }
 
     public void RestartGame()
@@ -221,8 +187,6 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log(_playerCost.Value);
-        StartTimerCountdown();
         isPaused = false;
         Time.timeScale = 1f; // ���� �ð� �簳
         Cursor.lockState = CursorLockMode.Locked;
