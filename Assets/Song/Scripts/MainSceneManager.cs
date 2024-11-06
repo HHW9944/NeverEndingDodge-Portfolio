@@ -14,13 +14,13 @@ public class MainSceneManager : MonoBehaviour
 
     public AudioSource backgroundMusic;  // 배경음악 재생을 위한 AudioSource 변수
 
-    private void Awake()
-    {
-#if UNITY_STANDALONE
-        Screen.SetResolution(1920, 1080, false);
-        Screen.fullScreen = false;
-#endif
-    }
+//     private void Awake()
+//     {
+// #if UNITY_STANDALONE
+//         Screen.SetResolution(1920, 1080, false);
+//         Screen.fullScreen = false;
+// #endif
+//     }
 
     private void Start()
     {
