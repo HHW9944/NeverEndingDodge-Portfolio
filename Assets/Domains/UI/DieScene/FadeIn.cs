@@ -11,6 +11,7 @@ public class FadeIn : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         _blackImage = GetComponent<Image>();
     }
 
