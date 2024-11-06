@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2561061125046123610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.4673313, z: 4.945223}
+  m_LocalPosition: {x: 0, y: 6.193297, z: 307.50443}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,11 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8553bb0b6d31074e9f9d71fc2a95b5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  missilePrefab: {fileID: 1156803670215244, guid: 067688b518993e74a8a474d312984495,
+  missilePrefab: {fileID: 1332106888301543920, guid: 4b971f9ecdcf299458cf7d22d916fd1c,
     type: 3}
   initialDelay: 2
-  fireRate: 1
+  fireRate: 3
   rotationSpeed: 5
 --- !u!1 &5747159572446662915
 GameObject:
@@ -195,7 +194,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 116376238867480970}
