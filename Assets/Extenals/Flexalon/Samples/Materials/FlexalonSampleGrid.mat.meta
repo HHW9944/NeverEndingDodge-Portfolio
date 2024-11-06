@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-guid: 379859a5e5c41b94fafffb006137333c
+guid: 57b97029350642c4a8df77248852e337
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 254652
-  packageName: 'Flexalon: UI Layouts'
-  packageVersion: 4.2.1
-  assetPath: Assets/Flexalon/Samples/Materials/FlexalonSampleGrid.mat
-  uploadId: 684591

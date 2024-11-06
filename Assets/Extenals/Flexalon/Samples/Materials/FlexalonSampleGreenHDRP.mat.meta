@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-guid: f29cbe433e772d04d91757e83b0e7185
+guid: 70bec89fac0d4ca4cb40ad2bda46a0a0
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 254652
-  packageName: 'Flexalon: UI Layouts'
-  packageVersion: 4.2.1
-  assetPath: Assets/Flexalon/Samples/Materials/FlexalonSampleGreenHDRP.mat
-  uploadId: 684591

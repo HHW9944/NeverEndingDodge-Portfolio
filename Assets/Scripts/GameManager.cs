@@ -154,10 +154,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
 
         // GameOverUI ǥ��
-        Time.timeScale = 0f;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        UIManager.instance.ShowGameOverUI();
+        Time.timeScale = 1f;
+        // Cursor.visible = true;
+        // Cursor.lockState = CursorLockMode.None;
+        // UIManager.instance.ShowGameOverUI();
     }
 
     public void TryAgain()

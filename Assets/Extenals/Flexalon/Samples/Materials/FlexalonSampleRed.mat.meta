@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-guid: 165bbcb77f5b44048aa4c74551954e33
+guid: 6dc155fcb3869464b901eb41d9c25a3c
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 254652
-  packageName: 'Flexalon: UI Layouts'
-  packageVersion: 4.2.1
-  assetPath: Assets/Flexalon/Samples/Materials/FlexalonSampleRed.mat
-  uploadId: 684591

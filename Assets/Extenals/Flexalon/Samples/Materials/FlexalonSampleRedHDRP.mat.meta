@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-guid: 08fe00e93d6897d41a6674db73f11c81
+guid: 3b2c84d0c862e6e459b0eef8690a2515
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 254652
-  packageName: 'Flexalon: UI Layouts'
-  packageVersion: 4.2.1
-  assetPath: Assets/Flexalon/Samples/Materials/FlexalonSampleRedHDRP.mat
-  uploadId: 684591
