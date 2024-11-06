@@ -110,7 +110,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 70885693ea99b8749b751f80202232a3, type: 3}
 --- !u!54 &-8610898690489093032
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb636433f71458489969f415b78ce4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 20
 --- !u!114 &1962513963511960849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfbe01e54ab751a489acb90bdf3e4097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 0
+  destroyTime: 15
 --- !u!114 &-3743303625869226204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025e22178815f5c438e38bf773803a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitValue: 0
+  InitValue: 1
 --- !u!114 &-2297505307288048406
 MonoBehaviour:
   m_ObjectHideFlags: 0
