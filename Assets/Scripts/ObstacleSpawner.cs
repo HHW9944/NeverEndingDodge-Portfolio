@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public GameObject[] obstaclePrefabs; // 운석 프리팹 배열 (3개 프리팹 설정)
+    public GameObject[] obstaclePrefabs = new GameObject[7]; // 운석 프리팹 배열
     public int meteorCount = 500;       // 생성할 운석 개수
     public Vector3 spawnAreaSize = new Vector3(500, 500, 500); // 맵 크기에 맞춘 생성 범위
+
 
     void Start()
     {
