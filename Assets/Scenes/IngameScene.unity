@@ -6964,7 +6964,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841817, y: -0.3999993}
+  offset: {x: 0.000000023841814, y: -0.39999923}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -7668,7 +7668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfe6b7bf27d66d4aba01a78b439546f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 10
+  Cost: 20
   _playerTransform: {fileID: 1310071223}
   _positionOffset: {x: 0.75, y: 1.85, z: 3}
   _energyShield: {fileID: 690751443}
@@ -14835,7 +14835,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841817, y: -0.3999993}
+  offset: {x: 0.000000023841814, y: -0.39999923}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
