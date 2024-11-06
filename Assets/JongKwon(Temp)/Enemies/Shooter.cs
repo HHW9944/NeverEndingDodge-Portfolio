@@ -27,7 +27,7 @@ public class Shooter : MonoBehaviour
             Vector3 direction = player.transform.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            // targetRotation *= Quaternion.Euler(0, 180, 0);
+            //targetRotation *= Quaternion.Euler(0, 180, 0);
 
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
@@ -35,6 +35,16 @@ public class Shooter : MonoBehaviour
 
     void FireMissile()
     {
-        Instantiate(missilePrefab, transform.position, transform.rotation);
+        GameObject missile = Instantiate(missilePrefab, transform.position, transform.rotation);
+
+        if (player != null)
+        {
+            Vector3 direction = player.transform.position - missile.transform.position;
+            Quaternion missileRotation = Quaternion.LookRotation(direction);
+            missileRotation *= Quaternion.Euler(90, 0, 0); // 90도 회전
+
+            // 미사일의 회전을 설정
+            missile.transform.rotation = missileRotation;
+        }
     }
 }
