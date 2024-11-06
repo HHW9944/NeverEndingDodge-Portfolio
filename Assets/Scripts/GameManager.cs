@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour
 
     void HandlePause()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             if (isGameOver) return;
 
