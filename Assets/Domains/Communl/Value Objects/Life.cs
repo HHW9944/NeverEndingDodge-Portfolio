@@ -88,10 +88,8 @@ public class Life : MonoBehaviour
 
     private IEnumerator CooldownCoroutine(float triggerValue)
     {
-        // 쿨타임 시작
         _cooldownActive.Add(triggerValue);
         yield return new WaitForSeconds(ReachedCooldown);
-        // 쿨타임 끝
         _cooldownActive.Remove(triggerValue);
     }
 }
