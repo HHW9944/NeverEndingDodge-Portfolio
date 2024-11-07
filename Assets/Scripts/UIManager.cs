@@ -29,6 +29,9 @@ public class UIManager : MonoBehaviour
     public int distanceMiddle;
     public TextMeshProUGUI distanceMiddleText;
 
+    private const float warningArea = 60f;
+    private const float shutdownArea = 90f;
+
     public Image warningEffect;
     public Color warningEffectColor;
 
@@ -144,7 +147,7 @@ public class UIManager : MonoBehaviour
 
         // ??? ???? ???????
         distanceMiddle = (int)GameManager.distanceFromMiddle;
-        if (distanceMiddle >= 100)
+        if (distanceMiddle >= shutdownArea)
         {
             gamePlayUICanvas.SetActive(false);
             distanceMiddleText.text = "? M"; // 100 ????? ???? "? M"
@@ -166,7 +169,7 @@ public class UIManager : MonoBehaviour
                 vignette.intensity.Override(Mathf.MoveTowards(currentIntensity, targetIntensity, intensityChangeSpeed * Time.deltaTime));
             }
         }
-        else if (distanceMiddle >= 90)
+        else if (distanceMiddle >= warningArea)
         {
             gamePlayUICanvas.SetActive(true);
             distance.color = Color.red;

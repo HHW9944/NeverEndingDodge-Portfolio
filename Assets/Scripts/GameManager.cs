@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
 
     public float moveSpeed = 5f;
     public static float distanceFromMiddle = 0f;
-
+    public float warningArea = 60f;
+    public float shutdownArea = 90f;
     public bool isTimeOut = false;
 
     public Vector3 playerStartPoint;
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
 
         distanceFromMiddle = Vector3.Distance(player.position, middlePoint.position);
 
-        if (distanceFromMiddle < 100)
+        if (distanceFromMiddle < shutdownArea)
         {
             _playerSpeed.Value = 10f;
         }else
@@ -242,14 +243,14 @@ public class GameManager : MonoBehaviour
 
     void HandleSkills()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        /*if (Input.GetKeyDown(KeyCode.Z))
         {
             Skill01On();
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
             Skill01Off();
-        }
+        }*/
     }
 
     void Skill01On()
@@ -277,13 +278,13 @@ public class GameManager : MonoBehaviour
 
     void HandleGameOver()
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        /*if (Input.GetKeyDown(KeyCode.G))
         {
             if (!isGameOver)
             {
                 GameOver();
             }
-        }
+        }*/
     }
 
     void UpdateEnemyIndicators()

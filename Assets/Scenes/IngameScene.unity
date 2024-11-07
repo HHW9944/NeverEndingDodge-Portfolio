@@ -5770,6 +5770,8 @@ MonoBehaviour:
   - {fileID: 605995790}
   - {fileID: 256996391}
   moveSpeed: 5
+  warningArea: 60
+  shutdownArea: 90
   isTimeOut: 0
   playerStartPoint: {x: 0, y: 0, z: 0}
   cameraStartPoint: {x: 0, y: 0, z: 0}
@@ -13578,10 +13580,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad766b9499940540a4c1eb8255e5971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftClickSkill: {fileID: 980119490}
+  LeftClickSkill: {fileID: 687574614}
   RightClickSkill: {fileID: 611200172}
   ShiftSkill: {fileID: 135250407}
-  SpaceSkill: {fileID: 687574614}
+  SpaceSkill: {fileID: 980119490}
 --- !u!4 &1310071223
 Transform:
   m_ObjectHideFlags: 0
@@ -13647,7 +13649,7 @@ MonoBehaviour:
               lost.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 60
+    TriggerValue: 50
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -13675,7 +13677,7 @@ MonoBehaviour:
             m_StringArgument: Return to the original position immediately.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 90
+    TriggerValue: 80
   IsGreaterThan: 1
   ReachedCooldown: 10
   IsDebug: 0
