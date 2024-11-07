@@ -7281,7 +7281,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841846, y: -0.39999977}
+  offset: {x: 0.000000023841842, y: -0.3999997}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -13660,7 +13660,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: "\uC989\uC2DC \uC6D0\uB798 \uC704\uCE58\uB85C \uBCF5\uADC0\uD558\uC138\uC694."
+            m_StringArgument: "\uC989\uC2DC \uC6D0\uB798 \uC704\uCE58\uB85C \uBCF5\uADC0\uD558\uB77C."
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 569552868}
@@ -15253,7 +15253,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841846, y: -0.39999977}
+  offset: {x: 0.000000023841842, y: -0.3999997}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2

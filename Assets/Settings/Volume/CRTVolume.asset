@@ -139,10 +139,10 @@ MonoBehaviour:
     m_Value: 1
   stretchResolution:
     m_OverrideState: 1
-    m_Value: 480
+    m_Value: 1920
   VerticalResolution:
     m_OverrideState: 1
-    m_Value: 480
+    m_Value: 1080
   Granularity:
     m_OverrideState: 1
     m_Value: 0
@@ -217,10 +217,50 @@ MonoBehaviour:
   - {fileID: -4803825905945671550}
   - {fileID: -8534084823776651473}
   - {fileID: 43931014238321639}
-  - {fileID: 1098920991151169065}
   - {fileID: 573936454168328254}
   - {fileID: -1051794134875931168}
   - {fileID: -7383133560441304366}
+  - {fileID: 24299333441846012}
+--- !u!114 &24299333441846012
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d5e41f92d0f43b8b6ff8cad98e0c16, type: 3}
+  m_Name: Fisheye
+  m_EditorClassIdentifier: 
+  active: 1
+  enable:
+    m_OverrideState: 1
+    m_Value: 1
+  fisheyeType:
+    m_OverrideState: 1
+    m_Value: 0
+  bend:
+    m_OverrideState: 1
+    m_Value: 10
+  cutOffX:
+    m_OverrideState: 1
+    m_Value: 31.5
+  cutOffY:
+    m_OverrideState: 1
+    m_Value: 37
+  fadeX:
+    m_OverrideState: 1
+    m_Value: 36.3
+  fadeY:
+    m_OverrideState: 1
+    m_Value: 21.2
+  size:
+    m_OverrideState: 1
+    m_Value: 0.3
+  GlobalPostProcessingSettings:
+    m_OverrideState: 1
+    m_Value: 0
 --- !u!114 &43931014238321639
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -345,38 +385,6 @@ MonoBehaviour:
   maxNits:
     m_OverrideState: 0
     m_Value: 1000
---- !u!114 &1098920991151169065
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad8a999b3b34b46f183ff82f5a1e4a39, type: 3}
-  m_Name: Phosphor
-  m_EditorClassIdentifier: 
-  active: 1
-  enable:
-    m_OverrideState: 1
-    m_Value: 0
-  fade:
-    m_OverrideState: 1
-    m_Value: 1
-  width:
-    m_OverrideState: 1
-    m_Value: 3.16
-  mask:
-    m_OverrideState: 1
-    m_Value: {fileID: 0}
-    dimension: 1
-  maskChannel:
-    m_OverrideState: 1
-    m_Value: 0
-  GlobalPostProcessingSettings:
-    m_OverrideState: 1
-    m_Value: 0
 --- !u!114 &7896825853726250482
 MonoBehaviour:
   m_ObjectHideFlags: 3
