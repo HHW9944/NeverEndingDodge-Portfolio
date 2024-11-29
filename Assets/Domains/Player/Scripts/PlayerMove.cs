@@ -1,7 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Speed))]
 public class PlayerMove : MonoBehaviour
@@ -73,7 +72,7 @@ public class PlayerMove : MonoBehaviour
     private void FixedUpdate()
     {
         // 2D 입력을 3D로 변환 (z축으로 전진, x축으로 좌우 이동)
-        Vector3 moveDirection = new Vector3(_moveInput.x, 0f, _moveInput.y);
+        Vector3 moveDirection = new Vector3(_moveInput.x, _moveInput.y, 0f);
 
         // moveDirection을 로컬 좌표계 기준으로 변환 (플레이어가 바라보는 방향으로 이동)
         Vector3 forceDirection = transform.TransformDirection(moveDirection);

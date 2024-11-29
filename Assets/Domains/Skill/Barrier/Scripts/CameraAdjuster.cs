@@ -1,16 +1,16 @@
 using UnityEngine;
-using Cinemachine;
+using Unity.Cinemachine;
 using DG.Tweening;
 
 public class CameraAdjuster : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private float targetDistance = 10f; // Target distance to change to
     [SerializeField] private float targetShoulderOffsetY = 2f; // Target Y-axis shoulder offset to change to
     [SerializeField] private float duration = 1f; // Duration of the tween
     [SerializeField] private Ease easeType = Ease.InOutQuad; // Choose the ease type
 
-    private Cinemachine3rdPersonFollow thirdPersonFollow;
+    private CinemachineThirdPersonFollow thirdPersonFollow;
 
     // Original settings for rollback
     private float originalDistance;
@@ -20,7 +20,7 @@ public class CameraAdjuster : MonoBehaviour
     {
         if (virtualCamera != null)
         {
-            thirdPersonFollow = virtualCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
+            thirdPersonFollow = virtualCamera.GetCinemachineComponent(CinemachineCore.Stage.Body) as CinemachineThirdPersonFollow;
             if (thirdPersonFollow != null)
             {
                 // Save the original settings at the start

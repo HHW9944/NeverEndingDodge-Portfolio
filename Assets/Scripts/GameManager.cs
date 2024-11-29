@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     public Life playerLife;
 
     private bool isCountingDown = false;
-    private float countdownTimer = 0f;
-    private int countdownValue = 3;
+    // private float countdownTimer = 0f;
+    // private int countdownValue = 3;
 
     private Coroutine timerCoroutine; // Ÿ�̸� �ڷ�ƾ�� ���� ���� �߰�
 
@@ -52,8 +52,9 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        UIManager.instance.ShowCountdown(3);
-        StartCountdown();
+        // UIManager.instance.ShowCountdown(3);
+        // StartCountdown();
+        StartGame();
 
         // Ÿ�̸� ī��Ʈ�ٿ� ����
     }
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour
         // ī��Ʈ�ٿ� ���� ��
         if (isCountingDown)
         {
-            HandleCountdown();
+            // HandleCountdown();
             return;
         }
 
@@ -129,7 +130,8 @@ public class GameManager : MonoBehaviour
     {
         isPaused = false;
         UIManager.instance.HidePauseMenu();
-        StartCountdown();
+        // StartCountdown();
+        StartGame();
 
         // ��� ȿ���� �ٽ� �ʿ����� Ȯ���ϰ� �簳
         /*if (UIManager.instance.warningEffect.gameObject.activeSelf)
@@ -173,7 +175,8 @@ public class GameManager : MonoBehaviour
         isGameOver = false;
         InitializePlayer(); // �÷��̾� �ʱ�ȭ
         UIManager.instance.HideGameOverUI(); // ���� ���� UI ����
-        StartCountdown(); // ī��Ʈ�ٿ� ����
+        // StartCountdown(); // ī��Ʈ�ٿ� ����
+        StartGame();
     }
 
     public void RestartGame()
@@ -212,34 +215,34 @@ public class GameManager : MonoBehaviour
     }
 
     // ī��Ʈ�ٿ� ����
-    private void StartCountdown()
-    {
-        isCountingDown = true;
-        countdownTimer = 0f;
-        countdownValue = 3;
-        Time.timeScale = 0f; // Ÿ�ӽ������� 0���� �����Ͽ� ���� ���¸� ����
-        UIManager.instance.ShowCountdown(countdownValue); // ī��Ʈ�ٿ� UI ������Ʈ
-    }
+    // private void StartCountdown()
+    // {
+    //     isCountingDown = true;
+    //     countdownTimer = 0f;
+    //     countdownValue = 3;
+    //     Time.timeScale = 0f; // Ÿ�ӽ������� 0���� �����Ͽ� ���� ���¸� ����
+    //     UIManager.instance.ShowCountdown(countdownValue); // ī��Ʈ�ٿ� UI ������Ʈ
+    // }
 
-    // ī��Ʈ�ٿ� ó��
-    private void HandleCountdown()
-    {
-        countdownTimer += Time.unscaledDeltaTime; // Time.timeScale�� 0�̾ �帣�� �ð�
-        if (countdownTimer >= 1f)
-        {
-            countdownTimer = 0f;
-            countdownValue--;
-            if (countdownValue > 0)
-            {
-                UIManager.instance.ShowCountdown(countdownValue); // ī��Ʈ�ٿ� UI ������Ʈ
-            }
-            else
-            {
-                isCountingDown = false;
-                StartGame(); // ī��Ʈ�ٿ� ������ ���� ����
-            }
-        }
-    }
+    // // ī��Ʈ�ٿ� ó��
+    // private void HandleCountdown()
+    // {
+    //     countdownTimer += Time.unscaledDeltaTime; // Time.timeScale�� 0�̾ �帣�� �ð�
+    //     if (countdownTimer >= 1f)
+    //     {
+    //         countdownTimer = 0f;
+    //         countdownValue--;
+    //         if (countdownValue > 0)
+    //         {
+    //             UIManager.instance.ShowCountdown(countdownValue); // ī��Ʈ�ٿ� UI ������Ʈ
+    //         }
+    //         else
+    //         {
+    //             isCountingDown = false;
+    //             StartGame(); // ī��Ʈ�ٿ� ������ ���� ����
+    //         }
+    //     }
+    // }
 
     void HandleSkills()
     {

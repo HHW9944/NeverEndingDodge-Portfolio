@@ -11,8 +11,10 @@ public class Player : MonoBehaviour, IDamageable
     public Skill ShiftSkill;
     public Skill SpaceSkill;
 
+    [Header("Properties")]
+    public float DamageCooldown = 0.5f;
+
     private Life _life;
-    private float _damageCooldown = 0.5f;
     private bool _canTakeDamage = true;
 
     private void Awake()
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour, IDamageable
     private IEnumerator DamageCooldownRoutine()
     {
         _canTakeDamage = false;
-        yield return new WaitForSeconds(_damageCooldown);
+        yield return new WaitForSeconds(DamageCooldown);
         _canTakeDamage = true;
     }
 

@@ -15,8 +15,6 @@ public class UIManager : MonoBehaviour
     public GameObject gamePlayUICanvas;
     public GameObject gameOverUICanvas; // ???? Game Over UI ???
 
-    public TextMeshProUGUI countdownText; // ??????? ???? ???
-
     public Button resumeButton;
     public Button restartButton;
     public Button quitButton;
@@ -65,7 +63,6 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        Debug.Log("UI ????");
 
         gamePlayUICanvas.SetActive(true);
         gameOverUICanvas.SetActive(false);
@@ -76,8 +73,6 @@ public class UIManager : MonoBehaviour
 
         tryAgainYesButton.onClick.AddListener(OnTryAgainYesButtonClick);
         tryAgainNoButton.onClick.AddListener(OnTryAgainNoButtonClick);
-
-        countdownText.gameObject.SetActive(false);
 
         volume = FindObjectOfType<Volume>();
         if (volume != null)
@@ -232,15 +227,15 @@ public class UIManager : MonoBehaviour
         /*Application.Quit();*/
     }
 
-    public void ShowCountdown(int count)
-    {
-        countdownText.gameObject.SetActive(true);
-        countdownText.text = count.ToString();
-    }
+    // public void ShowCountdown(int count)
+    // {
+    //     countdownText.gameObject.SetActive(true);
+    //     countdownText.text = count.ToString();
+    // }
 
     public void ShowGamePlayUI()
     {
-        countdownText.gameObject.SetActive(false);
+        // countdownText.gameObject.SetActive(false);
         pauseMenuUICanvas.SetActive(false);
         gamePlayUICanvas.SetActive(true);
         gameOverUICanvas.SetActive(false);
