@@ -6,13 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/StartScene.unity
+    guid: 456b2e655fbdce8468a794f4bb79b4ed
   - enabled: 1
     path: Assets/Scenes/IngameScene.unity
     guid: 53f6c45e8e967c94b9fdae3a170885c2
   - enabled: 1
-    path: Assets/Scenes/DieScene.unity
+    path: Assets/Scenes/DieScene/DieScene.unity
     guid: 92b0e0c5e8bafb842bc137cf3d32b781
+  - enabled: 1
+    path: Assets/Scenes/EndCutScene/EndCutScene.unity
+    guid: c64179b3ff345d44898f440b6a9ea9d1
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

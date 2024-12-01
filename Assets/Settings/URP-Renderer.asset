@@ -321,7 +321,9 @@ MonoBehaviour:
   - {fileID: -1321349826791639447}
   - {fileID: -523668790139767547}
   - {fileID: 7170885902464991150}
-  m_RendererFeatureMap: adc0de57c6d2eee5dccfb07a7a70c3a78aa075688193ceae204525b2f59aea4eb9ccbe7ac350214add667293a95e2adcd39b948370c5552de8dea1cb331c5f67263d78b8918a6667d929b3747c6fb2946edddb050e2b9a45152f04d53052e9d36bc65080aab20750d186b85594e48372c7bacc81edd6ef934a69d353332f4f48667925a5951d39a3d981781dc052dc1e30898f24d8827d709b92a7b14f71148afda008a4924f0ef91bd796273a4e8c8aad1fc509673cc419eabdce9951bbf39c148f75b230cc37dd284791462555f0dd87aa659a90f2bad869760f56559fa9ed05b5c287028ebbf8ae3f483dbc1a8463
+  - {fileID: 5575503559427649211}
+  - {fileID: 5416252070066753055}
+  m_RendererFeatureMap: adc0de57c6d2eee5dccfb07a7a70c3a78aa075688193ceae204525b2f59aea4eb9ccbe7ac350214add667293a95e2adcd39b948370c5552de8dea1cb331c5f67263d78b8918a6667d929b3747c6fb2946edddb050e2b9a45152f04d53052e9d36bc65080aab20750d186b85594e48372c7bacc81edd6ef934a69d353332f4f48667925a5951d39a3d981781dc052dc1e30898f24d8827d709b92a7b14f71148afda008a4924f0ef91bd796273a4e8c8aad1fc509673cc419eabdce9951bbf39c148f75b230cc37dd284791462555f0dd87aa659a90f2bad869760f56559fa9ed05b5c287028ebbf8ae3f483dbc1a8463bb6e9c6ff22a604d1f8e4daa8f642a4b
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -486,6 +488,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   Event: 550
+--- !u!114 &5416252070066753055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086121500fc2a42c09847ca64876bd91, type: 3}
+  m_Name: CinematicBars_RLPRO
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  Event: 550
+--- !u!114 &5575503559427649211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d69a19d29ef66464ea0afc7cd84fd6c2, type: 3}
+  m_Name: VolumetricFogRendererFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  downsampleDepthShader: {fileID: 4800000, guid: cffeaeec0396a2c4dad475266cc8dfeb,
+    type: 3}
+  volumetricFogShader: {fileID: 4800000, guid: 08f816187f9af0244a95556ee0cab83f, type: 3}
 --- !u!114 &5686527859555124512
 MonoBehaviour:
   m_ObjectHideFlags: 0

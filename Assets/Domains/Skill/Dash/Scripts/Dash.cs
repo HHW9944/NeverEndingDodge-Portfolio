@@ -69,12 +69,10 @@ public class Dash : Skill
 
         if (movementDirection == Vector3.zero)
         {
-            movementDirection = _player.transform.forward;
+            return;
         }
         else
         {
-            movementDirection.z = movementDirection.y;
-            movementDirection.y = 0f;
             movementDirection = _player.transform.rotation * movementDirection.normalized;
         }
 

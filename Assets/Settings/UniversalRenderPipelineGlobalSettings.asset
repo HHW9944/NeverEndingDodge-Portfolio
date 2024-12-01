@@ -16,7 +16,7 @@ MonoBehaviour:
     m_SettingsList: []
     m_RuntimeSettings: []
   m_AssetVersion: 5
-  m_DefaultVolumeProfile: {fileID: 11400000, guid: 238cd62f6b58cb04e9c94749c4a015a7,
+  m_DefaultVolumeProfile: {fileID: 11400000, guid: 22e5bb40ecdd0c443b1da0ba61707e40,
     type: 2}
   m_RenderingLayerNames:
   - Light Layer default
@@ -39,15 +39,26 @@ MonoBehaviour:
   apvScenesData:
     m_ObsoleteSerializedBakingSets: []
     sceneToBakingSet:
-      m_Keys: []
-      m_Values: []
-    bakingSets: []
+      m_Keys:
+      - 456b2e655fbdce8468a794f4bb79b4ed
+      m_Values:
+      - {fileID: 11400000, guid: bff1da9da126fb44c984c5dc07c2cfbe, type: 2}
+    bakingSets:
+    - {fileID: 11400000, guid: bff1da9da126fb44c984c5dc07c2cfbe, type: 2}
     sceneBounds:
-      m_Keys: []
-      m_Values: []
+      m_Keys:
+      - c64179b3ff345d44898f440b6a9ea9d1
+      - 456b2e655fbdce8468a794f4bb79b4ed
+      m_Values:
+      - m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 81, y: 81, z: 81}
+      - m_Center: {x: 0, y: 40.5, z: -40.5}
+        m_Extent: {x: 81, y: 40.5, z: 40.5}
     hasProbeVolumes:
-      m_Keys: []
-      m_Values: 
+      m_Keys:
+      - c64179b3ff345d44898f440b6a9ea9d1
+      - 456b2e655fbdce8468a794f4bb79b4ed
+      m_Values: 0000
   m_ShaderStrippingSetting:
     m_Version: 0
     m_ExportShaderVariants: 1

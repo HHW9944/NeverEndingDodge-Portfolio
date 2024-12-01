@@ -152,11 +152,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameOverTransition());
     }
 
-    public void GameClear()
-    {
-
-    }
-
     // GameOver ȭ�� ��ȯ �ڷ�ƾ
     private IEnumerator GameOverTransition()
     {
