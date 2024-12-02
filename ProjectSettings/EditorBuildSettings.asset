@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/DieScene/DieScene.unity
     guid: 92b0e0c5e8bafb842bc137cf3d32b781
   - enabled: 1
-    path: Assets/Scenes/EndCutScene/EndCutScene.unity
+    path: Assets/Scenes/EndCutScene.unity
     guid: c64179b3ff345d44898f440b6a9ea9d1
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
