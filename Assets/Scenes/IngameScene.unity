@@ -6977,7 +6977,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841853, y: -0.3999999}
+  offset: {x: 0.00000002384185, y: -0.39999983}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -14510,7 +14510,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841853, y: -0.3999999}
+  offset: {x: 0.00000002384185, y: -0.39999983}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -15353,7 +15353,7 @@ MonoBehaviour:
           m_PostInfinity: 2
           m_RotationOrder: 4
         RemapSaturationZero: 0
-        RemapSaturationOne: 100
+        RemapSaturationOne: -100
         ShakeContrast:
           serializedVersion: 2
           m_Curve:
