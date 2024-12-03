@@ -6977,7 +6977,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.00000002384185, y: -0.39999983}
+  offset: {x: 0.000000023841846, y: -0.39999977}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -14510,7 +14510,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.00000002384185, y: -0.39999983}
+  offset: {x: 0.000000023841846, y: -0.39999977}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -17732,7 +17732,6 @@ GameObject:
   - component: {fileID: 1961688654}
   - component: {fileID: 1961688653}
   - component: {fileID: 1961688655}
-  - component: {fileID: 1961688656}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -17757,7 +17756,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -17840,18 +17839,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &1961688656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961688652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d17ff544b5f24db989479658b8b0dda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1972357121
 GameObject:
   m_ObjectHideFlags: 0
