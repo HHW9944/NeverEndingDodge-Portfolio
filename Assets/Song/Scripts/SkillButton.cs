@@ -14,13 +14,22 @@ public class SkillButton : MonoBehaviour
     private float cooldownTimer;
 
     public AudioSource bgmAudioSource; // BGM AudioSource
-
+    public Camera mainCamera; // 메인 카메라 참조
+    public Color solidColor = Color.black; // Solid Color 설정
+    private CameraClearFlags originalClearFlags; // 원래의 Clear Flags 저장
+    private Color originalBackgroundColor; // 원래의 Background Color 저장
 
     void Start()
     {
         skillButton.onClick.AddListener(ActivateSkill);
         cooldownOverlay.fillAmount = 1; // 쿨타임 초기화
         skillButton.interactable = true; // 버튼은 처음부터 활성화
+        // Main Camera 설정 저장
+        if (mainCamera != null)
+        {
+            originalClearFlags = mainCamera.clearFlags; // 원래 Clear Flags 저장
+            originalBackgroundColor = mainCamera.backgroundColor; // 원래 배경색 저장
+        }
     }
 
     void Update()
@@ -75,19 +84,32 @@ public class SkillButton : MonoBehaviour
         {
             bgmAudioSource.pitch = slowMotionScale; // BGM 속도를 슬로우 모션 속도에 맞춤
         }
-        Debug.Log("슬로우 모션 시작!");
+        // 카메라 Background Type 변경 (Solid Color)
+        if (mainCamera != null)
+        {
+            mainCamera.clearFlags = CameraClearFlags.SolidColor; // 배경을 Solid Color로 변경
+            mainCamera.backgroundColor = solidColor; // 배경색 설정
+        }
+        Debug.Log("슬로우 모션 시작");
     }
 
     void EndSlowMotion()
     {
         Time.timeScale = 1f; // 시간 복구
         Time.fixedDeltaTime = 0.02f; // 기본값 복구
-         // BGM 속도 복구
+                                     // BGM 속도 복구
         if (bgmAudioSource != null)
         {
             bgmAudioSource.pitch = 1f; // BGM 속도를 원래대로 복구
         }
-        Debug.Log("슬로우 모션 종료!");
+        // 카메라 Background Type 복구 (Skybox)
+        if (mainCamera != null)
+        {
+            mainCamera.clearFlags = originalClearFlags; // 원래 Clear Flags 복구
+            mainCamera.backgroundColor = originalBackgroundColor; // 원래 배경색 복구
+        }
+
+        Debug.Log("슬로우 모션 종료");
         StartCooldown(); // 슬로우 모션 종료 후 쿨타임 시작
         isSkillActive = false; // 스킬 비활성화 상태
     }
