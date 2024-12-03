@@ -265,12 +265,12 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isGameOver) return;
+            /*if (isGameOver) return;
 
             if (!isPaused)
             {
                 PauseGame();
-            }
+            }*/
         }
     }
 
