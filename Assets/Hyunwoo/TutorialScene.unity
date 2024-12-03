@@ -6881,7 +6881,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841848, y: -0.3999998}
+  offset: {x: 0.000000023841842, y: -0.3999997}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -12459,7 +12459,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: "shift \uC785\uB825"
+            m_StringArgument: "space \uC785\uB825"
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 569552868}
@@ -12494,18 +12494,6 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: SubtitleManager, Assembly-CSharp
           m_MethodName: ShowSubtitle
           m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Reinforcements are arriving soon.
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 262298085}
-          m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
-          m_MethodName: getTutorial2
-          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14399,7 +14387,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841848, y: -0.3999998}
+  offset: {x: 0.000000023841842, y: -0.3999997}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -15309,6 +15297,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4539359195874816188, guid: 95942504155c7d144b28fde71dc3a041,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539359195874816188, guid: 95942504155c7d144b28fde71dc3a041,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4539359195874816188, guid: 95942504155c7d144b28fde71dc3a041,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4660910960922201882, guid: 95942504155c7d144b28fde71dc3a041,
         type: 3}
       propertyPath: m_Name
@@ -15317,7 +15320,7 @@ PrefabInstance:
     - target: {fileID: 4660910960922201882, guid: 95942504155c7d144b28fde71dc3a041,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5455153232416454342, guid: 95942504155c7d144b28fde71dc3a041,
         type: 3}
