@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SkillButton : MonoBehaviour
 {
+    public UnityEvent onSkillActivate;
+
     public Button skillButton; // 스킬 버튼
     public Image cooldownOverlay; // 쿨타임 이미지 (투명도 조절용)
     public float cooldownTime = 5f; // 쿨타임(초)
@@ -65,6 +68,7 @@ public class SkillButton : MonoBehaviour
             Debug.Log("스킬 발동!");
             StartCoroutine(SlowMotionEffect());
             isSkillActive = true; // 스킬 활성화 상태
+            onSkillActivate?.Invoke();
         }
     }
 
