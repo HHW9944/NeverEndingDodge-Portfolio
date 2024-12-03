@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class Wave01 : MonoBehaviour
 {
-    public List<GameObject> enemyModelPrefabs;
     void Start()
     {
         
