@@ -13,14 +13,22 @@ public class Wave02 : MonoBehaviour
     private float spawnTimer = 0.0f;
     private bool[] hugeMissileSpawned = new bool[4]; // 거대 미사일 생성 상태
 
-    void Start()
+    void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         if (player == null)
         {
             Debug.LogError("Player GameObject is not assigned!");
             return;
         }
 
+        normalMissile = gameObject.GetComponent<WaveSpawner>().missilePrefabs[0];
+        hugeMissile = gameObject.GetComponent<WaveSpawner>().missilePrefabs[1];
+    }
+
+    void OnEnable()
+    {
         // 코루틴 시작
         StartCoroutine(SpawnMissiles());
     }
