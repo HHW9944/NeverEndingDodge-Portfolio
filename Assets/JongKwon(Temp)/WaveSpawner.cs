@@ -48,7 +48,7 @@ public class WaveSpawner : MonoBehaviour
 
         yield return new WaitForSeconds(wave02StartTime);
         Debug.Log($"Second action after {wave02StartTime} seconds!");
-        wave02.enabled = true;
+        //wave02.enabled = true;
 
         yield return new WaitForSeconds(wave03StartTime);
 
