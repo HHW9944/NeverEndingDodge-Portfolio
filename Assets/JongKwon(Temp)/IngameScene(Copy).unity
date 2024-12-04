@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cost: 30
-  Force: 500
+  Force: 200
   Cooldown: 1
   TrailDuration: 0.35
   MeshRefreshRate: 0.015
@@ -6900,7 +6900,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841803, y: -0.39999905}
+  offset: {x: 0.000000023841762, y: -0.39999837}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -12794,7 +12794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85d66eb971a8aa4faecfb6e1f288dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitValue: 10
+  InitValue: 3
+  IsDebug: 0
 --- !u!114 &1310071222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14432,7 +14433,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841803, y: -0.39999905}
+  offset: {x: 0.000000023841762, y: -0.39999837}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -17252,7 +17253,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -18436,6 +18437,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 139971803142912421, guid: 56887383306d53c4ab8f61532e7615a0,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1310071213}
+    - target: {fileID: 139971803142912421, guid: 56887383306d53c4ab8f61532e7615a0,
+        type: 3}
+      propertyPath: spawnDepth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 247626682332706276, guid: 56887383306d53c4ab8f61532e7615a0,
         type: 3}
       propertyPath: m_Name
@@ -18589,8 +18600,8 @@ SceneRoots:
   - {fileID: 1977451348}
   - {fileID: 986903374}
   - {fileID: 1610283715}
-  - {fileID: 1411190750}
   - {fileID: 1310071223}
+  - {fileID: 1411190750}
   - {fileID: 75605784}
   - {fileID: 148668304}
   - {fileID: 4262967340099662949}

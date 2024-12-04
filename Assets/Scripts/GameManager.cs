@@ -79,13 +79,13 @@ public class GameManager : MonoBehaviour
 
         distanceFromMiddle = Vector3.Distance(player.position, middlePoint.position);
 
-        if (distanceFromMiddle < shutdownArea)
-        {
-            _playerSpeed.Value = 10f;
-        }else
-        {
-            _playerSpeed.Value = 1f;
-        }
+        // if (distanceFromMiddle < shutdownArea)
+        // {
+        //     _playerSpeed.Value = 10f; // plz don't hard coding
+        // }else
+        // {
+        //     _playerSpeed.Value = 1f;
+        // }
         // Debug.Log(distanceFromMiddle + "m\n");
 
         /*if (distanceFromMiddle >= 100)

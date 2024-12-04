@@ -4,6 +4,7 @@ using UnityEngine;
 public class Speed : MonoBehaviour
 {
     public float InitValue;
+    public bool IsDebug = false;
     
     private float _value;
     public float Value
@@ -21,5 +22,13 @@ public class Speed : MonoBehaviour
     void Start()
     {
         _value = InitValue;
+    }
+
+    void Update()
+    {
+        if (IsDebug)
+        {
+            Debug.Log($"Speed: {Value}");
+        }
     }
 }
