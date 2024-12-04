@@ -1241,12 +1241,12 @@ GameObject:
   - component: {fileID: 283649026}
   - component: {fileID: 283649027}
   m_Layer: 0
-  m_Name: Wave01
+  m_Name: Wave02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &283649026
 Transform:
   m_ObjectHideFlags: 0
@@ -4452,12 +4452,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae99947324079f54385da62535b0273e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavePrefab: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  waveDuration: 40
-  intervalBetweenWaves: 40
-  totalGameTime: 120
-  elapsedTime: 0
+  wave01StartTime: 5
+  wave02StartTime: 10
+  wave03StartTime: 3
+  wave04StartTime: 3
+  wave05StartTime: 3
+  enemyPrefabs:
+  - {fileID: 7275176539390425954, guid: b69ddbc1b5379784c872b0996311fd12, type: 3}
+  - {fileID: 3393101774512844142, guid: 7001ad4285fc9324ebe16ff6b41b7a92, type: 3}
+  - {fileID: 4640082839775715069, guid: 81ddaef9d4697d84ba75e74a69f45a43, type: 3}
+  missilePrefabs:
+  - {fileID: 4737079409672071350, guid: f378689d30accff4887f1e8941141393, type: 3}
+  - {fileID: 1156803670215244, guid: 9c60c6e0e3c091047ac76d3acc4c7381, type: 3}
+  - {fileID: 1259865673663102, guid: 8b227e0429c621940acb9e2e8d18d12f, type: 3}
+  - {fileID: 1336385348731362, guid: 54958f8430f04ae4ab653a498c64314c, type: 3}
+  obastaclePrefabs:
+  - {fileID: 1056666096333670, guid: f603e71ddc270d54192200e95673e2a6, type: 3}
+  - {fileID: 1822345149752838, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
 --- !u!4 &544892081
 Transform:
   m_ObjectHideFlags: 0
@@ -7010,7 +7021,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841825, y: -0.3999994}
+  offset: {x: 0.000000023841848, y: -0.3999998}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -14625,7 +14636,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841825, y: -0.3999994}
+  offset: {x: 0.000000023841848, y: -0.3999998}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
