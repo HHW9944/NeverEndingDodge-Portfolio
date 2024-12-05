@@ -52,7 +52,6 @@ public class Player : MonoBehaviour, IDamageable
     public void OnShift(InputValue value)
     {
         UseSkill(ShiftSkill, value);
-        Debug.Log("Shift");
     }
 
     public void OnSpace(InputValue value)

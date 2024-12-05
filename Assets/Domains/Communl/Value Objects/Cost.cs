@@ -9,7 +9,7 @@ public class Cost : MonoBehaviour
     public float CostRegen = 1f;
 
     [Tooltip("Cost의 최대치")]
-    public float MaxCost = 100f;
+    public float MaxCost = 10f;
 
     [Tooltip("Cost가 재생되는지 여부")]
     public bool IsRegen = true;
