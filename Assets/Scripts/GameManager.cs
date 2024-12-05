@@ -50,8 +50,8 @@ public class GameManager : MonoBehaviour
     {
         isPaused = false;
         isGameOver = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
         // UIManager.instance.ShowCountdown(3);
         // StartCountdown();
         StartGame();
@@ -116,8 +116,8 @@ public class GameManager : MonoBehaviour
         isPaused = true;
         UIManager.instance.ShowPauseMenu();
         Time.timeScale = 0f;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // Cursor.lockState = CursorLockMode.None;
+        // Cursor.visible = true;
 
         // WarningEffect�� Ȱ��ȭ�Ǿ� ������ �Ͻ� ����
         if (UIManager.instance.warningEffect.gameObject.activeSelf)
@@ -195,8 +195,8 @@ public class GameManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f; // ���� �ð� �簳
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
         UIManager.instance.ShowGamePlayUI(); // ���� UI ǥ��
     }
 
