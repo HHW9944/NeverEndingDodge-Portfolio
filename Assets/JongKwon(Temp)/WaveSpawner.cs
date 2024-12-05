@@ -1,49 +1,59 @@
 using System.Collections;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public GameObject wavePrefab; // 생성할 웨이브의 프리팹
-    public Transform spawnPoint; // 웨이브가 생성되는 위치
-    public float waveDuration = 40f; // 각 웨이브의 지속 시간
-    public float intervalBetweenWaves = 40f; // 웨이브 간 간격
-    public int totalGameTime = 120; // 총 게임 시간
+    public float wave01StartTime = 5;
+    public float wave02StartTime = 5;
+    public float wave03StartTime = 5;
+    public float wave04StartTime = 5;
+    public float wave05StartTime = 5;
 
-    public float elapsedTime = 0f; // 경과 시간 (고정)
+    // 적, 미사일, 소행성 프리팹
+    public GameObject[] enemyPrefabs;
+    public GameObject[] missilePrefabs;
+    public GameObject[] obastaclePrefabs;
+
+    // wave 프리팹
+    // public GameObject wave01;
+    // public GameObject wave02;
+    // public GameObject wave03;
+    // public GameObject wave04;
+    // public GameObject wave05;
+
+    public Wave01 wave01;
+    public Wave02 wave02;
+    // Wave03 wave03;
+    // Wave04 wave04;
+    // Wave05 wave05;
 
     void Start()
     {
-        StartCoroutine(SpawnWaves());
+        wave01 = GetComponent<Wave01>();
+        wave02 = GetComponent<Wave02>();
+        // wave03.GetComponent<Wave03>();
+        // wave04.GetComponent<Wave04>();
+        // wave05.GetComponent<Wave05>();
+
+        // 코루틴 시작
+        StartCoroutine(SpawnWave());
     }
 
-    IEnumerator SpawnWaves()
+    IEnumerator SpawnWave()
     {
-        while (elapsedTime < totalGameTime)
-        {
-            // 웨이브 생성
-            SpawnWave();
+        yield return new WaitForSeconds(wave01StartTime);
+        Debug.Log($"First action after {wave01StartTime} seconds!");
+        wave01.enabled = true;
 
-            // 다음 웨이브까지 대기
-            yield return new WaitForSeconds(intervalBetweenWaves);
+        yield return new WaitForSeconds(wave02StartTime);
+        Debug.Log($"Second action after {wave02StartTime} seconds!");
+        //wave02.enabled = true;
 
-            // 경과 시간 업데이트
-            elapsedTime += intervalBetweenWaves;
-        }
+        yield return new WaitForSeconds(wave03StartTime);
 
-        Debug.Log("Game Over! All waves spawned.");
-    }
+        yield return new WaitForSeconds(wave04StartTime);
 
-    void SpawnWave()
-    {
-        if (wavePrefab != null && spawnPoint != null)
-        {
-            GameObject wave = Instantiate(wavePrefab, spawnPoint.position, spawnPoint.rotation);
-            Destroy(wave, waveDuration); // 웨이브 지속 시간 후 제거
-            Debug.Log($"Wave spawned at {elapsedTime} seconds.");
-        }
-        else
-        {
-            Debug.LogWarning("WavePrefab or SpawnPoint is not assigned.");
-        }
+        yield return new WaitForSeconds(wave05StartTime);
     }
 }

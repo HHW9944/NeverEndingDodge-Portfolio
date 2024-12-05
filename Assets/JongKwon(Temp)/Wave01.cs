@@ -3,80 +3,115 @@ using UnityEngine;
 
 public class Wave01 : MonoBehaviour
 {
-    public GameObject normalMissile; // 일반 미사일 프리팹
-    public GameObject hugeMissile;  // 거대 미사일 프리팹
+    public float spawnDepth = 100.0f;
+    GameObject normalMissile; // 일반 미사일 프리팹
+    GameObject hugeMissile;  // 거대 미사일 프리팹
+    GameObject redObstacle;
+    GameObject blueObstacle;
     public GameObject player;       // 플레이어 객체
-    public float spawnInterval = 0.04f; // 생성 간격 (초)
-    public float spawnDuration = 25.0f; // 생성 지속 시간 (초)
-    public float spawnRangeY = 24.0f; // Y축 랜덤 범위
-    public float spawnRangeZ = 24.0f; // Z축 랜덤 범위
-    private float spawnTimer = 0.0f;
-    private bool[] hugeMissileSpawned = new bool[4]; // 거대 미사일 생성 상태
+    
+    public float duration = 30.0f; // 총 실행 시간
+    private float startTime; // 시작 시간
 
-    void Start()
+    // 소환 정보 (소환 시간, 위치, 프리팹)
+    public struct SpawnInfo
+    {
+        public float time; // 소환 시간
+        public Vector3 position; // 소환 위치
+        public GameObject prefab; // 소환할 프리팹
+    }
+
+    public SpawnInfo[] spawnSchedule; // 소환 스케줄
+
+    void Awake()
     {
         if (player == null)
         {
-            Debug.LogError("Player GameObject is not assigned!");
-            return;
+            player = GameObject.FindGameObjectWithTag("Player");
         }
+
+        if (player == null)
+        {
+            Debug.LogError("Player GameObject is not assigned!");
+        }
+
+        redObstacle = gameObject.GetComponent<WaveSpawner>().obastaclePrefabs[0];
+        blueObstacle = gameObject.GetComponent<WaveSpawner>().obastaclePrefabs[1];
+
+        // 기본 소환 스케줄 설정
+        spawnSchedule = new SpawnInfo[]
+        {
+            new SpawnInfo { time = 0.0f, position = new Vector3(spawnDepth, player.transform.position.y+5, player.transform.position.z+3), prefab = blueObstacle },
+            new SpawnInfo { time = 1.5f, position = new Vector3(spawnDepth, player.transform.position.y-2, player.transform.position.z+4), prefab = redObstacle },
+            new SpawnInfo { time = 4.0f, position = new Vector3(spawnDepth, player.transform.position.y+4, player.transform.position.z-2), prefab = blueObstacle },
+            new SpawnInfo { time = 5.5f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z), prefab = redObstacle },
+            new SpawnInfo { time = 7.0f, position = new Vector3(spawnDepth, player.transform.position.y+1, player.transform.position.z-1), prefab = redObstacle },
+            new SpawnInfo { time = 9.5f, position = new Vector3(spawnDepth, player.transform.position.y-4, player.transform.position.z-3), prefab = redObstacle },
+            new SpawnInfo { time = 10.5f, position = new Vector3(spawnDepth, player.transform.position.y-1, player.transform.position.z), prefab = redObstacle },
+            new SpawnInfo { time = 13.5f, position = new Vector3(spawnDepth, player.transform.position.y+3, player.transform.position.z-2), prefab = redObstacle },
+            new SpawnInfo { time = 15.0f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z-1), prefab = redObstacle },
+            new SpawnInfo { time = 16.5f, position = new Vector3(spawnDepth, player.transform.position.y+3, player.transform.position.z+1), prefab = blueObstacle },
+            new SpawnInfo { time = 17.0f, position = new Vector3(spawnDepth, player.transform.position.y-1, player.transform.position.z), prefab = redObstacle },
+            new SpawnInfo { time = 19.0f, position = new Vector3(spawnDepth, player.transform.position.y+1, player.transform.position.z+3), prefab = blueObstacle },
+
+            new SpawnInfo { time = 20.5f, position = new Vector3(spawnDepth, player.transform.position.y+3, player.transform.position.z+1), prefab = blueObstacle },
+            new SpawnInfo { time = 21.0f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z+1), prefab = redObstacle },
+            new SpawnInfo { time = 22.0f, position = new Vector3(spawnDepth, player.transform.position.y+2, player.transform.position.z-3), prefab = redObstacle },
+            new SpawnInfo { time = 22.5f, position = new Vector3(spawnDepth, player.transform.position.y-1, player.transform.position.z+2), prefab = blueObstacle },
+            new SpawnInfo { time = 23.0f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z), prefab = blueObstacle },
+            new SpawnInfo { time = 23.0f, position = new Vector3(spawnDepth, player.transform.position.y-1, player.transform.position.z-1), prefab = redObstacle },
+            new SpawnInfo { time = 24.5f, position = new Vector3(spawnDepth, player.transform.position.y+2, player.transform.position.z+2), prefab = redObstacle },
+            new SpawnInfo { time = 25.0f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z), prefab = blueObstacle },
+            new SpawnInfo { time = 25.0f, position = new Vector3(spawnDepth, player.transform.position.y-1, player.transform.position.z-1), prefab = redObstacle },
+            new SpawnInfo { time = 25.5f, position = new Vector3(spawnDepth, player.transform.position.y+2, player.transform.position.z), prefab = blueObstacle },
+            new SpawnInfo { time = 25.5f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z+2), prefab = redObstacle },
+            new SpawnInfo { time = 26.0f, position = new Vector3(spawnDepth, player.transform.position.y+1, player.transform.position.z-2), prefab = redObstacle },
+            new SpawnInfo { time = 27.0f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z+4), prefab = blueObstacle },
+            new SpawnInfo { time = 27.5f, position = new Vector3(spawnDepth, player.transform.position.y-1, player.transform.position.z+2), prefab = blueObstacle },
+            new SpawnInfo { time = 27.5f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z), prefab = redObstacle },
+            new SpawnInfo { time = 28.0f, position = new Vector3(spawnDepth, player.transform.position.y+2, player.transform.position.z), prefab = redObstacle },
+            new SpawnInfo { time = 28.5f, position = new Vector3(spawnDepth, player.transform.position.y+4, player.transform.position.z+3), prefab = blueObstacle },
+            new SpawnInfo { time = 29.0f, position = new Vector3(spawnDepth, player.transform.position.y-1, player.transform.position.z+2), prefab = blueObstacle },
+            new SpawnInfo { time = 29.0f, position = new Vector3(spawnDepth, player.transform.position.y+1, player.transform.position.z), prefab = redObstacle },
+            new SpawnInfo { time = 29.5f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z-2), prefab = redObstacle },
+        };
+    }
+
+    void OnEnable()
+    {
+        // 시작 시간 기록
+        startTime = Time.time;
 
         // 코루틴 시작
-        StartCoroutine(SpawnMissiles());
+        StartCoroutine(SpawnWithSchedule());
     }
 
-    IEnumerator SpawnMissiles()
+    IEnumerator SpawnWithSchedule()
     {
-        float elapsedTime = 0.0f;
+        int scheduleIndex = 0;
 
-        while (elapsedTime < spawnDuration)
+        while (Time.time - startTime < duration)
         {
-            // 플레이어 주변 랜덤 위치 계산 (x=100 고정)
-            Vector3 spawnPosition = new Vector3(
-                100, 
-                player.transform.position.y + Random.Range(-spawnRangeY, spawnRangeY),
-                player.transform.position.z + Random.Range(-spawnRangeZ, spawnRangeZ)
-            );
+            // 현재 시간
+            float currentTime = Time.time - startTime;
 
-            // +y를 -x로 향하도록 회전값 설정
-            Quaternion spawnRotation = Quaternion.Euler(0, 0, 90);
+            // 현재 스케줄의 소환 시간이 되었는지 확인
+            while (scheduleIndex < spawnSchedule.Length && spawnSchedule[scheduleIndex].time <= currentTime)
+            {
+                Quaternion spawnRotation = Quaternion.Euler(0, 0, 90);
+                // 스케줄에 따라 프리팹 소환
+                Instantiate(
+                    spawnSchedule[scheduleIndex].prefab,
+                    spawnSchedule[scheduleIndex].position,
+                    spawnRotation
+                );
 
-            // 일반 미사일 생성
-            Instantiate(normalMissile, spawnPosition, spawnRotation);
-
-            // 거대 미사일 생성 로직
-            if (!hugeMissileSpawned[0] && elapsedTime >= 5.0f)
-            {
-                SpawnHugeMissile();
-                hugeMissileSpawned[0] = true;
-            }
-            else if (!hugeMissileSpawned[1] && elapsedTime >= 10.0f)
-            {
-                SpawnHugeMissile();
-                hugeMissileSpawned[1] = true;
-            }
-            else if (!hugeMissileSpawned[2] && elapsedTime >= 15.0f)
-            {
-                SpawnHugeMissile();
-                hugeMissileSpawned[2] = true;
-            }
-            else if (!hugeMissileSpawned[3] && elapsedTime >= 20.0f)
-            {
-                SpawnHugeMissile();
-                hugeMissileSpawned[3] = true;
+                // 다음 스케줄로 이동
+                scheduleIndex++;
             }
 
-            // 시간 갱신
-            elapsedTime += spawnInterval;
-
-            // 다음 생성까지 대기
-            yield return new WaitForSeconds(spawnInterval);
+            // 다음 프레임까지 대기
+            yield return null;
         }
-    }
-
-    void SpawnHugeMissile()
-    {
-        Vector3 hugeMissilePosition = player.transform.position + new Vector3(100, 0, 0); // 플레이어 정면
-        Instantiate(hugeMissile, hugeMissilePosition, Quaternion.Euler(0, 0, 90));
     }
 }

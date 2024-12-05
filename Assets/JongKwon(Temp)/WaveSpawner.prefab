@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &247626682332706276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2797339863076730155}
+  - component: {fileID: 2941552441138272503}
+  - component: {fileID: 139971803142912421}
+  - component: {fileID: 4574751203952512387}
+  m_Layer: 0
+  m_Name: WaveSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2797339863076730155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247626682332706276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2941552441138272503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247626682332706276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae99947324079f54385da62535b0273e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wave01StartTime: 5
+  wave02StartTime: 10
+  wave03StartTime: 3
+  wave04StartTime: 3
+  wave05StartTime: 3
+  enemyPrefabs:
+  - {fileID: 7275176539390425954, guid: b69ddbc1b5379784c872b0996311fd12, type: 3}
+  - {fileID: 3393101774512844142, guid: 7001ad4285fc9324ebe16ff6b41b7a92, type: 3}
+  - {fileID: 4640082839775715069, guid: 81ddaef9d4697d84ba75e74a69f45a43, type: 3}
+  missilePrefabs:
+  - {fileID: 4737079409672071350, guid: f378689d30accff4887f1e8941141393, type: 3}
+  - {fileID: 1156803670215244, guid: 9c60c6e0e3c091047ac76d3acc4c7381, type: 3}
+  - {fileID: 1259865673663102, guid: 8b227e0429c621940acb9e2e8d18d12f, type: 3}
+  - {fileID: 1336385348731362, guid: 54958f8430f04ae4ab653a498c64314c, type: 3}
+  obastaclePrefabs:
+  - {fileID: 1822345149752838, guid: 45b62242ff99b0a48a47f713cd6d1687, type: 3}
+  - {fileID: 1056666096333670, guid: f603e71ddc270d54192200e95673e2a6, type: 3}
+  wave01: {fileID: 0}
+  wave02: {fileID: 0}
+--- !u!114 &139971803142912421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247626682332706276}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629bbc7925a2a1043a8f6868a5afaee2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  spawnInterval: 0.04
+  spawnDuration: 25
+  spawnRangeY: 24
+  spawnRangeZ: 24
+--- !u!114 &4574751203952512387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247626682332706276}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6034a01d8dc904cbeefcb2d1005314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMissile: {fileID: 0}
+  hugeMissile: {fileID: 0}
+  player: {fileID: 0}
+  spawnInterval: 0.04
+  spawnDuration: 25
+  spawnRangeY: 24
+  spawnRangeZ: 24
