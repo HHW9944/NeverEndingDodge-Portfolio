@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour, IDamageable
 {
     [Header("Skill Slots")]
-    public Skill LeftClickSkill;
-    public Skill RightClickSkill;
+    public Skill QSkill;
+    public Skill RSkill;
     public Skill ShiftSkill;
     public Skill SpaceSkill;
 
@@ -39,19 +39,20 @@ public class Player : MonoBehaviour, IDamageable
         _canTakeDamage = true;
     }
 
-    public void OnLeftClick(InputValue value)
+    public void OnQ(InputValue value)
     {
-        UseSkill(LeftClickSkill, value);
+        UseSkill(QSkill, value);
     }
 
-    public void OnRightClick(InputValue value)
+    public void OnR(InputValue value)
     {
-        UseSkill(RightClickSkill, value);
+        UseSkill(RSkill, value);
     }
 
     public void OnShift(InputValue value)
     {
         UseSkill(ShiftSkill, value);
+        Debug.Log("Shift");
     }
 
     public void OnSpace(InputValue value)

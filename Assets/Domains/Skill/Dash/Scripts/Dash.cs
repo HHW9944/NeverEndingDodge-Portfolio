@@ -54,7 +54,6 @@ public class Dash : Skill
             return;
         }
 
-        _playerCost.UseCost(Cost);
         StartDash();
     }
 
@@ -63,11 +62,16 @@ public class Dash : Skill
         return Cost;
     }
 
+    public override float GetCooldownTime()
+    {
+        return Cooldown;
+    }
+
     private void StartDash()
     {
         Vector3 movementDirection = _playerMove.GetMovementDirection();
 
-        if (movementDirection == Vector3.zero)
+        if (movementDirection.sqrMagnitude <= 0.01f)
         {
             return;
         }
@@ -78,6 +82,7 @@ public class Dash : Skill
 
         // 대시 시작
         _cooldownTimer = Cooldown;
+        _playerCost.UseCost(Cost);
         _playerMove.AddForce(movementDirection * Force, ForceMode.Impulse);
         OnUse?.Invoke();
         StartCoroutine(ActivateTrail(TrailDuration));

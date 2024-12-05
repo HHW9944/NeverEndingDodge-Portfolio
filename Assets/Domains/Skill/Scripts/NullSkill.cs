@@ -11,4 +11,9 @@ public class NullSkill : Skill
     {
         return 0;
     }
+
+    public override float GetCooldownTime()
+    {
+        return 0;
+    }
 }

@@ -13,6 +13,7 @@ public class Barrier : Skill, ICancellable, ICollisionDamageable
     [SerializeField] private EnergyShield _energyShield;
     [SerializeField] private Cost _playerCost;
 
+    [Header("Events")]
     public UnityEvent onBarrierEnable;
     public UnityEvent onBarrierDisable;
     public UnityEvent onBarrierCollision;
@@ -31,6 +32,11 @@ public class Barrier : Skill, ICancellable, ICollisionDamageable
     }
 
     public override float GetCost()
+    {
+        return 0;
+    }
+
+    public override float GetCooldownTime()
     {
         return 0;
     }
