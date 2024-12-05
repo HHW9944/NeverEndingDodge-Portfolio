@@ -14,11 +14,15 @@ public class TutorialUIManager : MonoBehaviour
     public GameObject TutorialUI;
     public GameObject Tutorial1UICanvas;
     public GameObject Tutorial2UICanvas;
+    public GameObject Tutorial3UICanvas;
 
     public Image buttonW;
     public Image buttonA;
     public Image buttonS;
     public Image buttonD;
+    public Image buttonSpace;
+
+    public Slider quest5Slider;
 
     public TextMeshProUGUI tutorialQuest1;
     public TextMeshProUGUI tutorialQuest2;
@@ -43,30 +47,43 @@ public class TutorialUIManager : MonoBehaviour
         if(TutorialManager.tutorial1)
         {
             Tutorial1UICanvas.SetActive(true);
-            if(TutorialManager.tutorialQuest1)
-            {
-                buttonW.color = new Color(0f, 0f, 0f, 51 / 255f);
-                tutorialQuest1.color = Color.red; // 임시
-            }
-            if (TutorialManager.tutorialQuest2)
-            {
-                buttonA.color = new Color(0f, 0f, 0f, 51 / 255f);
-                tutorialQuest2.color = Color.red; // 임시
-            }
-            if (TutorialManager.tutorialQuest3)
-            {
-                buttonS.color = new Color(0f, 0f, 0f, 51 / 255f);
-                tutorialQuest3.color = Color.red; // 임시
-            }
-            if (TutorialManager.tutorialQuest4)
-            {
-                buttonD.color = new Color(0f, 0f, 0f, 51 / 255f);
-                tutorialQuest4.color = Color.red; // 임시
-            }
+            
+            buttonW.color = TutorialManager.keyboardWPressed ? new Color(255 / 255f, 135 / 255f, 135 / 255f, 255 / 255f) : new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+            buttonA.color = TutorialManager.keyboardAPressed ? new Color(255 / 255f, 135 / 255f, 135 / 255f, 255 / 255f) : new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+            buttonS.color = TutorialManager.keyboardSPressed ? new Color(255 / 255f, 135 / 255f, 135 / 255f, 255 / 255f) : new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+            buttonD.color = TutorialManager.keyboardDPressed ? new Color(255 / 255f, 135 / 255f, 135 / 255f, 255 / 255f) : new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+
+            tutorialQuest1.color = TutorialManager.tutorialQuest1 ? Color.green : new Color(1f, 1f, 1f, 1f);
+            tutorialQuest2.color = TutorialManager.tutorialQuest2 ? Color.green : new Color(1f, 1f, 1f, 1f);
+            tutorialQuest3.color = TutorialManager.tutorialQuest3 ? Color.green : new Color(1f, 1f, 1f, 1f);
+            tutorialQuest4.color = TutorialManager.tutorialQuest4 ? Color.green : new Color(1f, 1f, 1f, 1f);
         }
         else 
         {
             Tutorial1UICanvas.SetActive(false);
+        }
+
+        if(TutorialManager.tutorial2)
+        {
+            Tutorial2UICanvas.SetActive(true);
+
+            buttonSpace.color = TutorialManager.keyboardSpacePressed ? new Color(255 / 255f, 135 / 255f, 135 / 255f, 255 / 255f) : new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+            quest5Slider.value = TutorialManager.spacePressProgress;
+            Debug.Log(TutorialManager.spacePressProgress);
+        }
+        else
+        {
+            Tutorial2UICanvas.SetActive(false);
+        }
+
+        if (TutorialManager.tutorial3)
+        {
+            Tutorial3UICanvas.SetActive(true);
+        }
+        else
+        {
+            Tutorial3UICanvas.SetActive(false);
+            
         }
     }
 

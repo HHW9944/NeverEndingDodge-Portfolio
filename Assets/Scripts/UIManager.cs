@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
     {
         instance = this;
 
-        gamePlayUICanvas.SetActive(true);
+        gamePlayUICanvas.SetActive(false);
         gameOverUICanvas.SetActive(false);
 
         resumeButton.onClick.AddListener(OnResumeButtonClick);
