@@ -5908,7 +5908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4199406669c73b443a8261fb9af57d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 20
+  Cost: 35
   slowMotionDuration: 3
   slowMotionScale: 0.2
   cooldownTime: 5
@@ -7513,7 +7513,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841825, y: -0.3999994}
+  offset: {x: 0.000000023841814, y: -0.39999923}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2
@@ -15019,7 +15019,7 @@ MonoBehaviour:
   useGlobalAngle: 1
   offsetAngle: 97.94002
   offsetDistance: 0.4
-  offset: {x: 0.000000023841825, y: -0.3999994}
+  offset: {x: 0.000000023841814, y: -0.39999923}
   color: {r: 0.31132078, g: 0.013216442, b: 0.013216442, a: 0.6}
   inset: 0
   blendMode: 2

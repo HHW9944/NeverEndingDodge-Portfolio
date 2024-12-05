@@ -36,7 +36,7 @@ public class Slow : Skill
     private Color _originalBackgroundColor; // 원래의 Background Color 저장
     private float cooldownTimer;
     private bool _isCooldown = false;
-    private bool _isSkillActive = false; // 스킬 활성화 여부
+    private bool _isActive = false;
 
     public override float GetCost()
     {
@@ -45,8 +45,10 @@ public class Slow : Skill
 
     public override void UseSkill()
     {
+        if (_isCooldown || _isActive) return;
+        _playerCost.UseCost(Cost);
+        _isActive = true;
         StartCoroutine(SlowMotionEffect());
-        _isSkillActive = true; // 스킬 활성화 상태
         onSkillActivate?.Invoke();
     }
 
@@ -108,8 +110,8 @@ public class Slow : Skill
         }
 
         if (IsDebug) Debug.Log("슬로우 모션 종료");
+        _isActive = false;
         StartCooldown(); // 슬로우 모션 종료 후 쿨타임 시작
-        _isSkillActive = false; // 스킬 비활성화 상태
     }
 
     void StartCooldown()
