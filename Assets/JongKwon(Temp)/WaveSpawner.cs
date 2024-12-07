@@ -41,18 +41,26 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+        // wave01StartTime에 따라 대기 후 활성화
         yield return new WaitForSeconds(wave01StartTime);
-        Debug.Log($"First action after {wave01StartTime} seconds!");
+        Debug.Log($"Wave01 enabled at {wave01StartTime} seconds!");
         wave01.enabled = true;
 
-        yield return new WaitForSeconds(wave02StartTime);
-        Debug.Log($"Second action after {wave02StartTime} seconds!");
+        // wave02StartTime에 따라 대기 후 활성화
+        yield return new WaitForSeconds(wave02StartTime - wave01StartTime);
+        Debug.Log($"Wave02 enabled at {wave02StartTime} seconds!");
         wave02.enabled = true;
 
-        yield return new WaitForSeconds(wave03StartTime);
+        // wave03StartTime에 따라 대기 후 활성화
+        yield return new WaitForSeconds(wave03StartTime - wave02StartTime);
+        Debug.Log($"Wave03 enabled at {wave03StartTime} seconds!");
 
-        yield return new WaitForSeconds(wave04StartTime);
+        // wave04StartTime에 따라 대기 후 활성화
+        yield return new WaitForSeconds(wave04StartTime - wave03StartTime);
+        Debug.Log($"Wave04 enabled at {wave04StartTime} seconds!");
 
-        yield return new WaitForSeconds(wave05StartTime);
+        // wave05StartTime에 따라 대기 후 활성화
+        yield return new WaitForSeconds(wave05StartTime - wave04StartTime);
+        Debug.Log($"Wave05 enabled at {wave05StartTime} seconds!");
     }
 }
