@@ -1,11 +1,10 @@
 using System.Collections;
-using MoreMountains.Feedbacks;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
     public float wave01StartTime = 5;
-    public float wave02StartTime = 5;
+    public float wave02StartTime = 30;
     public float wave03StartTime = 5;
     public float wave04StartTime = 5;
     public float wave05StartTime = 5;
@@ -48,7 +47,7 @@ public class WaveSpawner : MonoBehaviour
 
         yield return new WaitForSeconds(wave02StartTime);
         Debug.Log($"Second action after {wave02StartTime} seconds!");
-        //wave02.enabled = true;
+        wave02.enabled = true;
 
         yield return new WaitForSeconds(wave03StartTime);
 

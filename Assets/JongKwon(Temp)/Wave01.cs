@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Wave01 : MonoBehaviour
 {
-    public float spawnDepth = 100.0f;
+    float spawnDepth = 100.0f;
     GameObject normalMissile; // 일반 미사일 프리팹
     GameObject hugeMissile;  // 거대 미사일 프리팹
     GameObject redObstacle;
