@@ -23,6 +23,8 @@ public class TutorialUIManager : MonoBehaviour
     public GameObject PauseUICanvas;
     public GameObject DarkOverlay;
 
+    public GameObject joystickUI;
+
     public Image tutorial1ButtonW;
     public Image tutorial1ButtonA;
     public Image tutorial1ButtonS;
@@ -69,6 +71,7 @@ public class TutorialUIManager : MonoBehaviour
         instance = this;
         TutorialUI.SetActive(true);
         PlayerUI.SetActive(false);
+        joystickUI.SetActive(false);
 
         if (tutorial1ButtonW != null) originalScaleTutorial1W = tutorial1ButtonW.rectTransform.localScale;
         if (tutorial1ButtonA != null) originalScaleTutorial1A = tutorial1ButtonA.rectTransform.localScale;
@@ -94,12 +97,14 @@ public class TutorialUIManager : MonoBehaviour
             TutorialUI.SetActive(false);
             PlayerUI.SetActive(false);
             SubTitle.SetActive(false);
+            joystickUI.SetActive(false);
         }
         else
         {
             PauseUICanvas.SetActive(false);
             TutorialUI.SetActive(true);
             SubTitle.SetActive(true);
+            if (TutorialManager.step1Started) joystickUI.SetActive(true);
             if (TutorialManager.step2) PlayerUI.SetActive(true);
         }
 
@@ -121,6 +126,8 @@ public class TutorialUIManager : MonoBehaviour
             tutorialQuest2.color = TutorialManager.tutorialQuest2 ? Color.green : new Color(1f, 1f, 1f, 1f);
             tutorialQuest3.color = TutorialManager.tutorialQuest3 ? Color.green : new Color(1f, 1f, 1f, 1f);
             tutorialQuest4.color = TutorialManager.tutorialQuest4 ? Color.green : new Color(1f, 1f, 1f, 1f);
+
+            joystickUI.SetActive(true);
         }
         else 
         {

@@ -13,6 +13,16 @@ public class TutorialManager : MonoBehaviour
     public bool isInputActive = false;
     public static bool isPaused = false;
 
+    [SerializeField]
+    private RectTransform joystickHandle; // Joystick의 Handle RectTransform 참조
+
+    [SerializeField]
+    private RectTransform joystickBackground; // Joystick의 Background RectTransform 참조
+
+    [SerializeField]
+    private float joystickThreshold = 0.8f; // 입력 임계값
+    Vector2 joystickInput;
+
     public static bool keyboardWPressed = false;
     public static bool keyboardAPressed = false;
     public static bool keyboardSPressed = false;
@@ -27,6 +37,9 @@ public class TutorialManager : MonoBehaviour
     private float keyDPressStartTime = -1f;
     private float pressDurationThreshold = 0.5f; // 0.5초 이상 눌러야 함
 
+    private float joystickVertical;
+    private float joystickHorizontal;
+
     private float spacePressStartTime = -1f; // Space 키가 눌리기 시작한 시간
     private float spacePressDurationThreshold = 1f; // 1초 이상 눌러야 함
     public static float spacePressProgress = 0f;
@@ -37,6 +50,8 @@ public class TutorialManager : MonoBehaviour
     public static bool step4 = false;
     public static bool step5 = false;
     public static bool step6 = false;
+
+    public static bool step1Started = false;
 
     public static bool tutorialQuest1 = false; //Quest 1 ~ 4 : WASD Movement Quest in step1
     public static bool tutorialQuest2 = false;
@@ -62,8 +77,8 @@ public class TutorialManager : MonoBehaviour
     {
         instance = this;
         isPaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        /*Cursor.lockState = CursorLockMode.Locked;*/
+        Cursor.visible = true;
 
         shootPoint = tutorialEnemy1.transform.Find("ShootPoint(left)");
         if (shootPoint == null)
@@ -88,6 +103,7 @@ public class TutorialManager : MonoBehaviour
     {
         _playerCost.Value = 10;
 
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
@@ -108,11 +124,27 @@ public class TutorialManager : MonoBehaviour
                 timer.Resume();
             }
 
-            keyboardWPressed = Input.GetKey(KeyCode.W);
-            keyboardAPressed = Input.GetKey(KeyCode.A);
-            keyboardSPressed = Input.GetKey(KeyCode.S);
-            keyboardDPressed = Input.GetKey(KeyCode.D);
-            keyboardSpacePressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+            joystickVertical = Input.GetAxis("Vertical");
+            joystickHorizontal = Input.GetAxis("Horizontal");
+
+            keyboardWPressed = Input.GetKey(KeyCode.W); // W 키 또는 조이스틱 위쪽
+            keyboardSPressed = Input.GetKey(KeyCode.S); // S 키 또는 조이스틱 아래쪽
+            keyboardAPressed = Input.GetKey(KeyCode.A); // A 키 또는 조이스틱 왼쪽
+            keyboardDPressed = Input.GetKey(KeyCode.D); // D 키 또는 조이스틱 오른쪽
+
+            joystickInput = joystickHandle.anchoredPosition / (joystickBackground.sizeDelta / 2f); // 로컬 좌표 기준 정규화
+            bool joystickWPressed = joystickInput.y > joystickThreshold; // 위쪽
+            bool joystickSPressed = joystickInput.y < -joystickThreshold; // 아래쪽
+            bool joystickAPressed = joystickInput.x < -joystickThreshold; // 왼쪽
+            bool joystickDPressed = joystickInput.x > joystickThreshold; // 오른쪽
+
+            Debug.Log($"Joystick Input: {joystickInput}");
+            Debug.Log($"W: {joystickWPressed}, S: {joystickSPressed}, A: {joystickAPressed}, D: {joystickDPressed}");
+
+            keyboardWPressed |= joystickWPressed;
+            keyboardSPressed |= joystickSPressed;
+            keyboardAPressed |= joystickAPressed;
+            keyboardDPressed |= joystickDPressed;
 
             if (keyboardWPressed)
             {
@@ -133,7 +165,7 @@ public class TutorialManager : MonoBehaviour
             }
 
             // A 키 입력 처리
-            if (Input.GetKey(KeyCode.A))
+            if (keyboardAPressed)
             {
                 if (keyboardDPressed) return;
 
@@ -152,7 +184,7 @@ public class TutorialManager : MonoBehaviour
             }
 
             // S 키 입력 처리
-            if (Input.GetKey(KeyCode.S))
+            if (keyboardSPressed)
             {
                 if (keyboardWPressed) return;
 
@@ -171,7 +203,7 @@ public class TutorialManager : MonoBehaviour
             }
 
             // D 키 입력 처리
-            if (Input.GetKey(KeyCode.D))
+            if (keyboardDPressed)
             {
                 if (keyboardAPressed) return;
 
@@ -191,36 +223,18 @@ public class TutorialManager : MonoBehaviour
         }
         if (step3)
         {
-            keyboardSpacePressed = Input.GetKey(KeyCode.Space);
-
+            if (!keyboardSpacePressed)
+            {
+                keyboardSpacePressed = Input.GetKey(KeyCode.Space);
+            }
             // Space 키 입력 처리
             if (keyboardSpacePressed)
             {
-                if (spacePressStartTime < 0f) // Space 눌리기 시작한 시간을 저장
-                {
-                    spacePressStartTime = Time.time;
-                }
-                else
-                {
-                    // 현재 누르고 있는 시간을 기준으로 슬라이더 값 계산
-                    float elapsedTime = Time.time - spacePressStartTime;
-                    spacePressProgress = Mathf.Clamp01(elapsedTime / spacePressDurationThreshold); // 0~1 사이로 제한
-
-                    if (elapsedTime >= spacePressDurationThreshold) // 1초 이상 눌렸는지 확인
-                    {
-                        Debug.Log("Space 입력 완료");
-
-                        step3 = false;
-                        timer.Resume();
-
-                        spacePressStartTime = -1f; // 초기화
-                    }
-                }
+                ProcessSpacePress();
             }
             else
             {
-                spacePressStartTime = -1f; // Space를 떼면 초기화
-                spacePressProgress = 0f;
+                ResetSpacePress();
             }
         }
         
@@ -239,11 +253,52 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    public void ProcessSpacePress()
+    {
+        if (spacePressStartTime < 0f)
+        {
+            spacePressStartTime = Time.time;
+        }
+        else
+        {
+            float elapsedTime = Time.time - spacePressStartTime;
+            spacePressProgress = Mathf.Clamp01(elapsedTime / spacePressDurationThreshold);
+
+            if (elapsedTime >= spacePressDurationThreshold) // 1초 이상 눌렸는지 확인
+            {
+                Debug.Log("Space 입력 완료");
+
+                step3 = false;
+                timer.Resume();
+
+                spacePressStartTime = -1f; // 초기화
+            }
+        }
+    }
+
+    public void ResetSpacePress()
+    {
+        spacePressStartTime = -1f;
+        spacePressProgress = 0f;
+    }
+
+    public void OnSpaceSkillButtonPress()
+    {
+        // Space 키 입력과 동일한 처리
+        keyboardSpacePressed = true;
+    }
+
+    public void OutSpaceSkillButtonPress()
+    {
+        keyboardSpacePressed = false;
+    }
+
     public void getStep1()
     {
         //움직임 커맨드 튜토리얼
         Debug.Log("step1");
         step1 = true;
+        step1Started = true;
     }
 
     public void getStep2()
@@ -358,8 +413,8 @@ public class TutorialManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        /*Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;*/
         Debug.Log("Game Resumed");
     }
 }
