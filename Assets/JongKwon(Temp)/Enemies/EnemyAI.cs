@@ -17,12 +17,13 @@ public class EnemyAI : MonoBehaviour
 
     private Vector3 targetPosition; // 목표 위치
     private bool hasReachedTarget = false; // 목표 위치에 도달했는지 여부
+    private bool lookAtPlayer = true;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        if (player != null)
+        if (player != null && lookAtPlayer)
         {
             // 플레이어 방향을 계산하여 적이 생성될 때 플레이어를 바로 바라보도록 설정
             Vector3 direction = player.transform.position - transform.position;
@@ -45,11 +46,14 @@ public class EnemyAI : MonoBehaviour
 
             if (isAlwaysRecognizePlayer || distanceToPlayer <= recognitionDistance)
             {
-                // 플레이어를 바라보도록 회전
-                Vector3 direction = player.transform.position - transform.position;
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
+                if (lookAtPlayer)
+                {
+                    // 플레이어를 바라보도록 회전
+                    Vector3 direction = player.transform.position - transform.position;
+                    Quaternion targetRotation = Quaternion.LookRotation(direction);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                }
+                
                 // y, z값을 플레이어와 일치시키기
                 // Vector3 newPosition = transform.position;
                 // newPosition.y = player.transform.position.y; // y 좌표 일치
@@ -68,8 +72,6 @@ public class EnemyAI : MonoBehaviour
                 hasReachedTarget = true;
                 // 목표 위치에 도달한 후 추가적인 처리가 필요하면 여기서 할 수 있음
                 StartCoroutine(ShootMissilesWithDelay());
-
-                // 돌진
             }
         }
     }
@@ -80,34 +82,68 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
         yield return new WaitForSeconds(2.0f);
-        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
         yield return new WaitForSeconds(2.0f);
         Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
         yield return new WaitForSeconds(1.0f);
-        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
         yield return new WaitForSeconds(1.0f);
         Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
         yield return new WaitForSeconds(1.0f);
-        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
         yield return new WaitForSeconds(0.5f);
         Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
         yield return new WaitForSeconds(0.5f);
-        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
         yield return new WaitForSeconds(0.25f);
         Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
         yield return new WaitForSeconds(0.25f);
-        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
 
         yield return new WaitForSeconds(2.5f);
 
-        Instantiate(bomb, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(bomb, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
         yield return new WaitForSeconds(2.5f);
         Instantiate(bomb, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
         yield return new WaitForSeconds(1.5f);
-        Instantiate(bomb, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(bomb, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(0.25f);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(0.25f);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(0.25f);
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        
+
+        yield return new WaitForSeconds(3.0f);
+
+        // 돌진
+        lookAtPlayer = false;
+        Vector3 dashTargetPosition = player.transform.position; // 돌진 시작 시의 플레이어 위치 저장
+        Quaternion dashTargetRotation = Quaternion.LookRotation(dashTargetPosition - transform.position); // 목표 위치를 향한 방향 계산
+        transform.rotation = dashTargetRotation; // 목표 방향으로 회전
+
+        float dashSpeed = 60.0f; // 돌진 속도
+
+        // 플레이어의 초기 위치를 저장하여 해당 위치로 계속 돌진
+        Vector3 dashDirection = (dashTargetPosition - transform.position).normalized; // 돌진 시작 시의 방향
+
+        while (true) // 지속적으로 돌진
+        {
+            // 저장된 방향으로 계속 이동
+            transform.position += dashDirection * dashSpeed * Time.deltaTime;
+            yield return null;
+        }
 
     }
-
 }

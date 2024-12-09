@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4735285757700827592}
   - component: {fileID: 4749913337628870100}
   - component: {fileID: 1080647094294857046}
+  - component: {fileID: 3755264355573936848}
   m_Layer: 7
   m_Name: StarSparrow9
   m_TagString: Untagged
@@ -88,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025e22178815f5c438e38bf773803a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitValue: 3
+  InitValue: 1
 --- !u!114 &1080647094294857046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +102,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3296607bc4c37af4180fe658bf99374f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &3755264355573936848
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7275176539390425954}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2746435131391062208, guid: 1be931e70b01b2b409458d5802a32af8, type: 3}
 --- !u!1 &8160909403803684599
 GameObject:
   m_ObjectHideFlags: 0

@@ -111,7 +111,6 @@ public class Wave : MonoBehaviour
                 new SpawnInfo { time = 34.1f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z+2), prefab = blueObstacle },
                 new SpawnInfo { time = 34.6f, position = new Vector3(spawnDepth, player.transform.position.y+1, player.transform.position.z), prefab = blueObstacle },
                 new SpawnInfo { time = 34.9f, position = new Vector3(spawnDepth, player.transform.position.y+3, player.transform.position.z-2), prefab = redObstacle },
-                // 추가 소환 정보...
             },
             // Schedule 2
             new SpawnInfo[]
@@ -132,7 +131,15 @@ public class Wave : MonoBehaviour
                 new SpawnInfo { time = 8.5f, position = new Vector3(spawnDepth, player.transform.position.y+9, player.transform.position.z-5), prefab = blueObstacle },
                 new SpawnInfo { time = 8.9f, position = new Vector3(spawnDepth, player.transform.position.y, player.transform.position.z), prefab = lavaObstacle },
                 new SpawnInfo { time = 9.0f, position = new Vector3(spawnDepth, player.transform.position.y-8, player.transform.position.z-3), prefab = redObstacle },
-                new SpawnInfo { time = 9.0f, position = new Vector3(spawnDepth, player.transform.position.y+9, player.transform.position.z-5), prefab = blueObstacle },
+                new SpawnInfo { time = 9.1f, position = new Vector3(spawnDepth, player.transform.position.y+9, player.transform.position.z+11), prefab = blueObstacle },
+                new SpawnInfo { time = 9.5f, position = new Vector3(spawnDepth, player.transform.position.y+5, player.transform.position.z-7), prefab = blueObstacle },
+                new SpawnInfo { time = 9.5f, position = new Vector3(spawnDepth, player.transform.position.y-4, player.transform.position.z-1), prefab = blueObstacle },
+                new SpawnInfo { time = 9.8f, position = new Vector3(spawnDepth, player.transform.position.y+5, player.transform.position.z+8), prefab = blueObstacle },
+                new SpawnInfo { time = 10.0f, position = new Vector3(spawnDepth, player.transform.position.y+1, player.transform.position.z), prefab = blueObstacle },
+                new SpawnInfo { time = 10.2f, position = new Vector3(spawnDepth, player.transform.position.y+6, player.transform.position.z-2), prefab = blueObstacle },
+                new SpawnInfo { time = 10.5f, position = new Vector3(spawnDepth, player.transform.position.y-2, player.transform.position.z-10), prefab = blueObstacle },
+                new SpawnInfo { time = 11.1f, position = new Vector3(spawnDepth, player.transform.position.y-9, player.transform.position.z+4), prefab = blueObstacle },
+                new SpawnInfo { time = 11.4f, position = new Vector3(spawnDepth, player.transform.position.y+5, player.transform.position.z+5), prefab = blueObstacle },
                 
             },
             // Schedule 3
