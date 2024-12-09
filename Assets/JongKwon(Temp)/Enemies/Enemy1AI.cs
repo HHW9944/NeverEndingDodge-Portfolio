@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class Enemy1AI : MonoBehaviour
 {
     private GameObject player;
     public bool isAlwaysRecognizePlayer;
@@ -144,6 +143,5 @@ public class EnemyAI : MonoBehaviour
             transform.position += dashDirection * dashSpeed * Time.deltaTime;
             yield return null;
         }
-
     }
 }
