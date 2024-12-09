@@ -52,6 +52,7 @@ public class TutorialManager : MonoBehaviour
     public static bool step6 = false;
 
     public static bool step1Started = false;
+    public static bool step3Started = false;
 
     public static bool tutorialQuest1 = false; //Quest 1 ~ 4 : WASD Movement Quest in step1
     public static bool tutorialQuest2 = false;
@@ -132,20 +133,23 @@ public class TutorialManager : MonoBehaviour
             keyboardAPressed = Input.GetKey(KeyCode.A); // A 키 또는 조이스틱 왼쪽
             keyboardDPressed = Input.GetKey(KeyCode.D); // D 키 또는 조이스틱 오른쪽
 
-            joystickInput = joystickHandle.anchoredPosition / (joystickBackground.sizeDelta / 2f); // 로컬 좌표 기준 정규화
-            bool joystickWPressed = joystickInput.y > joystickThreshold; // 위쪽
-            bool joystickSPressed = joystickInput.y < -joystickThreshold; // 아래쪽
-            bool joystickAPressed = joystickInput.x < -joystickThreshold; // 왼쪽
-            bool joystickDPressed = joystickInput.x > joystickThreshold; // 오른쪽
+            if(joystickBackground != null && joystickHandle != null)
+            {
+                joystickInput = joystickHandle.anchoredPosition / (joystickBackground.sizeDelta / 2f); // 로컬 좌표 기준 정규화
+                bool joystickWPressed = joystickInput.y > joystickThreshold; // 위쪽
+                bool joystickSPressed = joystickInput.y < -joystickThreshold; // 아래쪽
+                bool joystickAPressed = joystickInput.x < -joystickThreshold; // 왼쪽
+                bool joystickDPressed = joystickInput.x > joystickThreshold; // 오른쪽
 
-            Debug.Log($"Joystick Input: {joystickInput}");
-            Debug.Log($"W: {joystickWPressed}, S: {joystickSPressed}, A: {joystickAPressed}, D: {joystickDPressed}");
+                Debug.Log($"Joystick Input: {joystickInput}");
+                Debug.Log($"W: {joystickWPressed}, S: {joystickSPressed}, A: {joystickAPressed}, D: {joystickDPressed}");
 
-            keyboardWPressed |= joystickWPressed;
-            keyboardSPressed |= joystickSPressed;
-            keyboardAPressed |= joystickAPressed;
-            keyboardDPressed |= joystickDPressed;
-
+                keyboardWPressed |= joystickWPressed;
+                keyboardSPressed |= joystickSPressed;
+                keyboardAPressed |= joystickAPressed;
+                keyboardDPressed |= joystickDPressed;
+            }
+            
             if (keyboardWPressed)
             {
                 if (keyboardSPressed) return;
@@ -293,6 +297,10 @@ public class TutorialManager : MonoBehaviour
         keyboardSpacePressed = false;
     }
 
+    public void OnQSkillButtonPress()
+    {
+        keyboardQPressed = true;
+    }
     public void getStep1()
     {
         //움직임 커맨드 튜토리얼
@@ -311,6 +319,7 @@ public class TutorialManager : MonoBehaviour
         //배리어 사용 튜토리얼
         Debug.Log("step3");
         step3 = true;
+        step3Started = true;
     }
     public void getStep4()
     {

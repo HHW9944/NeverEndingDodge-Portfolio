@@ -2421,7 +2421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 501, y: 10.389526}
+  m_AnchoredPosition: {x: 501, y: 117}
   m_SizeDelta: {x: -1697.1532, y: -810.6251}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53541359
@@ -2436,8 +2436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca60fdae22765b4e9372eb053823147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSize: 2.5
-  reachSize: 2.2
+  maxSize: 1.5
+  reachSize: 1.2
   time1: 0.5
   time2: 0.2
 --- !u!114 &53541360
@@ -2937,8 +2937,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press the <color=#FFD700><b>direction keys</b></color> and <color=#FFD700><b>left
-    shift key</b></color>\nto use dash skill
+  m_text: Press the <color=#FFD700><b>direction keys</b></color> and <color=#FFD700><b>skill
+    icon</b></color>\nto use dash skill
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38aecd77a18d544bfb836befe83883b7, type: 2}
   m_sharedMaterial: {fileID: 6434564289584660316, guid: 38aecd77a18d544bfb836befe83883b7,
@@ -4660,55 +4660,7 @@ MonoBehaviour:
   InitValue: 10
   onDeath:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 843671029}
-        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: DieScene
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1499305889}
-        m_TargetAssemblyTypeName: AudioFade, Assembly-CSharp
-        m_MethodName: FadeOut
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 262298084}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GameOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 608911337}
-        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Tools
-        m_MethodName: PlayFeedbacks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnDamaged:
     m_PersistentCalls:
       m_Calls:
@@ -7520,7 +7472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drag <color=#FFD700><b>joystick</b></color> to move <color=#FF0700><b>down</b></color>
+  m_text: Drag <color=#FFD700><b>joystick</b></color> to move down
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38aecd77a18d544bfb836befe83883b7, type: 2}
   m_sharedMaterial: {fileID: 6434564289584660316, guid: 38aecd77a18d544bfb836befe83883b7,
@@ -7845,7 +7797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &466581767
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10528,7 +10480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &486911672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13209,7 +13161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 349.53613, y: 2.0089111}
+  m_AnchoredPosition: {x: -361, y: 2.0089111}
   m_SizeDelta: {x: -1695.452, y: -767.3726}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &619274590
@@ -18984,7 +18936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &850575972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19332,8 +19284,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 262298085}
+        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
         m_MethodName: PauseGame
         m_Mode: 1
         m_Arguments:
@@ -20387,6 +20339,9 @@ MonoBehaviour:
   PauseUICanvas: {fileID: 1708239223}
   DarkOverlay: {fileID: 276450626}
   joystickUI: {fileID: 379597750}
+  slowSkillButton: {fileID: 1534482583}
+  barrierSkillButton: {fileID: 430667198}
+  dashSkillButton: {fileID: 198286263}
   tutorial1ButtonW: {fileID: 789154823}
   tutorial1ButtonA: {fileID: 716969638}
   tutorial1ButtonS: {fileID: 570138357}
@@ -20700,7 +20655,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1011249230}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 262298085}
+        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
+        m_MethodName: OnQSkillButtonPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1011249230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21703,7 +21670,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083586631}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -22288,7 +22255,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170411748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22297,7 +22264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 359.58057, y: 0}
+  m_AnchoredPosition: {x: 360, y: 245}
   m_SizeDelta: {x: -1659.293, y: -755.3195}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1170411750
@@ -22312,8 +22279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca60fdae22765b4e9372eb053823147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSize: 2.5
-  reachSize: 2.2
+  maxSize: 1.5
+  reachSize: 1.2
   time1: 0.5
   time2: 0.2
 --- !u!114 &1170411751
@@ -22792,7 +22759,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drag <color=#FFD700><b>joystick</b></color> to move <color=#FF0700><b>left</b></color>
+  m_text: Drag <color=#FFD700><b>joystick</b></color> to move left
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38aecd77a18d544bfb836befe83883b7, type: 2}
   m_sharedMaterial: {fileID: 6434564289584660316, guid: 38aecd77a18d544bfb836befe83883b7,
@@ -22945,7 +22912,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use <color=#FFD700><b>skill(SPACE)</b></color> to defend against a missile.
+  m_text: Use <color=#FFD700><b>Barrier Skill</b></color> to defend against a missile.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38aecd77a18d544bfb836befe83883b7, type: 2}
   m_sharedMaterial: {fileID: 6434564289584660316, guid: 38aecd77a18d544bfb836befe83883b7,
@@ -28848,7 +28815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1382098052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31416,7 +31383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1708239224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31821,7 +31788,7 @@ PrefabInstance:
         type: 3}
       propertyPath: missilePrefab
       value: 
-      objectReference: {fileID: 1156803670215244, guid: 1fa8b10e2577c554cba724beead10d8b,
+      objectReference: {fileID: 4737079409672071350, guid: f378689d30accff4887f1e8941141393,
         type: 3}
     - target: {fileID: 5617749650550709057, guid: 95942504155c7d144b28fde71dc3a041,
         type: 3}
@@ -34889,7 +34856,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <color=#FFD700><b>Space bar</b></color> to hold the barrier for 1
+  m_text: Hold <color=#FFD700><b>Skill Icon</b></color> to hold the barrier for 1
     second
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38aecd77a18d544bfb836befe83883b7, type: 2}
@@ -35111,7 +35078,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drag <color=#FFD700><b>joystick</b></color> to move <color=#FF0700><b>up</b></color>
+  m_text: Drag <color=#FFD700><b>joystick</b></color> to move up
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38aecd77a18d544bfb836befe83883b7, type: 2}
   m_sharedMaterial: {fileID: 6434564289584660316, guid: 38aecd77a18d544bfb836befe83883b7,
@@ -35264,7 +35231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Drag <color=#FFD700><b>joystick</b></color> to move <color=#FF0700><b>right</b></color>
+  m_text: Drag <color=#FFD700><b>joystick</b></color> to move right
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38aecd77a18d544bfb836befe83883b7, type: 2}
   m_sharedMaterial: {fileID: 6434564289584660316, guid: 38aecd77a18d544bfb836befe83883b7,
@@ -35596,7 +35563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press <color=#FFD700><b>Q</b></color> to slow down time and space
+  m_text: Press <color=#FFD700><b>skill icon</b></color> to slow down time and space
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38aecd77a18d544bfb836befe83883b7, type: 2}
   m_sharedMaterial: {fileID: 6434564289584660316, guid: 38aecd77a18d544bfb836befe83883b7,

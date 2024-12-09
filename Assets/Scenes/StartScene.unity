@@ -11684,7 +11684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD654\uBA74\uC744 \uD130\uCE58\uD558\uC138\uC694."
+  m_text: Touch to start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b4e9a71a825e334ab0f5f54e64258f0, type: 2}
   m_sharedMaterial: {fileID: 7869621799667690179, guid: 721ebf72df0de2b4c894c1a888bfea0b,

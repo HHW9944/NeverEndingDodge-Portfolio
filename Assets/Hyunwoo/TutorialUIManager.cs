@@ -25,6 +25,10 @@ public class TutorialUIManager : MonoBehaviour
 
     public GameObject joystickUI;
 
+    public GameObject slowSkillButton;
+    public GameObject barrierSkillButton;
+    public GameObject dashSkillButton;
+
     public Image tutorial1ButtonW;
     public Image tutorial1ButtonA;
     public Image tutorial1ButtonS;
@@ -72,6 +76,9 @@ public class TutorialUIManager : MonoBehaviour
         TutorialUI.SetActive(true);
         PlayerUI.SetActive(false);
         joystickUI.SetActive(false);
+        slowSkillButton.SetActive(false);
+        barrierSkillButton.SetActive(false);
+        dashSkillButton.SetActive(false);
 
         if (tutorial1ButtonW != null) originalScaleTutorial1W = tutorial1ButtonW.rectTransform.localScale;
         if (tutorial1ButtonA != null) originalScaleTutorial1A = tutorial1ButtonA.rectTransform.localScale;
@@ -98,6 +105,9 @@ public class TutorialUIManager : MonoBehaviour
             PlayerUI.SetActive(false);
             SubTitle.SetActive(false);
             joystickUI.SetActive(false);
+            slowSkillButton.SetActive(false);
+            barrierSkillButton.SetActive(false);
+            dashSkillButton.SetActive(false);
         }
         else
         {
@@ -106,6 +116,9 @@ public class TutorialUIManager : MonoBehaviour
             SubTitle.SetActive(true);
             if (TutorialManager.step1Started) joystickUI.SetActive(true);
             if (TutorialManager.step2) PlayerUI.SetActive(true);
+            if (TutorialManager.step3Started && !TutorialManager.step5 && !TutorialManager.step6) barrierSkillButton.SetActive(true);
+            if (TutorialManager.step5) dashSkillButton.SetActive(true);
+            if (TutorialManager.step6) slowSkillButton.SetActive(true);
         }
 
         if(TutorialManager.step1)
@@ -146,7 +159,7 @@ public class TutorialUIManager : MonoBehaviour
         if(TutorialManager.step3)
         {
             step3UICanvas.SetActive(true);
-
+            barrierSkillButton.SetActive(true);
             PulseButton(buttonSpace, originalScaleButtonSpace);
             buttonSpace.color = TutorialManager.keyboardSpacePressed ? new Color(255 / 255f, 135 / 255f, 135 / 255f, 255 / 255f) : new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
             quest5Slider.value = TutorialManager.spacePressProgress;
@@ -160,6 +173,7 @@ public class TutorialUIManager : MonoBehaviour
         if (TutorialManager.step4)
         {
             step4UICanvas.SetActive(true);
+            
         }
         else
         {
@@ -169,6 +183,7 @@ public class TutorialUIManager : MonoBehaviour
         if (TutorialManager.step5)
         {
             step5UICanvas.SetActive(true);
+            dashSkillButton.SetActive(true);
 
             PulseButton(tutorial5ButtonW, originalScaleTutorial5W);
             PulseButton(tutorial5ButtonA, originalScaleTutorial5A);
@@ -185,17 +200,20 @@ public class TutorialUIManager : MonoBehaviour
         else
         {
             step5UICanvas.SetActive(false);
+            dashSkillButton.SetActive(false);
         }
 
         if(TutorialManager.step6)
         {
             step6UICanvas.SetActive(true);
+            slowSkillButton.SetActive(true);
             PulseButton(tutorial6ButtonQ, originalScaleTutorial6Q);
             tutorial6ButtonQ.color = TutorialManager.keyboardQPressed ? new Color(255 / 255f, 135 / 255f, 135 / 255f, 255 / 255f) : new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
         }
         else
         {
             step6UICanvas.SetActive(false);
+            slowSkillButton.SetActive(false);
         }
     }
 
