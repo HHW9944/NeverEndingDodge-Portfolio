@@ -69,6 +69,8 @@ GameObject:
   - component: {fileID: 8224241844658823501}
   - component: {fileID: 7977338835081499673}
   - component: {fileID: 4157936451714237776}
+  - component: {fileID: -1001026320696279501}
+  - component: {fileID: -8208503821086001997}
   m_Layer: 7
   m_Name: Asteroid Lava Red
   m_TagString: Untagged
@@ -204,3 +206,43 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 4514a249f7ca7d44b8eb4cbd48174504, type: 3}
+--- !u!114 &-1001026320696279501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822345149752838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfbe01e54ab751a489acb90bdf3e4097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 10
+--- !u!54 &-8208503821086001997
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822345149752838}
+  serializedVersion: 4
+  m_Mass: 2
+  m_Drag: 5
+  m_AngularDrag: 10
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
