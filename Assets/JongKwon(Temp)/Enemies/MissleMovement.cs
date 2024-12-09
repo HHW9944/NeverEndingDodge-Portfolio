@@ -14,7 +14,7 @@ public class MissleMovement : MonoBehaviour
         if (player != null)
         {
             // 플레이어 방향을 계산하여 미사일의 초기 방향 설정
-            directionToPlayer = (player.transform.position - transform.position + new Vector3(0, 1, 0)).normalized;
+            directionToPlayer = (player.transform.position - transform.position + new Vector3(0, 3.5f, 0)).normalized;
 
             // 미사일이 플레이어를 향하도록 회전
             transform.rotation = Quaternion.LookRotation(directionToPlayer);

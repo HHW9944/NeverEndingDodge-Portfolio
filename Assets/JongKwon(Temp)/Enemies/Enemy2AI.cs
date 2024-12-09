@@ -77,6 +77,12 @@ public class Enemy2AI : MonoBehaviour
 
     private IEnumerator ShootMissilesWithDelay()
     {
+        // ShootPoint가 모두 설정되었는지 확인
+        if (leftShootPoint == null || rightShootPoint == null)
+        {
+            yield break; // 코루틴을 종료
+        }
+
         Instantiate(redMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
         yield return new WaitForSeconds(1.0f);
         Instantiate(redMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
