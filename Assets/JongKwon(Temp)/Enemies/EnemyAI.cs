@@ -1,25 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
     private GameObject player;
-    public bool isAlwaysRecognizePlayer = true;
+    public bool isAlwaysRecognizePlayer;
     public float recognitionDistance;
     public float rotationSpeed = 5.0f;
     public float moveSpeed = 50.0f; // 이동 속도
     public float targetX = 100.0f; // 목표 깊이
-    private Vector3 targetPosition; // 목표 위치
-    private bool hasReachedTarget = false; // 목표 위치에 도달했는지 여부
-    GameObject normalMissile;
-    GameObject hugeMissile;
     public GameObject leftShootPoint;
     public GameObject rightShootPoint;
+    public GameObject ironMissile;
+    public GameObject bomb;
+
+    private Vector3 targetPosition; // 목표 위치
+    private bool hasReachedTarget = false; // 목표 위치에 도달했는지 여부
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        normalMissile = gameObject.GetComponent<WaveSpawner>().missilePrefabs[0];
-        hugeMissile = gameObject.GetComponent<WaveSpawner>().missilePrefabs[1];
 
         if (player != null)
         {
@@ -66,7 +67,47 @@ public class EnemyAI : MonoBehaviour
             {
                 hasReachedTarget = true;
                 // 목표 위치에 도달한 후 추가적인 처리가 필요하면 여기서 할 수 있음
+                StartCoroutine(ShootMissilesWithDelay());
+
+                // 돌진
             }
         }
     }
+
+    private IEnumerator ShootMissilesWithDelay()
+    {
+        Instantiate(ironMissile, leftShootPoint.transform.position, leftShootPoint.transform.rotation);
+        yield return new WaitForSeconds(2.0f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(2.0f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        yield return new WaitForSeconds(2.0f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(1.0f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        yield return new WaitForSeconds(1.0f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(1.0f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        yield return new WaitForSeconds(0.25f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(0.25f);
+        Instantiate(ironMissile, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+
+        yield return new WaitForSeconds(2.5f);
+
+        Instantiate(bomb, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+        yield return new WaitForSeconds(2.5f);
+        Instantiate(bomb, rightShootPoint.transform.position, rightShootPoint.transform.rotation);
+        yield return new WaitForSeconds(1.5f);
+        Instantiate(bomb, rightShootPoint.transform.position, leftShootPoint.transform.rotation);
+
+        yield return new WaitForSeconds(1.5f);
+
+    }
+
 }

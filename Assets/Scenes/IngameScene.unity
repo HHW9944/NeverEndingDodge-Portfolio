@@ -20068,6 +20068,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2941552441138272503, guid: 56887383306d53c4ab8f61532e7615a0,
+        type: 3}
+      propertyPath: obastaclePrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2941552441138272503, guid: 56887383306d53c4ab8f61532e7615a0,
+        type: 3}
+      propertyPath: 'obastaclePrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1040074329139878, guid: fa8aadfb07ca2034188c69c6f2ab4624,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
