@@ -11,12 +11,15 @@ public class TutorialManager : MonoBehaviour
     public Transform player;
 
     public bool isInputActive = false;
+    public static bool isPaused = false;
 
     public static bool keyboardWPressed = false;
     public static bool keyboardAPressed = false;
     public static bool keyboardSPressed = false;
     public static bool keyboardDPressed = false;
+    public static bool keyboardQPressed = false;
     public static bool keyboardSpacePressed = false;
+    public static bool keyboardShiftPressed = false;
 
     private float keyWPressStartTime = -1f; // W 키가 눌리기 시작한 시간
     private float keyAPressStartTime = -1f;
@@ -28,16 +31,20 @@ public class TutorialManager : MonoBehaviour
     private float spacePressDurationThreshold = 1f; // 1초 이상 눌러야 함
     public static float spacePressProgress = 0f;
 
-    public static bool tutorial1 = false;
-    public static bool tutorial2 = false;
-    public static bool tutorial3 = false;
+    public static bool step1 = false;
+    public static bool step2 = false;
+    public static bool step3 = false;
+    public static bool step4 = false;
+    public static bool step5 = false;
+    public static bool step6 = false;
 
-    public static bool tutorialQuest1 = false; //Quest 1 ~ 4 : WASD Movement Quest in Tutorial1
+    public static bool tutorialQuest1 = false; //Quest 1 ~ 4 : WASD Movement Quest in step1
     public static bool tutorialQuest2 = false;
     public static bool tutorialQuest3 = false;
     public static bool tutorialQuest4 = false;
 
-    private InputAction moveAction;
+    public InputAction moveAction;
+    public InputAction skillAction;
 
     public GameObject tutorialEnemy1;
     public GameObject shootPointLeft;
@@ -49,10 +56,12 @@ public class TutorialManager : MonoBehaviour
 
     private int barrierCount = 0;
     [SerializeField] private Timer timer;
+    [SerializeField] private Cost _playerCost;
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
+        isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -70,16 +79,32 @@ public class TutorialManager : MonoBehaviour
 
         shootScript.enabled = false;
         barrierCount = 0;
+
+        /*Time.timeScale = 2f;*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (tutorial1)
+        _playerCost.Value = 10;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                ResumeGame(); // 게임 재개
+            }
+            else
+            {
+                PauseGame(); // 게임 일시정지
+            }
+        }
+
+        if (step1)
         {
             if(tutorialQuest1 && tutorialQuest2 && tutorialQuest3 && tutorialQuest4)
             {
-                tutorial1 = false;
+                step1 = false;
                 timer.Resume();
             }
 
@@ -87,6 +112,7 @@ public class TutorialManager : MonoBehaviour
             keyboardAPressed = Input.GetKey(KeyCode.A);
             keyboardSPressed = Input.GetKey(KeyCode.S);
             keyboardDPressed = Input.GetKey(KeyCode.D);
+            keyboardSpacePressed = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
             if (keyboardWPressed)
             {
@@ -163,7 +189,7 @@ public class TutorialManager : MonoBehaviour
                 keyDPressStartTime = -1f;
             }
         }
-        else if (tutorial2)
+        if (step3)
         {
             keyboardSpacePressed = Input.GetKey(KeyCode.Space);
 
@@ -184,7 +210,7 @@ public class TutorialManager : MonoBehaviour
                     {
                         Debug.Log("Space 입력 완료");
 
-                        tutorial2 = false;
+                        step3 = false;
                         timer.Resume();
 
                         spacePressStartTime = -1f; // 초기화
@@ -197,32 +223,79 @@ public class TutorialManager : MonoBehaviour
                 spacePressProgress = 0f;
             }
         }
+        
+        if(step5)
+        {
+            keyboardWPressed = Input.GetKey(KeyCode.W);
+            keyboardAPressed = Input.GetKey(KeyCode.A);
+            keyboardSPressed = Input.GetKey(KeyCode.S);
+            keyboardDPressed = Input.GetKey(KeyCode.D);
+            keyboardShiftPressed = Input.GetKey(KeyCode.LeftShift);
+        }
+
+        if (step6)
+        {
+            keyboardQPressed = Input.GetKey(KeyCode.Q);
+        }
     }
 
-    public void getTutorial1()
+    public void getStep1()
     {
-        Debug.Log("Tutorial1");
-        tutorial1 = true;
+        //움직임 커맨드 튜토리얼
+        Debug.Log("step1");
+        step1 = true;
     }
 
-    public void getTutorial2()
+    public void getStep2()
     {
-        Debug.Log("Tutorial2");
-        tutorial2 = true;
+        Debug.Log("step2");
+        step2 = true;
     }
-
-    public void getTutorial3()
+    public void getStep3()
     {
-        Debug.Log("Tutorial3");
-        tutorial3 = true;
+        //배리어 사용 튜토리얼
+        Debug.Log("step3");
+        step3 = true;
+    }
+    public void getStep4()
+    {
+        //배리어로 공격 막기 튜토리얼
+        Debug.Log("step4");
+        step4 = true;
+    }
+    public void getStep5()
+    {
+        Debug.Log("step5");
+        step5 = true;
+    }
+    public void getStep6()
+    {
+        Debug.Log("step6");
+        step6 = true;
     }
 
-    public void clearTutorial3()
+    public void clearstep4()
     {
         //배리어로 방어 성공할 경우
-        tutorial3 = false;
+        step4 = false;
         timer.Resume();
         
+    }
+    public void clearStep5()
+    {
+        if(step5)
+        {
+            step5 = false;
+            timer.Resume();
+        }
+    }
+    public void clearStep6()
+    {
+        if (step6)
+        {
+            step6 = false;
+            timer.Resume();
+        }
     }
     public void enemyAppear()
     {
@@ -272,5 +345,21 @@ public class TutorialManager : MonoBehaviour
             Debug.LogError("movingObject or targetLocation is not assigned!");
         }
     }
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Debug.Log("Game Paused");
+    }
 
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Debug.Log("Game Resumed");
+    }
 }

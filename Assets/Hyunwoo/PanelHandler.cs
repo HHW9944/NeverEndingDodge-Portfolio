@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class PanellHandler : MonoBehaviour
+public class PanelHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -22,8 +22,8 @@ public class PanellHandler : MonoBehaviour
 
         var seq = DOTween.Sequence();
 
-        seq.Append(transform.DOScale(1.5f, 0.5f));
-        seq.Append(transform.DOScale(1.2f, 0.2f));
+        seq.Append(transform.DOScale(2.5f, 0.5f));
+        seq.Append(transform.DOScale(2.2f, 0.2f));
 
         seq.Play();
     }

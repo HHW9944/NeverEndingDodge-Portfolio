@@ -27,8 +27,8 @@ public class UIManager : MonoBehaviour
     public int distanceMiddle;
     public TextMeshProUGUI distanceMiddleText;
 
-    private const float warningArea = 60f;
-    private const float shutdownArea = 90f;
+    private const float warningArea = 99999f;
+    private const float shutdownArea = 99999f;
 
     public Image warningEffect;
     public Color warningEffectColor;

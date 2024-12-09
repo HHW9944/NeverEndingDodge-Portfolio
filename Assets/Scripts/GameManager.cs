@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
 
     public float moveSpeed = 5f;
     public static float distanceFromMiddle = 0f;
-    public float warningArea = 60f;
-    public float shutdownArea = 90f;
+    public float warningArea = 99999f;
+    public float shutdownArea = 99999f;
     public bool isTimeOut = false;
 
     public Vector3 playerStartPoint;
