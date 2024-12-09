@@ -1,21 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
     private GameObject player;
-    public bool isAlwaysRecognizePlayer;
+    public bool isAlwaysRecognizePlayer = true;
     public float recognitionDistance;
     public float rotationSpeed = 5.0f;
     public float moveSpeed = 50.0f; // 이동 속도
     public float targetX = 100.0f; // 목표 깊이
     private Vector3 targetPosition; // 목표 위치
     private bool hasReachedTarget = false; // 목표 위치에 도달했는지 여부
+    GameObject normalMissile;
+    GameObject hugeMissile;
+    public GameObject leftShootPoint;
+    public GameObject rightShootPoint;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        normalMissile = gameObject.GetComponent<WaveSpawner>().missilePrefabs[0];
+        hugeMissile = gameObject.GetComponent<WaveSpawner>().missilePrefabs[1];
 
         if (player != null)
         {

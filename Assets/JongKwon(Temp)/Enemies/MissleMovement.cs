@@ -1,10 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MissleMovement : MonoBehaviour
 {
+    private GameObject player;
     public float speed;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void Update()
     {
