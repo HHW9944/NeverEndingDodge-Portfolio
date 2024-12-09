@@ -1153,6 +1153,8 @@ MonoBehaviour:
   skillButton: {fileID: 199140581}
   cooldownOverlay: {fileID: 199140582}
   skill: {fileID: 980119490}
+  isPressed: 0
+  holdDuration: 1
 --- !u!114 &199140581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,6 +1910,8 @@ MonoBehaviour:
   skillButton: {fileID: 375227675}
   cooldownOverlay: {fileID: 375227676}
   skill: {fileID: 135250407}
+  isPressed: 0
+  holdDuration: 1
 --- !u!114 &375227675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8265,7 +8269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfe6b7bf27d66d4aba01a78b439546f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 2
+  Cost: 6
   _playerTransform: {fileID: 1310071223}
   _positionOffset: {x: 0.75, y: 1.85, z: 3}
   _energyShield: {fileID: 690751443}
@@ -17055,6 +17059,8 @@ MonoBehaviour:
   skillButton: {fileID: 1876432287}
   cooldownOverlay: {fileID: 1876432288}
   skill: {fileID: 687574614}
+  isPressed: 0
+  holdDuration: 1
 --- !u!114 &1876432287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19216,6 +19222,8 @@ MonoBehaviour:
   skillButton: {fileID: 2060769955}
   cooldownOverlay: {fileID: 2060769956}
   skill: {fileID: 611200172}
+  isPressed: 0
+  holdDuration: 1
 --- !u!114 &2060769955
 MonoBehaviour:
   m_ObjectHideFlags: 0

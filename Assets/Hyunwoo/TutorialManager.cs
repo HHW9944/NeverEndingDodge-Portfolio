@@ -30,7 +30,7 @@ public class TutorialManager : MonoBehaviour
     public static bool keyboardQPressed = false;
     public static bool keyboardSpacePressed = false;
     public static bool keyboardShiftPressed = false;
-
+    
     private float keyWPressStartTime = -1f; // W 키가 눌리기 시작한 시간
     private float keyAPressStartTime = -1f;
     private float keySPressStartTime = -1f;
@@ -53,6 +53,8 @@ public class TutorialManager : MonoBehaviour
 
     public static bool step1Started = false;
     public static bool step3Started = false;
+    public static bool step5Started = false;
+    public static bool step6Started = false;
 
     public static bool tutorialQuest1 = false; //Quest 1 ~ 4 : WASD Movement Quest in step1
     public static bool tutorialQuest2 = false;
@@ -331,11 +333,13 @@ public class TutorialManager : MonoBehaviour
     {
         Debug.Log("step5");
         step5 = true;
+        step5Started = true;
     }
     public void getStep6()
     {
         Debug.Log("step6");
         step6 = true;
+        step6Started = true;
     }
 
     public void clearstep4()

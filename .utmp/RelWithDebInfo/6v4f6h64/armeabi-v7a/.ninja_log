@@ -1,0 +1,17 @@
+# ninja log v5
+7	403	7554843571786454	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ff4b52359c4e69c5
+622	834	7554843575368812	C:/Users/Hyunwoo Hur/Desktop/NeverEndingDodge/NeverEndingDodge/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6v4f6h64/obj/armeabi-v7a/libgame.so	cb4517e25e5b2fe5
+13	401	7554843571786454	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	61309b83e42b828a
+20	414	7554843571929869	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	7da6b8fb77e732a9
+4	482	7554843572618612	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	bb7dadbee2dfcf4c
+16	450	7554843572291928	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	d43c19fca8a9f381
+10	572	7554843573483424	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	2aadbdd2403572ca
+1	622	7554843573929169	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	97d8f60596324f83
+11	936	7554844869052091	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	ff4b52359c4e69c5
+33	973	7554844869419095	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	61309b83e42b828a
+27	1013	7554844869790410	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	7da6b8fb77e732a9
+20	1059	7554844870269576	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	d43c19fca8a9f381
+7	1176	7554844871435651	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	bb7dadbee2dfcf4c
+15	1310	7554844872789297	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	2aadbdd2403572ca
+2	1414	7554844873813253	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	97d8f60596324f83
+1414	1568	7554844874803580	C:/Users/Hyunwoo Hur/Desktop/NeverEndingDodge/NeverEndingDodge/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6v4f6h64/obj/armeabi-v7a/libgame.so	cb4517e25e5b2fe5

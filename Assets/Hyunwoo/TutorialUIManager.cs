@@ -116,9 +116,9 @@ public class TutorialUIManager : MonoBehaviour
             SubTitle.SetActive(true);
             if (TutorialManager.step1Started) joystickUI.SetActive(true);
             if (TutorialManager.step2) PlayerUI.SetActive(true);
-            if (TutorialManager.step3Started && !TutorialManager.step5 && !TutorialManager.step6) barrierSkillButton.SetActive(true);
-            if (TutorialManager.step5) dashSkillButton.SetActive(true);
-            if (TutorialManager.step6) slowSkillButton.SetActive(true);
+            if (TutorialManager.step3Started) barrierSkillButton.SetActive(true);
+            if (TutorialManager.step5Started) dashSkillButton.SetActive(true);
+            if (TutorialManager.step6Started) slowSkillButton.SetActive(true);
         }
 
         if(TutorialManager.step1)
@@ -200,7 +200,7 @@ public class TutorialUIManager : MonoBehaviour
         else
         {
             step5UICanvas.SetActive(false);
-            dashSkillButton.SetActive(false);
+            /*dashSkillButton.SetActive(false);*/
         }
 
         if(TutorialManager.step6)
@@ -213,7 +213,7 @@ public class TutorialUIManager : MonoBehaviour
         else
         {
             step6UICanvas.SetActive(false);
-            slowSkillButton.SetActive(false);
+            /*slowSkillButton.SetActive(false);*/
         }
     }
 

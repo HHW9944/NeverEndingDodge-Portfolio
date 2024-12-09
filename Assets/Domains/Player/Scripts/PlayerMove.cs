@@ -76,7 +76,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 2D 입력을 3D로 변환 (z축으로 전진, x축으로 좌우 이동)
+        // 2D 입력을 3D로 변환 (z축으로 좌우 이동, y축으로 위아래 이동)
         Vector3 moveDirection = new Vector3(_moveInput.x, _moveInput.y, 0f);
 
         // moveDirection을 로컬 좌표계 기준으로 변환 (플레이어가 바라보는 방향으로 이동)
@@ -84,7 +84,20 @@ public class PlayerMove : MonoBehaviour
 
         // 이동 적용
         _rigid.MovePosition(_rigid.position + forceDirection * Speed * Time.fixedDeltaTime);
+
+        // 위치 제한 (y: 위아래, z: 좌우 제한)
+        Vector3 clampedPosition = _rigid.position;
+
+        // y축 제한 (-15에서 +15까지)
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -6f, 6f);
+
+        // z축 제한 (-20에서 +20까지)
+        clampedPosition.z = Mathf.Clamp(clampedPosition.z, -8f, 8f);
+
+        // 제한된 위치로 강제로 설정
+        _rigid.position = clampedPosition;
     }
+
 
     public void AddForce(Vector3 force, ForceMode mode)
     {
