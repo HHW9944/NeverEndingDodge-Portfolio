@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class TutorialManager : MonoBehaviour
     private float keyAPressStartTime = -1f;
     private float keySPressStartTime = -1f;
     private float keyDPressStartTime = -1f;
-    private float pressDurationThreshold = 0.5f; // 0.5초 이상 눌러야 함
+    private float pressDurationThreshold = 0.3f; // 0.3초 이상 눌러야 함
 
     private float joystickVertical;
     private float joystickHorizontal;
@@ -83,7 +84,26 @@ public class TutorialManager : MonoBehaviour
         /*Cursor.lockState = CursorLockMode.Locked;*/
         Cursor.visible = true;
 
-        shootPoint = tutorialEnemy1.transform.Find("ShootPoint(left)");
+        Time.timeScale = 1f;
+
+        step1 = false;
+        step2 = false;
+        step3 = false;
+        step4 = false;
+        step5 = false;
+        step6 = false;
+
+        step1Started = false;
+        step3Started = false;
+        step5Started = false;
+        step6Started = false;
+
+        tutorialQuest1 = false; //Quest 1 ~ 4 : WASD Movement Quest in step1
+        tutorialQuest2 = false;
+        tutorialQuest3 = false;
+        tutorialQuest4 = false;
+
+    shootPoint = tutorialEnemy1.transform.Find("ShootPoint(left)");
         if (shootPoint == null)
         {
             Debug.LogError("shooterpoint not found in tutorialEnemy1");
@@ -429,5 +449,14 @@ public class TutorialManager : MonoBehaviour
         /*Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;*/
         Debug.Log("Game Resumed");
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

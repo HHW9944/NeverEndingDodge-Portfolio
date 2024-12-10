@@ -14,11 +14,14 @@ public class Barrier : Skill, ICancellable, ICollisionDamageable
     [SerializeField] private Cost _playerCost;
 
     [Header("Events")]
-    public UnityEvent onBarrierEnable;
-    public UnityEvent onBarrierDisable;
-    public UnityEvent onBarrierCollision;
+    public UnityEvent onBarrierEnable;  // Barrier 활성화 이벤트
+    public UnityEvent onBarrierDisable; // Barrier 비활성화 이벤트
+    public UnityEvent onBarrierCollision; // Barrier 충돌 이벤트
 
     private bool _isBarrierEnabled = false;
+    private bool _isTouching = false; // 터치 상태 추적
+    private float _holdTime = 0f; // 터치 시간이 경과하는 시간
+    public float requiredHoldTime = 1f; // 스킬 발동에 필요한 시간 (1초)
 
     public override void UseSkill()
     {
@@ -27,7 +30,7 @@ public class Barrier : Skill, ICancellable, ICollisionDamageable
             return;
         }
 
-        onBarrierEnable?.Invoke();
+        onBarrierEnable?.Invoke(); // Barrier 활성화 이벤트 호출
         _isBarrierEnabled = true;
     }
 
@@ -43,7 +46,7 @@ public class Barrier : Skill, ICancellable, ICollisionDamageable
 
     public void Cancel()
     {
-        onBarrierDisable?.Invoke();
+        onBarrierDisable?.Invoke(); // Barrier 비활성화 이벤트 호출
         _isBarrierEnabled = false;
     }
 
@@ -55,13 +58,15 @@ public class Barrier : Skill, ICancellable, ICollisionDamageable
     public void TakeDamage(IAttackable attacker, float damage, Collision other)
     {
         TakeDamage(attacker, damage);
-        
+
         _energyShield.GetHit(other);
         onBarrierCollision?.Invoke();
     }
 
     private void Update()
     {
+        HandleTouchInput();
+
         // 위치 업데이트: 플레이어 위치 + 오프셋
         if (_playerTransform != null)
         {
@@ -78,6 +83,43 @@ public class Barrier : Skill, ICancellable, ICollisionDamageable
             if (_playerCost.Value <= 0)
             {
                 Cancel();
+            }
+        }
+    }
+
+    private void HandleTouchInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0); // 첫 번째 터치 가져오기
+
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    // 터치가 시작되면 스킬 활성화 준비
+                    _isTouching = false; // 초기화
+                    _holdTime = 0f;
+                    break;
+
+                case TouchPhase.Moved:
+                    // 터치가 이동하면 누른 시간이 증가
+                    if (_isTouching)
+                    {
+                        _holdTime += Time.deltaTime;
+                        // 일정 시간이 지나면 Barrier 활성화
+                        if (_holdTime >= requiredHoldTime)
+                        {
+                            UseSkill(); // Barrier 발동
+                            _isTouching = false; // 발동 후 더 이상 활성화되지 않도록
+                        }
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    // 터치가 끝나면 Barrier 비활성화
+                    Cancel();
+                    _isTouching = false;
+                    break;
             }
         }
     }

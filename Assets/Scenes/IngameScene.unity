@@ -1151,10 +1151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 199140581}
-  cooldownOverlay: {fileID: 199140582}
   skill: {fileID: 980119490}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &199140581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,10 +1906,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 375227675}
-  cooldownOverlay: {fileID: 375227676}
   skill: {fileID: 135250407}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &375227675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5981,7 +5977,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604321008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -6083,10 +6079,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4199406669c73b443a8261fb9af57d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 3
+  Cost: 6
   slowMotionDuration: 3
   slowMotionScale: 0.2
-  cooldownTime: 5
+  cooldownTime: 2
   solidColor: {r: 0, g: 0, b: 0, a: 1}
   _bgmAudioSource: {fileID: 1469026926}
   _mainCamera: {fileID: 293713085}
@@ -6552,7 +6548,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665305386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -8303,7 +8299,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 199140580}
         m_TargetAssemblyTypeName: SkillButton, Assembly-CSharp
-        m_MethodName: OnSkillActiveListener
+        m_MethodName: OnButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8355,6 +8351,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  requiredHoldTime: 1
 --- !u!1 &986903372
 GameObject:
   m_ObjectHideFlags: 0
@@ -13981,7 +13978,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainScene
+          m_StringArgument: StartScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1314370320
@@ -16673,8 +16670,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769648893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4999999, y: 1.4999999, z: 1.4999999}
+  m_LocalPosition: {x: 0, y: 0, z: -40}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 375227673}
@@ -17057,10 +17054,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 1876432287}
-  cooldownOverlay: {fileID: 1876432288}
   skill: {fileID: 687574614}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &1876432287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19220,10 +19215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 2060769955}
-  cooldownOverlay: {fileID: 2060769956}
   skill: {fileID: 611200172}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &2060769955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19891,7 +19884,7 @@ MonoBehaviour:
     - rid: 1499077575100334164
       type: {class: MMF_Sound, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
       data:
-        Active: 1
+        Active: 0
         UniqueID: 711617986
         Label: Sound
         ChannelMode: 0

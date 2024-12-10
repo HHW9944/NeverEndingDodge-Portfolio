@@ -2545,10 +2545,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 57256742}
-  cooldownOverlay: {fileID: 57256743}
   skill: {fileID: 0}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &57256742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4773,8 +4771,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 198286263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4999999, y: 1.4999999, z: 1.4999999}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 813674643}
@@ -6061,6 +6059,143 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!1 &303189638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 303189639}
+  - component: {fileID: 303189641}
+  - component: {fileID: 303189640}
+  m_Layer: 5
+  m_Name: Resume Button Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &303189639
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303189638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2064002302}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &303189640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303189638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Restart
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: d9b454495b7d24a7a933eb61bdfa0607, type: 2}
+  m_sharedMaterial: {fileID: 7409485994217783921, guid: d9b454495b7d24a7a933eb61bdfa0607,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4291669684
+  m_fontColor: {r: 0.7054189, g: 0.6809857, b: 0.8050314, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 69
+  m_fontSizeBase: 69
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &303189641
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303189638}
+  m_CullTransparentMesh: 1
 --- !u!1 &310870903
 GameObject:
   m_ObjectHideFlags: 0
@@ -6840,7 +6975,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430667198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -7622,10 +7757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 465995242}
-  cooldownOverlay: {fileID: 465995243}
   skill: {fileID: 0}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &465995242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10592,10 +10725,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 513825282}
-  cooldownOverlay: {fileID: 513825283}
   skill: {fileID: 698251386}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &513825282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12946,7 +13077,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 611200171}
-  - component: {fileID: 611200172}
   m_Layer: 3
   m_Name: Emp
   m_TagString: Untagged
@@ -12969,18 +13099,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1762142972}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &611200172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611200170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e46fa346210472646b75c0e01ceaa65d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &619274588
 GameObject:
   m_ObjectHideFlags: 0
@@ -14208,6 +14326,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  requiredHoldTime: 1
 --- !u!4 &698251387
 Transform:
   m_ObjectHideFlags: 0
@@ -18217,10 +18336,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 813674646}
-  cooldownOverlay: {fileID: 813674647}
   skill: {fileID: 1372610724}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &813674646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18804,7 +18921,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
-  m_ScreenMatchMode: 2
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -19819,6 +19936,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  requiredHoldTime: 1
 --- !u!1001 &983619836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20241,10 +20359,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 1011249229}
-  cooldownOverlay: {fileID: 1011249230}
   skill: {fileID: 934763879}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &1011249229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21385,6 +21501,7 @@ RectTransform:
   - {fileID: 432377532}
   - {fileID: 2016259869}
   - {fileID: 394888570}
+  - {fileID: 2064002302}
   m_Father: {fileID: 1708239224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -21593,10 +21710,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 1144794767}
-  cooldownOverlay: {fileID: 1144794768}
   skill: {fileID: 0}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &1144794767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26413,8 +26528,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: "WASD\uB97C \uC785\uB825\uD558\uC5EC \uC774\uB3D9\uD560
-              \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+            m_StringArgument: "\uC870\uC774\uC2A4\uD2F1\uC744 \uC774\uC6A9\uD558\uC5EC
+              \uC6C0\uC9C1\uC77C \uC218 \uC788\uC2B5\uB2C8\uB2E4."
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 569552868}
@@ -26426,7 +26541,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 'Press W, A, S, D to move. '
+            m_StringArgument: You can move using joystick
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 262298085}
@@ -26595,8 +26710,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: "SPACE\uB97C \uC785\uB825\uD558\uC5EC \uBC29\uC5B4\uB9C9\uC744
-              \uC0DD\uC131\uD558\uC138\uC694."
+            m_StringArgument: "\uBC29\uD328 \uC544\uC774\uCF58\uC744 \uB20C\uB7EC
+              \uBC30\uB9AC\uC5B4\uB97C \uC0AC\uC6A9\uD558\uC138\uC694."
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 569552868}
@@ -26608,7 +26723,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: You can enter SPACE to create a barrier.
+            m_StringArgument: Press the shield icon to use the barrier.
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1308791700}
@@ -26769,8 +26884,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: "SPACE\uB97C \uB20C\uB7EC \uC801\uC758 \uACF5\uACA9\uC744
-              \uBC29\uC5B4\uD558\uC138\uC694."
+            m_StringArgument: "\uBC30\uB9AC\uC5B4\uB97C \uC0AC\uC6A9\uD558\uC5EC
+              \uC801\uC758 \uACF5\uACA9\uC744 \uB9C9\uC73C\uC138\uC694."
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 569552868}
@@ -26782,7 +26897,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Press SPACE to defend against enemy attacks.
+            m_StringArgument: Use a barrier skill to prevent enemy attacks.
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 262298085}
@@ -26898,8 +27013,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: "\uBC29\uD5A5\uD0A4\uC640 SHIFT\uB97C \uB20C\uB7EC
-              \uB300\uC26C\uB97C \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4"
+            m_StringArgument: "\uC6C0\uC9C1\uC774\uBA74\uC11C \uC544\uC774\uCF58\uC744
+              \uB204\uB974\uBA74 \uB300\uC26C\uB97C \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 569552868}
@@ -26911,7 +27026,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Reinforcements are arriving soon.
+            m_StringArgument: You can dash by pressing the icon while moving.
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 262298085}
@@ -27020,8 +27135,9 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: "Q\uB97C \uB20C\uB7EC \uC8FC\uBCC0 \uC2DC\uACF5\uAC04\uC744
-              \uC7A0\uC2DC \uB290\uB9AC\uAC8C \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+            m_StringArgument: "\uD0C0\uC774\uBA38 \uC544\uC774\uCF58\uC744 \uB20C\uB7EC
+              \uC8FC\uBCC0 \uC2DC\uACF5\uAC04\uC744 \uB290\uB9AC\uAC8C \uD560 \uC218
+              \uC788\uC2B5\uB2C8\uB2E4."
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 569552868}
@@ -27033,7 +27149,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Press Q to slow down the sorounding space time.
+            m_StringArgument: Touch timer icon to slow down the sorounding space
+              time.
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1308791700}
@@ -29544,10 +29661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 1512315289}
-  cooldownOverlay: {fileID: 1512315290}
   skill: {fileID: 0}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &1512315289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29656,7 +29771,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534482583}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -29946,10 +30061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillButton: {fileID: 1560816378}
-  cooldownOverlay: {fileID: 1560816379}
   skill: {fileID: 0}
-  isPressed: 0
-  holdDuration: 1
+  requiredHoldTime: 1
 --- !u!114 &1560816378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34088,7 +34201,6 @@ GameObject:
   - component: {fileID: 1961688654}
   - component: {fileID: 1961688653}
   - component: {fileID: 1961688655}
-  - component: {fileID: 1961688656}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -34196,18 +34308,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &1961688656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1961688652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d17ff544b5f24db989479658b8b0dda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1976804796
 GameObject:
   m_ObjectHideFlags: 0
@@ -35128,6 +35228,139 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2064002301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2064002302}
+  - component: {fileID: 2064002305}
+  - component: {fileID: 2064002304}
+  - component: {fileID: 2064002303}
+  m_Layer: 5
+  m_Name: Restart Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2064002302
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064002301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 303189639}
+  m_Father: {fileID: 1111253688}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -300}
+  m_SizeDelta: {x: 400, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2064002303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064002301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2064002304}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 262298085}
+        m_TargetAssemblyTypeName: TutorialManager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TutorialScene(Mobile)
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2064002304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064002301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.26666668}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f89ced23c0d3f4487adca5a05d506aae, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2064002305
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064002301}
+  m_CullTransparentMesh: 1
 --- !u!1 &2071893438
 GameObject:
   m_ObjectHideFlags: 0

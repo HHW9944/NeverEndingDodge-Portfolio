@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
     }
 
     public void PauseGame()
@@ -265,12 +266,12 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
-            /*if (isGameOver) return;
+            if (isGameOver) return;
 
             if (!isPaused)
             {
                 PauseGame();
-            }*/
+            }
         }
     }
 

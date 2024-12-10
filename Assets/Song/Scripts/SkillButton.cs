@@ -1,90 +1,58 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class SkillButton : MonoBehaviour
 {
-    [Header("References")]
     public Button skillButton; // 스킬 버튼
-    public Image cooldownOverlay; // 쿨타임 이미지 (투명도 조절용)
-    public Skill skill;
+    public Skill skill; // 해당 스킬
 
-    private float cooldownTimer;
-    private bool isCooldown = false;
-
-    public bool isPressed = false; // 버튼이 눌려 있는 상태
-    private float pressStartTime = 0f; // 눌린 시간 기록
-    public float holdDuration = 1f; // 꾹 눌러야 하는 최소 시간
-
-    public void OnSkillActiveListener()
-    {
-        if (skill.GetCooldownTime() > 0)
-        {
-            isCooldown = true;
-            cooldownTimer = skill.GetCooldownTime();
-
-            cooldownOverlay.fillAmount = 0; // 쿨타임 초기화
-            skillButton.interactable = false; // 버튼 비활성화
-        }
-    }
-
-    void Start()
-    {
-        cooldownOverlay.fillAmount = 1; // 쿨타임 초기화
-        skillButton.interactable = true; // 버튼은 처음부터 활성화
-    }
+    private bool isSkillActive = false; // 스킬 활성화 상태 추적
+    private float holdTime = 0f; // 스킬을 꾹 누른 시간 추적
+    public float requiredHoldTime = 1f; // 스킬 발동에 필요한 시간
 
     void Update()
     {
-        // 쿨타임이 활성화된 경우
-        if (isCooldown)
+        // 터치 입력을 체크
+        if (Input.touchCount > 0)
         {
-            cooldownTimer -= Time.deltaTime;
-            cooldownOverlay.fillAmount = 1 - (cooldownTimer / skill.GetCooldownTime()); // 아이콘이 채워지는 효과
+            Touch touch = Input.GetTouch(0); // 첫 번째 터치 가져오기
 
-            // 쿨타임 종료
-            if (cooldownTimer <= 0)
+            switch (touch.phase)
             {
-                isCooldown = false;
-                cooldownOverlay.fillAmount = 1;
-                skillButton.interactable = true; // 버튼 활성화
+                case TouchPhase.Began:
+                    // 터치가 시작되면 스킬 활성화 준비
+                    isSkillActive = false;
+                    holdTime = 0f;
+                    break;
+
+                case TouchPhase.Moved:
+                    // 터치가 이동하면 누른 시간이 증가
+                    if (isSkillActive)
+                    {
+                        holdTime += Time.deltaTime;
+                        // 일정 시간이 지나면 스킬 발동
+                        if (holdTime >= requiredHoldTime)
+                        {
+                            skill.UseSkill(); // 스킬 발동
+                            isSkillActive = false; // 발동 후 더 이상 활성화되지 않도록
+                        }
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    // 터치가 끝날 때 스킬 비활성화
+                    isSkillActive = false;
+                    break;
             }
         }
+    }
 
-        // 꾹 누르는 상태 처리
-        if (isPressed)
+    public void OnButtonClicked()
+    {
+        if (!isSkillActive)
         {
-            if (Time.time - pressStartTime >= holdDuration) // 꾹 누른 상태가 유지되었는지 확인
-            {
-                Debug.Log("Skill Activated by Hold");
-                ActivateSkill();
-                isPressed = false; // 상태 초기화
-            }
+            isSkillActive = true;
+            holdTime = 0f;
         }
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (!isCooldown)
-        {
-            isPressed = true;
-            pressStartTime = Time.time;
-            Debug.Log("Button Pressed");
-        }
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        isPressed = false;
-        pressStartTime = 0f;
-        Debug.Log("Button Released");
-    }
-
-    private void ActivateSkill()
-    {
-        // Space 키 눌림과 동일한 효과를 여기에 구현
-        OnSkillActiveListener(); // 스킬 활성화 로직 호출
     }
 }

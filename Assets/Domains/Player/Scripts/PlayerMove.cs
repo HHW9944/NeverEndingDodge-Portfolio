@@ -89,7 +89,7 @@ public class PlayerMove : MonoBehaviour
         Vector3 clampedPosition = _rigid.position;
 
         // y축 제한 (-15에서 +15까지)
-        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -6f, 6f);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -9f, 9f);
 
         // z축 제한 (-20에서 +20까지)
         clampedPosition.z = Mathf.Clamp(clampedPosition.z, -8f, 8f);
