@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 456b2e655fbdce8468a794f4bb79b4ed
-  - enabled: 1
+  - enabled: 0
     path: Assets/Hyunwoo/TutorialScene(Mobile).unity
     guid: c63e85b05c9c90e4db1358b1d97c1c0b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Hyunwoo/TutorialScene.unity
     guid: 481e13c1456248841b12539007cefb9b
   - enabled: 1

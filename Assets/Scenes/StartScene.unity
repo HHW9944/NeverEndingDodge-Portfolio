@@ -42452,7 +42452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72103da513b60a64da542748462a3044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: TutorialScene(Mobile)
+  SceneName: TutorialScene
 --- !u!1 &2028417976
 GameObject:
   m_ObjectHideFlags: 0
