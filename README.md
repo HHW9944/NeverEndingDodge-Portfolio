@@ -5,9 +5,15 @@
   * Unity (C#)
   * Git & GitHub
 
-* 다운로드 링크 : https://drive.google.com/file/d/1T3Ii6NL9drasN1t6y1SbcViUWPaZ1Vkj/view?usp=sharing
-  
+# 다운로드 링크 : https://drive.google.com/file/d/1T3Ii6NL9drasN1t6y1SbcViUWPaZ1Vkj/view?usp=sharing
     - 압축 해제 후 NeverEndingDodge_Design 실행
+    
+# 게임 플레이
+ - ESC : 일시정지
+ - W, A, S, D : 플레이어 이동
+ - Shift(left) : Skill1 (대쉬)
+ - Space : Shill2 (쉴드)
+ - Q : Skill3 (Slow down)
 
 🎮 담당 파트 (허현우)
 * UI 구성 및 디자인
