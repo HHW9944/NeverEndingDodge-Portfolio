@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StartScene.unity
     guid: 456b2e655fbdce8468a794f4bb79b4ed
   - enabled: 0
     path: Assets/Hyunwoo/TutorialScene(Mobile).unity
     guid: c63e85b05c9c90e4db1358b1d97c1c0b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Hyunwoo/TutorialScene.unity
     guid: 481e13c1456248841b12539007cefb9b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/IngameScene.unity
     guid: b0c7cf3ea5bd68e4b932bb8f9dddccde
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DieScene/DieScene.unity
     guid: 92b0e0c5e8bafb842bc137cf3d32b781
   - enabled: 1

@@ -26762,7 +26762,7 @@ MonoBehaviour:
             m_StringArgument: Reinforcements are arriving soon.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 105
+    TriggerValue: 81
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -26790,7 +26790,7 @@ MonoBehaviour:
             m_StringArgument: Good job!
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 102
+    TriggerValue: 77
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -26830,7 +26830,7 @@ MonoBehaviour:
             m_StringArgument: Reinforcements are arriving soon.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 100
+    TriggerValue: 73
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -26871,7 +26871,7 @@ MonoBehaviour:
             m_StringArgument: Reinforcements are arriving soon.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 95
+    TriggerValue: 70
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -26948,7 +26948,7 @@ MonoBehaviour:
             m_StringArgument: Reinforcements are arriving soon.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 91
+    TriggerValue: 67
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -27000,7 +27000,7 @@ MonoBehaviour:
             m_StringArgument: Reinforcements are arriving soon.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 88
+    TriggerValue: 64
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -27065,7 +27065,7 @@ MonoBehaviour:
             m_StringArgument: Reinforcements are arriving soon.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 85
+    TriggerValue: 105
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -27093,7 +27093,7 @@ MonoBehaviour:
             m_StringArgument: Good job!
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 83
+    TriggerValue: 101
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -27122,7 +27122,7 @@ MonoBehaviour:
             m_StringArgument: This skill allows you to escape from an emergency situation.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 80
+    TriggerValue: 97
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -27189,7 +27189,7 @@ MonoBehaviour:
             m_StringArgument: Reinforcements are arriving soon.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 71
+    TriggerValue: 93
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -27217,7 +27217,7 @@ MonoBehaviour:
             m_StringArgument: Good job!
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 68
+    TriggerValue: 89
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:
@@ -27247,7 +27247,7 @@ MonoBehaviour:
               movements well.
             m_BoolArgument: 0
           m_CallState: 2
-    TriggerValue: 65
+    TriggerValue: 85
   - OnTrigger:
       m_PersistentCalls:
         m_Calls:

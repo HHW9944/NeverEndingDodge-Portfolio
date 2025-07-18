@@ -516,8 +516,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 375227674}
-        m_TargetAssemblyTypeName: SkillButton, Assembly-CSharp
+      - m_Target: {fileID: 375227679}
+        m_TargetAssemblyTypeName: SkillCooldownUI, Assembly-CSharp
         m_MethodName: OnSkillActiveListener
         m_Mode: 1
         m_Arguments:
@@ -1111,6 +1111,7 @@ GameObject:
   - component: {fileID: 199140581}
   - component: {fileID: 199140580}
   - component: {fileID: 199140584}
+  - component: {fileID: 199140585}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -1248,6 +1249,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ControlPath: <Keyboard>/space
+--- !u!114 &199140585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199140578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cabff4e881ef94c85a0047a0003f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillButton: {fileID: 199140581}
+  cooldownOverlay: {fileID: 604321010}
+  skill: {fileID: 980119490}
 --- !u!1 &199367224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,6 +1882,7 @@ GameObject:
   - component: {fileID: 375227675}
   - component: {fileID: 375227674}
   - component: {fileID: 375227678}
+  - component: {fileID: 375227679}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -2003,6 +2020,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ControlPath: <Keyboard>/leftShift
+--- !u!114 &375227679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375227672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cabff4e881ef94c85a0047a0003f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillButton: {fileID: 375227675}
+  cooldownOverlay: {fileID: 1769648895}
+  skill: {fileID: 611200172}
 --- !u!1 &418224653
 GameObject:
   m_ObjectHideFlags: 0
@@ -6011,7 +6043,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 23f22ae8a92844167bdc4fa33c8038d6, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6102,8 +6134,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2060769954}
-        m_TargetAssemblyTypeName: SkillButton, Assembly-CSharp
+      - m_Target: {fileID: 2060769959}
+        m_TargetAssemblyTypeName: SkillCooldownUI, Assembly-CSharp
         m_MethodName: OnSkillActiveListener
         m_Mode: 1
         m_Arguments:
@@ -6581,7 +6613,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 23f22ae8a92844167bdc4fa33c8038d6, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10768,7 +10800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1215755716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16703,7 +16735,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 23f22ae8a92844167bdc4fa33c8038d6, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -19175,6 +19207,7 @@ GameObject:
   - component: {fileID: 2060769955}
   - component: {fileID: 2060769954}
   - component: {fileID: 2060769958}
+  - component: {fileID: 2060769959}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -19312,6 +19345,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ControlPath: <Keyboard>/q
+--- !u!114 &2060769959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060769952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cabff4e881ef94c85a0047a0003f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillButton: {fileID: 2060769955}
+  cooldownOverlay: {fileID: 665305388}
+  skill: {fileID: 611200172}
 --- !u!1 &2069980561 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4660910960922201882, guid: 95942504155c7d144b28fde71dc3a041,
