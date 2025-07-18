@@ -3,6 +3,6 @@
 
 다운로드 링크 : https://drive.google.com/file/d/1T3Ii6NL9drasN1t6y1SbcViUWPaZ1Vkj/view?usp=sharing
 
-압축 해재 후 NeverEndingDodge_Design 실행
+압축 해제 후 NeverEndingDodge_Design 실행
 
 개발 및 정보 : README.md 참조
